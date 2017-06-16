@@ -1,0 +1,81 @@
+// 绝对中央居中（如果容器宽度小于该元素，仍然能保持居中）
+// 只对块元素或者行内块元素有效，且父容器必须设置为定位元素
+.center-x(@outer_width, @location: top auto, @position: absolute) when (isnumber(@outer_width)) {
+    .position(auto auto auto 50%, @position);
+    .set(extract(@location, 1), extract(@location, 2));
+    margin-left: @outer_width / 2 * -1;
+}
+.center-x(@location: top auto, @position: absolute) when (iskeyword(@location)) {
+    .position(auto auto auto 50%, @position);
+    .set(extract(@location, 1), extract(@location, 2));
+    .translate(-50%, 0);
+}
+
+.center-y(@outer_height, @location: left auto, @position: absolute) when (isnumber(@outer_height)) {
+
+    & when (ispercentage(@outer_height)) {
+        // 高度为百分比时专用（但IE6-7不支持）
+        .position(0 auto 0 auto, @position);
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    & when not (ispercentage(@outer_height)) {
+        .position(50% auto auto auto, @position);
+        margin-top: @outer_height / 2 * -1;
+    }
+
+    .set(extract(@location, 1), extract(@location, 2));
+}
+.center-y(@location: left auto, @position: absolute) when (iskeyword(@location)) {
+    .position(50% auto auto auto, @position);
+    .set(extract(@location, 1), extract(@location, 2));
+    .translate(0, -50%);
+}
+
+.center-xy(@outer_width, @outer_height, @position: absolute) when (isnumber(@outer_width)) and (isnumber(@outer_height)) {
+
+    & when (ispercentage(@outer_height)) {
+        // 高度为百分比时专用（但IE6-7不支持）
+        .position(0 auto 0 50%, @position);
+        margin-left: @outer_width / 2 * -1;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    & when not (ispercentage(@outer_height)) {
+        .position(50% auto auto 50%, @position);
+        margin-left: @outer_width / 2 * -1;
+        margin-top: @outer_height / 2 * -1;
+    }
+}
+.center-xy(@position: absolute) when (iskeyword(@position)) {
+    .position(50% auto auto 50%, @position);
+    .translate(-50%, -50%);
+}
+
+// 块元素水平居中
+.center-x-block(@width: auto, @margin: auto) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    .set(width, @width);
+
+    & when (length(@margin) = 1) {
+        .set(margin-top, @margin);
+        .set(margin-bottom, @margin);
+    }
+
+    & when (length(@margin) = 2) {
+        .set(margin-top, extract(@margin, 1));
+        .set(margin-bottom, extract(@margin, 2));
+    }
+}
+
+// img 专用中央居中（IE6-7不支持）
+.center-xy-img(@position: absolute) {
+    display: block;
+    margin: auto;
+    .position(0, @position);
+}
+

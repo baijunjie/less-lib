@@ -1,0 +1,79 @@
+// 边框
+.border(@color: @default_border_color, @width: 1px, @style: solid) {
+    border: @width @style @color;
+}
+.border-left(@color: @default_border_color, @width: 1px, @style: solid) {
+    border-left: @width @style @color;
+}
+.border-right(@color: @default_border_color, @width: 1px, @style: solid) {
+    border-right: @width @style @color;
+}
+.border-top(@color: @default_border_color, @width: 1px, @style: solid) {
+    border-top: @width @style @color;
+}
+.border-bottom(@color: @default_border_color, @width: 1px, @style: solid) {
+    border-bottom: @width @style @color;
+}
+
+// 清除边框
+.border-none() {
+    border-style: none;
+}
+.border-left-none() {
+    border-left-style: none;
+}
+.border-right-none() {
+    border-right-style: none;
+}
+.border-top-none() {
+    border-top-style: none;
+}
+.border-bottom-none() {
+    border-bottom-style: none;
+}
+
+// 阴影边框
+.border-shadow(@color: @default_border_color, @width: 1px) {
+    .box-shadow(0 0 0 @width @color);
+}
+
+// 表格边框
+.table-border(@color: @default_border_color, @width: 1px) {
+    background-color: extract(@color, 1);
+    border-spacing: @width;
+    border-collapse: separate;
+
+    tr {
+        & when (length(@color) = 1) {
+            background-color: #fff;
+        }
+
+        & when (length(@color) > 1) {
+            background-color: extract(@color, 2);
+        }
+    }
+}
+
+// 圆角边框
+.border-radius(@radius: 4px) {
+    -webkit-border-radius: @radius; //兼容 Android <2.0
+    border-radius: @radius;
+}
+.border-top-radius(@radius) {
+    border-top-right-radius: @radius;
+    border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+    border-bottom-right-radius: @radius;
+    border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+    border-bottom-right-radius: @radius;
+    border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+    border-bottom-left-radius: @radius;
+    border-top-left-radius: @radius;
+}
+
+

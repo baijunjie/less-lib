@@ -1,0 +1,88 @@
+// 表单元素预设样式
+.input {
+	.input();
+	&.error       { .input-border-color(@red @red); }
+	&.transparent { .input-border-color(none); }
+
+	& ~ * {
+		margin-left: 5px;
+	}
+}
+
+.textarea {
+	&:extend(.input);
+	resize: vertical;
+	height: auto;
+	line-height: 1.5;
+	padding: .5em;
+}
+
+.button {
+	.button-flat();
+	&.blue   { .button-flat-color(@blue); }
+	&.green  { .button-flat-color(@green); }
+	&.yellow { .button-flat-color(@yellow); }
+	&.red    { .button-flat-color(@red); }
+	&.sky    { .button-flat-color(@sky); }
+	&.gray   { .button-flat-color(@gray); }
+
+	& ~ * {
+		margin-left: 5px;
+	}
+}
+
+.select {
+	.select();
+	&.transparent { .select-border-color(none); }
+}
+
+.select2 {
+	.select2();
+	&.transparent { .select-border-color(none); }
+}
+
+.checkbox {
+	.checkbox();
+}
+
+.radio {
+	.radio();
+}
+
+.switch {
+	.switch();
+}
+
+.progress {
+	.progress-striped-animation();
+}
+
+.loading {
+	.loading(@blue);
+}
+
+.fgx { .form-group-x(); }
+.fgy { .form-group-y(); }
+
+// 两栏自适应预设样式
+.col2 {
+	.clear();
+
+	@range: 60, 80, 120, 150, 200;
+	@len: length(@range);
+	.loop(@i) {
+		@num: extract(@range, @i);
+		@width: unit(@num, px);
+		&.left@{num} {
+			.col2(float, auto, @width, 10px);
+		}
+		&.right@{num} {
+			.col2-r(float, auto, @width, 10px);
+		}
+		& when(@i < @len) {
+			.loop(@i+1);
+		}
+	}
+	.loop(1);
+}
+

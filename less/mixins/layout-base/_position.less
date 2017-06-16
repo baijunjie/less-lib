@@ -1,0 +1,59 @@
+// 设置位置
+.position(@args: auto, @position: absolute) {
+    & when (@position = rel) {
+        position: relative;
+    }
+    & when (@position = abs) {
+        position: absolute;
+    }
+    & when (@position = fix) {
+        position: fixed;
+    }
+    & when not(@position = rel) and not(@position = abs) and not(@position = fix) {
+        position: @position;
+    }
+
+    .getPos(@args) when (length(@args) = 1) {
+        @top: extract(@args, 1);
+        @right: extract(@args, 1);
+        @bottom: extract(@args, 1);
+        @left: extract(@args, 1);
+    }
+    .getPos(@args) when (length(@args) = 2) {
+        @top: extract(@args, 1);
+        @right: extract(@args, 2);
+        @bottom: extract(@args, 1);
+        @left: extract(@args, 2);
+    }
+    .getPos(@args) when (length(@args) = 3) {
+        @top: extract(@args, 1);
+        @right: extract(@args, 2);
+        @bottom: extract(@args, 3);
+        @left: extract(@args, 2);
+    }
+    .getPos(@args) when (length(@args) = 4) {
+        @top: extract(@args, 1);
+        @right: extract(@args, 2);
+        @bottom: extract(@args, 3);
+        @left: extract(@args, 4);
+    }
+    .getPos(@args);
+
+    .set(top, @top);
+    .set(right, @right);
+    .set(bottom, @bottom);
+    .set(left, @left);
+
+    // 在 expression 表达式中，如果遇到 parseInt("auto")，那么表达式会自动失效
+    & when (@compat_ie6 = true) and not(@left = auto) and not(@right = auto) {
+        _width: e(%(
+        'expression((this.offsetParent||this.parentNode).clientWidth-parseInt(this.currentStyle.paddingLeft||0)-parseInt(this.currentStyle.paddingRight||0)-(isNaN(parseInt(this.currentStyle.borderLeftWidth))?0:parseInt(this.currentStyle.borderLeftWidth))-(isNaN(parseInt(this.currentStyle.borderRightWidth))?0:parseInt(this.currentStyle.borderRightWidth))-parseInt("%d")-parseInt("%d"))',
+        @left, @right));
+    }
+
+    & when (@compat_ie6 = true) and not(@top = auto) and not(@bottom = auto) {
+        _height: e(%(
+        'expression((this.offsetParent||this.parentNode).clientHeight-parseInt(this.currentStyle.paddingTop||0)-parseInt(this.currentStyle.paddingBottom||0)-(isNaN(parseInt(this.currentStyle.borderTopWidth))?0:parseInt(this.currentStyle.borderTopWidth))-(isNaN(parseInt(this.currentStyle.borderBottomWidth))?0:parseInt(this.currentStyle.borderBottomWidth))-parseInt("%d")-parseInt("%d"))',
+        @top, @bottom));
+    }
+}

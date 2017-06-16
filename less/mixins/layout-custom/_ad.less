@@ -1,0 +1,41 @@
+// 广告（IE6下显示不正确，如果需要兼容IE6，请用GIF动态图片替换）
+// html 格式如下：
+// <div class="ad">
+//  <object data="ad/flash.swf" width="100%" height="100%" type="application/x-shockwave-flash">
+//      <param name="src" value="ad/flash.swf">
+//      <param name="wmode" value="opaque">
+//      <param name="quality" value="high">
+//  </object>
+//  <a href="###"></a>
+// </div>
+.ad(fl, @width, @height) {
+    display: block;
+    .size(@width, @height);
+    margin: 3px auto;
+    position: relative;
+
+    >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .size(100%);
+        z-index: 0;
+    }
+    a {
+        display: block;
+        z-index: 1;
+
+        & when (@compat_ie7 = true) {
+            *background: #fff;
+            *filter: alpha(opacity=0);
+        }
+    }
+}
+.ad(@width, @height) {
+    display: block;
+    .size(@width, @height);
+    margin: 3px auto;
+    img {
+        .size(100%);
+    }
+}

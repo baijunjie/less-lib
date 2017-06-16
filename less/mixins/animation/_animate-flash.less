@@ -1,0 +1,4 @@
+// 闪烁
+.animate-flash(@animation_name: animation-flash, @range: 1, @duration: .3s, @loop: infinite) {
+    .animate-opacity(@animation_name, 1, 1 - @range, @duration, linear, 0s, @loop, normal);
+}

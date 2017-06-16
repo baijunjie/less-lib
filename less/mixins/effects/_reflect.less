@@ -1,0 +1,11 @@
+// 倒影（webkit核心专用）
+// 注意，如果元素设置了 overflow: hidden; 则倒影将无法显示
+.reflect(@offset: 2px, @height: 0.5, @opacity: .3) {
+    -webkit-box-reflect: below @offset
+        -webkit-gradient(linear,
+        left bottom,
+        left top,
+        from(rgba(0, 0, 0, @opacity)),
+        color-stop(@height, transparent),
+        to(transparent));
+}

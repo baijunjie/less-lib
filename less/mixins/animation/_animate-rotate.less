@@ -1,0 +1,19 @@
+// 旋转动画工具
+.animate-rotate(@animation_name: animation-rotate, @start: 0, @end: 360, @duration: 1s, @easing: linear, @delay: 0s, @loop: infinite, @repeat: normal) {
+    .animation(@animation_name @duration @easing @delay @loop @repeat);
+    @start_angle: 0deg + unit(@start);
+    @end_angle: 0deg + unit(@end);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        from { @{pf}transform: rotate(@start_angle); }
+        to   { @{pf}transform: rotate(@end_angle);   }
+    }
+}

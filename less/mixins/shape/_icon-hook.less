@@ -1,0 +1,35 @@
+// 对勾
+._icon-hook(@color, @size) {
+
+    .getSize(@size) when (length(@size) = 1) {
+        @pattern_size: @size;
+        @pattern_thickness: @size * .1;
+    }
+    .getSize(@size) when (length(@size) = 2) {
+        @pattern_size: extract(@size, 1);
+        @pattern_thickness: extract(@size, 2);
+    }
+    .getSize(@size);
+
+    .inline-block();
+    vertical-align: middle;
+    width: @pattern_size;
+    height: @pattern_size;
+    &:before {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 70%;
+        margin-left: 25%;
+        border-right: solid @pattern_thickness @color;
+        border-bottom: solid  @pattern_thickness @color;
+        border-bottom-right-radius: @pattern_thickness;
+        .rotate(45deg);
+    }
+}
+.icon-hook(@size: 30px) when (isnumber(extract(@size, 1))) {
+    ._icon-hook(#666, @size);
+}
+.icon-hook(@color, @size: 30px) when (iscolor(@color)) {
+    ._icon-hook(@color, @size);
+}

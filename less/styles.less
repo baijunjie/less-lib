@@ -1,0 +1,158 @@
+@charset 'UTF-8';
+@import 'config/_index.less';
+@import (inline) 'normalize.css';
+@import '_common.less';
+@import '_prefab.less';
+
+body {
+    text-align: center;
+}
+
+.row {
+    margin: 20px 0;
+    .va;
+}
+
+.button-flat {
+    .button-flat();
+    &.blue   { .button-flat-color(@blue); }
+    &.green  { .button-flat-color(@green); }
+    &.yellow { .button-flat-color(@yellow); }
+    &.red    { .button-flat-color(@red); }
+    &.sky    { .button-flat-color(@sky); }
+    &.gray   { .button-flat-color(@gray); }
+
+    & ~ * {
+        margin-left: 5px;
+    }
+}
+
+.button-arc {
+    .button-arc();
+    &.blue   { .button-arc-color(@blue); }
+    &.green  { .button-arc-color(@green); }
+    &.yellow { .button-arc-color(@yellow); }
+    &.red    { .button-arc-color(@red); }
+    &.sky    { .button-arc-color(@sky); }
+    &.gray   { .button-arc-color(@gray); }
+
+    & ~ * {
+        margin-left: 5px;
+    }
+}
+
+.button-cube {
+    .button-cube();
+    &.blue   { .button-cube-color(@blue); }
+    &.green  { .button-cube-color(@green); }
+    &.yellow { .button-cube-color(@yellow); }
+    &.red    { .button-cube-color(@red); }
+    &.sky    { .button-cube-color(@sky); }
+    &.gray   { .button-cube-color(@gray); }
+
+    & ~ * {
+        margin-left: 5px;
+    }
+}
+
+.button-hollow {
+    .button-hollow();
+    &.blue   { .button-hollow-color(@blue); }
+    &.green  { .button-hollow-color(@green); }
+    &.yellow { .button-hollow-color(@yellow); }
+    &.red    { .button-hollow-color(@red); }
+    &.sky    { .button-hollow-color(@sky); }
+    &.gray   { .button-hollow-color(@gray); }
+
+    & ~ * {
+        margin-left: 5px;
+    }
+}
+
+.loading1 {
+    .loading(@blue);
+}
+
+.loading2 {
+    .loading2(@blue);
+}
+
+.loading3 {
+    .loading3(@blue);
+}
+
+.loading4 {
+    .loading4(@blue);
+}
+
+.loading5 {
+    .loading5(@blue);
+}
+
+.progress-flat {
+    width: 100px;
+    .progress-flat();
+}
+
+.progress-striped {
+    width: 100px;
+    .progress-striped();
+}
+
+.progress-striped-animation {
+    width: 100px;
+    .progress-striped-animation();
+}
+
+.progress-arc {
+    width: 100px;
+    .progress-arc();
+}
+
+.progress-hollow {
+    width: 100px;
+    .progress-hollow();
+}
+
+.icon-add {
+    .icon-add();
+}
+
+.icon-close {
+    .icon-close();
+    .bxsd();
+}
+
+.icon-cross {
+    .icon-cross();
+}
+
+.icon-fork {
+    .icon-fork();
+}
+
+.icon-hook {
+    .icon-hook();
+}
+
+.icon-search {
+    .icon-search();
+}
+
+.icon-sub {
+    .icon-sub();
+}
+
+#navbarToggle {
+    .sz(40px);
+    .ftsz(0);
+    text-align: center;
+    .va;
+}
+.navbar-toggle {
+    .navbar-toggle();
+}
+
+
+
+

@@ -1,0 +1,53 @@
+// 设置大小
+.size(@width, @height: @width) {
+    width: @width;
+    height: @height;
+}
+
+// 等比例设置大小
+// @real_width 表示实际宽度值，此时前两个参数只是用来计算宽高比
+.size(@width, @height, @real_width) {
+    width: @real_width;
+
+    // 如果第3个参数为百分比，则使用padding-top作为百分比的高度
+    & when (ispercentage(@real_width)) {
+        height: 0;
+        padding-top: @real_width * @height / @width;
+    }
+
+    // 如果第3个参数为绝对值，则计算出的高度也为绝对值
+    & when not (ispercentage(@real_width)) {
+        width: @real_width;
+        height: @real_width * @height / @width;
+    }
+}
+
+// @container_width,
+// @container_height 可选。表示容器的宽高比，该方法使用宽度在容器中所占的百分比来计算元素高度在容器中的百分比
+// 如果第3个参数为百分比，则计算出高度的百分比
+.size(@width, @height, @real_width, @container_width, @container_height) {
+
+    // 如果第3个参数为百分比，则计算出高度的百分比
+    & when (ispercentage(@real_width)) {
+        width: @real_width;
+        height: @real_width * @container_width * @height / @width / @container_height;
+    }
+
+    // 如果第3个参数为绝对值，则按容器的宽高分别计算出元素宽高的百分比
+    & when not (ispercentage(@real_width)) {
+        width: 100% * @real_width / @container_width;
+        height: 100% * @real_width * @height / @width / @container_height;
+    }
+}
+
+// 设置相对大小
+// @width, @height 表示绝对宽高度（一般为设计图上该元素的像素宽高）
+// @base_width 表示基础宽度（一般为设计图的像素宽）
+// 宽高会按基础宽度换算为等比例的百分比（这里的高度使用的是padding-top）
+.size-rel(@width, @height, @base_width) {
+    width: 100% * @width / @base_width;
+    & when not (@height = auto) {
+        height: 0;
+        padding-top: 100% * @height / @base_width;
+    }
+}

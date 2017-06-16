@@ -1,0 +1,26 @@
+// 扭动
+.animate-wiggle(@animation_name: animation-wiggle, @duration: 1s, @loop: infinite) {
+    .animation(@animation_name @duration @loop);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        0%   { @{pf}transform: skewX(9deg); }
+        10%  { @{pf}transform: skewX(-8deg); }
+        20%  { @{pf}transform: skewX(7deg); }
+        30%  { @{pf}transform: skewX(-6deg); }
+        40%  { @{pf}transform: skewX(5deg); }
+        50%  { @{pf}transform: skewX(-4deg); }
+        60%  { @{pf}transform: skewX(3deg); }
+        70%  { @{pf}transform: skewX(-2deg); }
+        80%  { @{pf}transform: skewX(1deg); }
+        90%  { @{pf}transform: skewX(0deg); }
+        100% { @{pf}transform: skewX(0deg); }
+    }
+}

@@ -1,0 +1,89 @@
+// 表单组
+.form-group-x() {
+    vertical-align: middle;
+    .font-size(0);
+
+    select,
+    textarea,
+    input,
+    button,
+    a {
+        &:focus {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    >select:not(:first-child),
+    >textarea:not(:first-child),
+    >input:not(:first-child),
+    >button:not(:first-child),
+    >a:not(:first-child),
+    >:not(:first-child) select,
+    >:not(:first-child) textarea,
+    >:not(:first-child) input,
+    >:not(:first-child) button,
+    >:not(:first-child) a {
+        margin-left: -1px !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    >select:not(:last-child),
+    >textarea:not(:last-child),
+    >input:not(:last-child),
+    >button:not(:last-child),
+    >a:not(:last-child),
+    >:not(:last-child) select,
+    >:not(:last-child) textarea,
+    >:not(:last-child) input,
+    >:not(:last-child) button,
+    >:not(:last-child) a {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+}
+.form-group-y() {
+    vertical-align: middle;
+    .font-size(0);
+
+    select,
+    textarea,
+    input,
+    button,
+    a {
+        &:focus {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    >select:not(:first-child),
+    >textarea:not(:first-child),
+    >input:not(:first-child),
+    >button:not(:first-child),
+    >a:not(:first-child),
+    >:not(:first-child) select,
+    >:not(:first-child) textarea,
+    >:not(:first-child) input,
+    >:not(:first-child) button,
+    >:not(:first-child) a {
+        margin-top: -1px !important;
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+
+    >select:not(:last-child),
+    >textarea:not(:last-child),
+    >input:not(:last-child),
+    >button:not(:last-child),
+    >a:not(:last-child),
+    >:not(:last-child) select,
+    >:not(:last-child) textarea,
+    >:not(:last-child) input,
+    >:not(:last-child) button,
+    >:not(:last-child) a {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+}

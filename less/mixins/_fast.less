@@ -1,0 +1,326 @@
+// ======================================================================
+// 语法糖
+// ======================================================================
+
+// 粗体
+.b() {
+	font-weight: bold;
+}
+// 取消粗体
+.nob() {
+	font-weight: normal;
+}
+
+// 斜体
+.i() {
+	font-style: italic;
+}
+// 取消斜体
+.noi() {
+	font-style: normal;
+}
+
+// 删除线
+.del() {
+	text-decoration: line-through;
+}
+
+// 禁止换行
+.nowrap() {
+	white-space: nowrap;
+}
+
+// 禁止选择
+.nosel() {
+	.user-select(none);
+}
+
+// 禁止长按弹出菜单
+.nohold() {
+	-webkit-touch-callout: none;
+}
+
+// 禁止元素响应交互事件
+.noevt() {
+	pointer-events: none;
+}
+
+// 清除掉浏览器对表单元素的默认样式
+.noapp() {
+	.appearance-none();
+}
+
+// 转换行内块元素
+.inbl() {
+	.inline-block();
+}
+
+//无视默认换行规则，文本到达尽头强行截断换行
+.wba() {
+	.word-break-all();
+}
+//默认的换行规则，超长单词强行截断
+.wbw() {
+	.word-break-word();
+}
+
+// 清除浮动
+.cf() {
+	.clearfix();
+}
+
+// 文本溢出三点显示
+.of3p(@line_count: 1) {
+	.overflow-3-piont(@line_count);
+}
+
+// 文本隐藏
+.tthd() {
+	.hide-text();
+}
+
+// 透明度
+.op(@opacity) {
+	.opacity(@opacity);
+}
+
+// 设置大小
+.sz(@width, @height: @width) {
+	.size(@width, @height);
+}
+.sz(@width, @height, @real_width) {
+	.size(@width, @height, @real_width);
+}
+.sz(@width, @height, @real_width, @container_width, @container_height) {
+	.size(@width, @height, @real_width, @container_width, @container_height);
+}
+.sz-rel(@width, @height, @base_width) {
+	.size-rel(@width, @height, @base_width);
+}
+
+// 字体大小
+.ftsz(@size, @position: left center) {
+	.font-size(@size, @position);
+}
+
+// 设置<a>链接的颜色及样式
+.acl(@color, @decoration: underline, @active_class: active) when (iscolor(@color)), (length(@color) > 1) {
+	.link-color(@color, @decoration, @active_class);
+}
+.acl(@color, @decoration: none, @active_class: active) when (length(@color) = 1) and not (iscolor(@color)) {
+	.link-color(@color, @decoration, @active_class);
+}
+
+// 设置背景颜色
+.bgcl(@color, @active_class: active) {
+	.background-color(@color, @active_class);
+}
+// 设置背景图
+.bgimg(@url, @position: center, @repeat: no-repeat) {
+	.background-image(@url, @position, @repeat);
+}
+// 采用base64转码背景图
+.bgimg2(@url, @position: center, @repeat: no-repeat) {
+	.background-image(@url, @position, @repeat);
+}
+// 设置svg背景
+.bgsvg(@svg, @position: center, @repeat: no-repeat) {
+	.background-svg(@svg, @position, @repeat);
+}
+// 背景图大小
+.bgsz(@size) {
+	.background-size(@size);
+}
+
+// 边框
+.bd(@color: @default_border_color, @width: 1px, @style: solid) {
+	.border(@color, @width, @style);
+}
+.bdl(@color: @default_border_color, @width: 1px, @style: solid) {
+	.border-left(@color, @width, @style);
+}
+.bdr(@color: @default_border_color, @width: 1px, @style: solid) {
+	.border-right(@color, @width, @style);
+}
+.bdt(@color: @default_border_color, @width: 1px, @style: solid) {
+	.border-top(@color, @width, @style);
+}
+.bdb(@color: @default_border_color, @width: 1px, @style: solid) {
+	.border-bottom(@color, @width, @style);
+}
+// 清楚边框
+.bdno() {
+	.border-none();
+}
+.bdlno() {
+	.border-left-none();
+}
+.bdrno() {
+	.border-right-none();
+}
+.bdtno() {
+	.border-top-none();
+}
+.bdbno() {
+	.border-bottom-none();
+}
+
+// 圆角边框
+.bdrd(@radius: 4px) {
+	.border-radius(@radius);
+}
+
+// 阴影边框
+.bdsd(@color: @default_border_color, @width: 1px) {
+	.border-shadow(@color, @width);
+}
+
+// 表格边框
+.tbbd(@color: @default_border_color, @width: 1px) {
+	.table-border(@color, @width);
+}
+
+// 线性渐变
+// 垂直线性渐变
+.lgy(@start_color, @end_color, @start_percent: 0%, @end_percent: 100%) {
+	.gradient-y(@start_color, @end_color, @start_percent, @end_percent);
+}
+ // 垂直三色线性渐变
+.lgy3(@start-color, @mid-color, @color-stop, @end-color) {
+	.gradient-y-3-colors(@start-color, @mid-color, @color-stop, @end-color);
+}
+// 水平线性渐变
+.lgx(@start_color, @end_color, @start_percent: 0%, @end_percent: 100%) {
+	.gradient-x(@start_color, @end_color, @start_percent, @end_percent);
+}
+// 水平三色线性渐变
+.lgx3(@start-color, @mid-color, @color-stop, @end-color) {
+	.gradient-x-3-colors(@start-color, @mid-color, @color-stop, @end-color);
+}
+// 径向渐变
+.rg(@inner_color, @outer_color) {
+	.gradient-radial(@inner_color, @outer_color);
+}
+
+// 边框盒
+.bxbd() {
+	.box-sizing(border-box);
+}
+
+// 同时设置高度与行高
+.lh(@height) {
+	height: @height;
+
+	& when (ispixel(@height)) {
+		line-height: @height;
+	}
+
+	& when (isem(@height)) {
+		line-height: unit(@height);
+	}
+}
+
+// 文本阴影
+.ttsd(none) {
+    .text-shadow(none);
+}
+.ttsd(@size: 0 1px 0, @color: @text_shadow_default_color) when not(iskeyword(@size)) and not(iscolor(@size)) {
+    .text-shadow(@size @color);
+}
+.ttsd(@color: @text_shadow_default_color) when (iscolor(@color)) {
+    .text-shadow(0 1px 0 @color);
+}
+.ttsd(skew, @color: @text_shadow_default_color) {
+    .text-shadow(1px 1px 0 @color);
+}
+.ttsd2(@color: @text_shadow_default_color) when (iscolor(@color)) {
+    .text-shadow(0 0 6px @color);
+}
+.ttsd2(skew, @color: @text_shadow_default_color) {
+    .text-shadow(2px 2px 4px @color);
+}
+
+// 盒阴影
+.bxsd(@size: 0 0 8px, @color: @box_shadow_default_color) when not(iskeyword(@size)) {
+	.box-shadow(@size @color);
+}
+.bxsd(skew, @color: @box_shadow_default_color) {
+	.box-shadow(2px 2px 4px @color);
+}
+.bxsd(left, @color: @box_shadow_default_color) {
+	.box-shadow(-4px 0 8px @color);
+}
+.bxsd(right, @color: @box_shadow_default_color) {
+	.box-shadow(4px 0 8px @color);
+}
+.bxsd(top, @color: @box_shadow_default_color) {
+	.box-shadow(0 -4px 8px @color);
+}
+.bxsd(bottom, @color: @box_shadow_default_color) {
+	.box-shadow(0 4px 8px @color);
+}
+.bxsd(box) {
+	.box-shadow(0 1px 2px 0 rgba(0,0,0,0.1), 0 4px 8px 0 rgba(0,0,0,0.2););
+}
+.bxsd(thin) {
+	.box-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+.bxsd(none) {
+	.box-shadow(none);
+}
+
+// 设置位置
+.pos(@args: auto, @position: absolute) {
+	.position(@args, @position);
+}
+
+// 绝对中央居中（如果容器宽度小于该元素，仍然能保持居中）
+// 只对块元素或者行内块元素有效，且父容器必须设置为定位元素
+.cx(@outer_width, @location: top auto, @position: absolute) when (isnumber(@outer_width)) {
+    .center-x(@outer_width, @location, @position);
+}
+.cx(@location: top auto, @position: absolute) when (iskeyword(@location)) {
+    .center-x(@location, @position);
+}
+
+.cy(@outer_height, @location: left auto, @position: absolute) when (isnumber(@outer_height)) {
+    .center-y(@outer_height, @location, @position);
+}
+.cy(@location: left auto, @position: absolute) when (iskeyword(@location)) {
+    .center-y(@location, @position);
+}
+
+.cxy(@outer_width, @outer_height, @position: absolute) when (isnumber(@outer_width)) and (isnumber(@outer_height)) {
+	.center-xy(@outer_width, @outer_height, @position);
+}
+.cxy(@position: absolute) when (iskeyword(@position)) {
+    .center-xy(@position);
+}
+
+// 块元素水平居中
+.cxbl(@width: auto, @margin: auto) {
+    .center-x-block(@width, @margin);
+}
+
+// img 专用中央居中（IE6-7不支持）
+.cxyimg(@position: absolute) {
+    .center-xy-img(@position);
+}
+
+// 容器内所有子元素的垂直对齐方式（包括行内块元素，IE7及以下浏览器不支持。但是配合IE9.js可以支持）
+.va(@align: middle, @pseudo_elements: after, @item: '>*') {
+	.vertical-align(@align, @pseudo_elements, @item);
+}
+
+// 容器内所有子元素两端对齐（包括行内块元素）
+// 子元素间必须换行书写才会生效。如果是代码动态生成，请在每个子元素之间插入 &#10; 换行的转移字符
+// 注意，在 webkit 浏览器下，父容器的结束标签必须紧跟着最后一个子元素的结尾。否则最后一行结尾会有一个空白（换行符的文本节点）
+// 如果需要兼容IE6-7，那么子元素必须全部为原生的行内元素或行内块元素，如：<span>、<img>等。通过 display 设置的行内元素或行内块元素无效
+.jy(@align: baseline, @item: '>*') {
+	.justify(@align, @item);
+}
+
+// 常规两侧浮动
+.lrf(@left: '>:first-child', @right: '>:nth-child(2)') {
+	.left-right-float(@left, @right);
+}

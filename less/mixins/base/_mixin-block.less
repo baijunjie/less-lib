@@ -1,0 +1,16 @@
+// 添加激活时的代码块
+.active(@block, @active_class: active) {
+    &.@{active_class},
+    &:active {
+        @block();
+    }
+}
+
+// 添加指向时的代码块
+.hover(@block, @active_class: active) {
+    &.@{active_class},
+    &:active,
+    &:hover {
+        @block();
+    }
+}

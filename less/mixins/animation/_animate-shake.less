@@ -1,0 +1,18 @@
+// 晃动
+.animate-shake(@animation_name: animation-shake, @range: 10px, @duration: 1s, @loop: infinite) {
+    .animation(@animation_name @duration @loop);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        0%, 100% { @{pf}transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { @{pf}transform: translateX(-@range); }
+        20%, 40%, 60%, 80% { @{pf}transform: translateX(@range); }
+    }
+}

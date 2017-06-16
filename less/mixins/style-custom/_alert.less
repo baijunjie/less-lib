@@ -1,0 +1,25 @@
+// 警告框
+._alert(@bg_color, @bd_color, @text_color) {
+    padding: 15px;
+    border: 1px solid @bd_color;
+    border-radius: 4px;
+    color: @text_color;
+    background-color: @bg_color;
+
+    a {
+        font-weight: bold;
+        color: darken(@text_color, 10%);
+    }
+}
+.alert-green() {
+    ._alert(@alert_green_bg; @alert_green_border; @alert_green_text);
+}
+.alert-blue() {
+    ._alert(@alert_blue_bg; @alert_blue_border; @alert_blue_text);
+}
+.alert-yellow() {
+    ._alert(@alert_yellow_bg; @alert_yellow_border; @alert_yellow_text);
+}
+.alert-red() {
+    ._alert(@alert_red_bg; @alert_red_border; @alert_red_text);
+}

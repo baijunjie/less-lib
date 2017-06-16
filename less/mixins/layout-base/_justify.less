@@ -1,0 +1,28 @@
+// 容器内所有子元素两端对齐（包括行内块元素）
+// 子元素间必须换行书写才会生效。如果是代码动态生成，请在每个子元素之间插入 &#10; 换行的转移字符
+// 注意，在 webkit 浏览器下，父容器的结束标签必须紧跟着最后一个子元素的结尾。否则最后一行结尾会有一个空白（换行符的文本节点）
+// 如果需要兼容IE6-7，那么子元素必须全部为原生的行内元素或行内块元素，如：<span>、<img>等。通过 display 设置的行内元素或行内块元素无效
+.justify(@align: baseline, @item: '>*') {
+    @item_selector: e(@item);
+
+    text-align: justify;
+
+    & when (@compat_ie7 = true) {
+        *text-align-last: justify; //IE下设置最后一行的对齐方式，主要为兼容IE6-7
+        *text-justify: inter-ideograph; //如果子元素为原生块元素，那么必须声明该属性后，IE6-7下的对齐方式才能生效
+    }
+
+    @{item_selector} {
+        .inline-block();
+        vertical-align: @align;
+    }
+
+    &:after {
+        content: '';
+        .inline-block();
+        width: 100%;
+        height: 0;
+        font-size: 0;
+        overflow: hidden;
+    }
+}

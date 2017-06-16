@@ -1,0 +1,25 @@
+// 数字提示泡泡
+._num-pop(@bg_color, @font_color, @size) {
+    @font_size: @size * .6666;
+    @padding: round(@size * .2);
+    @min_width: @size - @padding * 2;
+
+    .inline-block();
+    vertical-align: middle;
+    height: @size;
+    line-height: @size;
+    .border-radius(@size);
+    .font-icon(@font_size, center);
+    min-width: @min_width;
+    padding: 0 @padding;
+    color: @font_color;
+    background-color: @bg_color;
+    font-family: Arial, Verdana, sans-serif;
+    &:empty { display: none; }
+}
+.num-pop(@color: @num_pop_default_bg_color, @size: 20px) when (iscolor(@color)) {
+    ._num-pop(@color, @num_pop_default_font_color, @size);
+}
+.num-pop(@color, @size: 20px) when (length(@color) > 1) {
+    ._num-pop(extract(@color, 1), extract(@color, 2), @size);
+}

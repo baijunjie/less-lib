@@ -1,0 +1,117 @@
+// 滚动横幅
+.banner(@width,
+    @height,
+    @wrap: '>:first-child',
+    @item: '>*') when not (isnumber(@wrap)) {
+
+    @item_selector: e(@item);
+    @wrap_selector: e(@wrap);
+
+    display: block;
+    position: relative;
+    overflow: hidden;
+    .size(@width, @height);
+
+    @{wrap_selector} {
+        display: block;
+        margin: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        .size(1000%, 100%);
+        .user-select(none);
+
+        @{item_selector} {
+            float: left;
+            .size(10%, 100%);
+
+            >a {
+                display: block;
+                .size(auto, 100%);
+            }
+
+            >img,
+            a>img { .size(100%); }
+        }
+    }
+}
+// 高度自适应
+// 这里第三个参数传入的宽度的实际值，而前两个参数只是用来计算宽高比
+.banner(@width,
+    @height,
+    @real_width,
+    @wrap: '>:first-child',
+    @item: '>*') when (isnumber(@real_width)) {
+
+    @item_selector: e(@item);
+    @wrap_selector: e(@wrap);
+
+    display: block;
+    position: relative;
+    overflow: hidden;
+    .size(@width, @height, @real_width);
+
+    @{wrap_selector} {
+        display: block;
+        margin: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        .size(1000%, 100%);
+        .user-select(none);
+
+        @{item_selector} {
+            position: relative;
+            float: left;
+            .size(10%, 100%);
+
+            >a {
+                position: relative;
+                display: block;
+                .size(auto, 100%);
+            }
+
+            >img,
+            a>img {
+                position: absolute; // 如果采用高度随宽度自适应的布局方式，那么Android下<img>如果需要用百分比来设置高度，则必须为绝对定位
+                left: 0;
+                top: 0;
+                .size(100%);
+            }
+        }
+    }
+}
+// 高度自动
+.banner(@width: 100%,
+    @wrap: '>:first-child',
+    @item: '>*') when not(isnumber(@wrap)) {
+
+    @item_selector: e(@item);
+    @wrap_selector: e(@wrap);
+
+    display: block;
+    overflow: hidden;
+    .size(@width, auto);
+
+    @{wrap_selector} {
+        display: block;
+        margin: 0;
+        .size(1000%, auto);
+        .user-select(none);
+
+        @{item_selector} {
+            float: left;
+            .size(10%, auto);
+
+            >a {
+                display: block;
+                .size(auto, auto);
+            }
+
+            >img,
+            a>img {
+                .size(100%, auto);
+            }
+        }
+    }
+}

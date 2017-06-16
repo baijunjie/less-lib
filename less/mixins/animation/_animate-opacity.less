@@ -1,0 +1,16 @@
+// 透明度动画工具
+.animate-opacity(@animation_name: animation-opacity, @start: 0, @end: 1, @duration: 1s, @easing: linear, @delay: 0s, @loop: infinite, @repeat: alternate) {
+    .animation(@animation_name @duration @loop @repeat);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes; }
+        @-moz-keyframes @animation_name { .keyframes; }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes() {
+        from { opacity: @start; }
+        to   { opacity: @end;   }
+    }
+}

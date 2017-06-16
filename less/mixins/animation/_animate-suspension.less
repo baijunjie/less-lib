@@ -1,0 +1,12 @@
+// 带投影的上下悬浮
+.animate-suspension(@animation_name: animation-suspension, @object, @shadow, @object_offset: 5px, @shadow_scale: 0.7, @duration: 1s) {
+    @object_selector: e(@object);
+    @shadow_selector: e(@shadow);
+
+    @{object_selector} {
+        .animate-move(e('@{animation_name}-object'), 0 -@object_offset, 0 @object_offset, @duration, ease-out, 0s, infinite, alternate);
+    }
+    @{shadow_selector} {
+        .animate-scale(e('@{animation_name}-shadow'), .7, 1, @duration, ease-out, 0s, infinite, alternate);
+    }
+}

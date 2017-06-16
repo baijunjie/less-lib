@@ -1,0 +1,18 @@
+// Resize anything
+
+.resize(@direction: y) {
+    // Options: horizontal, vertical, both
+    & when (@direction = xy), (@direction = both) {
+        resize: both;
+    }
+
+    & when (@direction = x), (@direction = horizontal) {
+        resize: horizontal;
+    }
+
+    & when (@direction = y), (@direction = vertical) {
+        resize: vertical;
+    }
+
+    overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+}

@@ -1,0 +1,17 @@
+// 两点之间移动动画工具
+.animate-move(@animation_name: animation-move, @start: 0 0, @end: 50px 0, @duration: 3s, @easing: ease-in-out, @delay: 0s, @loop: infinite, @repeat: alternate) {
+    .animation(@animation_name @duration @easing @delay @loop @repeat);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        from { @{pf}transform: translate(extract(@start, 1), extract(@start, 2)); }
+        to   { @{pf}transform: translate(extract(@end, 1),   extract(@end, 2)  ); }
+    }
+}

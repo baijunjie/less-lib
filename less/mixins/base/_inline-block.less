@@ -1,0 +1,8 @@
+// 转换行内块元素
+.inline-block() {
+    display: inline-block;
+    & when (@compat_ie7 = true) {
+        *display: inline;
+        *zoom: 1;
+    }
+}

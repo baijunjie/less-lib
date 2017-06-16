@@ -1,0 +1,99 @@
+// 导航
+.nav(@border_color: #666,
+    @link_color: #666,
+    @width: auto,
+    @item_width: auto,
+    @line_height: inherit,
+    @height: auto,
+    @item: '>*') {
+
+    @item_selector: e(@item);
+
+    // 初始化子项目
+    & when (iscolor(@link_color)) {
+        @{item_selector} {
+            color: @link_color;
+            height: @height;
+            line-height: @line_height;
+            float: left;
+            text-align: center;
+        }
+    }
+    & when not (iscolor(@link_color)) {
+        @{item_selector} {
+            color: inherit;
+            height: @height;
+            line-height: @line_height;
+            float: left;
+            text-align: center;
+        }
+    }
+
+
+    & when (iscolor(@border_color)) {
+        @{item_selector} {
+            position: relative;
+            &:not(:last-child):after {
+                content: '';
+                width: 0;
+                height: 1em;
+                border-right: 1px solid @border_color;
+                .y-center(1em, right 0);
+            }
+        }
+        @{item_selector}>a,
+        >a {
+            .link-color(@link_color);
+        }
+    }
+    & when not (iscolor(@border_color)) {
+        @{item_selector}>a,
+        >a {
+            display: block;
+            height: 100%;
+            .link-color(@link_color, none);
+
+            & when (@compat_ie6 = true) {
+                _display: inline-block; //IE6下块元素宽度自动时会撑大宽度同样是自动的非块父元素（也包括浮动或者绝对定位的块元素），因此这里需要hack
+            }
+        }
+    }
+
+
+    & when (@item_width = auto) and (iscolor(@border_color)) {
+        .inline-block();
+        width: @width;
+        @{item_selector} {
+            padding: 0 1em; //如果有边框，那么表示子元素中<a>链接为行内元素，则padding加在<a>链接的容器上
+            width: @item_width;
+            white-space: nowrap;
+        }
+    }
+    & when (@item_width = auto) and not (iscolor(@border_color)) {
+        .inline-block();
+        width: @width;
+        @{item_selector} {
+            width: @item_width;
+            white-space: nowrap;
+        }
+        @{item_selector}>a,
+        >a { // 如果没有边框，那么表示子元素中<a>链接为块元素，则padding加在<a>链接的上
+            padding: 0 1em;
+        }
+    }
+    & when (ispixel(@item_width)), (isem(@item_width)), (ispercentage(@item_width)) {
+        .inline-block();
+        width: @width;
+        @{item_selector} {
+            width: @item_width;
+        }
+    }
+    & when (isnumber(@item_width)) and not (ispixel(@item_width)) and not (isem(@item_width)) and not (ispercentage(@item_width)) {
+        display: block;
+        width: @width;
+        .clear();
+        @{item_selector} {
+            width: 100% / @item_width;
+        }
+    }
+}

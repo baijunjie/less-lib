@@ -1,0 +1,55 @@
+// 两行自适应
+// @offset 参数表示上下内边距+边框的值
+// 上栏定高，下栏自适应
+.row2(@height, @offset: 0, @top: '>:first-child', @bottom: '>:nth-child(2)') {
+    @top_selector: e(@top);
+    @bottom_selector: e(@bottom);
+
+    @{top_selector} {
+        .position(0 0 auto 0);
+        .set-height(@height);
+    }
+    @{bottom_selector} {
+        .fit(@height + @offset 0 0 0);
+    }
+}
+
+// 下栏定高，上栏自适应
+.row2-b(@height, @offset: 0, @top: '>:first-child', @bottom: '>:nth-child(2)') {
+    @top_selector: e(@top);
+    @bottom_selector: e(@bottom);
+
+    @{top_selector} {
+        .fit(0 0 @height + @offset 0);
+    }
+    @{bottom_selector} {
+        .position(auto 0 0 0);
+        .set-height(@height);
+    }
+}
+
+// 三行自适应
+.row3(@top_height,
+    @bottom_height,
+    @top_offset: 0,
+    @bottom_offset: 0,
+    @top: '>:first-child',
+    @middle: '>:nth-child(2)',
+    @bottom: '>:nth-child(3)') {
+
+    @top_selector: e(@top);
+    @middle_selector: e(@middle);
+    @bottom_selector: e(@bottom);
+
+    @{top_selector} {
+        .position(0 0 auto 0);
+        .set-height(@top_height);
+    }
+    @{middle_selector} {
+        .fit(@top_height + @top_offset 0 @bottom_height + @bottom_offset 0);
+    }
+    @{bottom_selector} {
+        .position(auto 0 0 0);
+        .set-height(@bottom_height);
+    }
+}

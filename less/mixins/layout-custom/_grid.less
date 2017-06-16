@@ -1,0 +1,80 @@
+// 六宫格布局（两排三列）
+.grid6(@width, @height: @width, @position: relative, @value: auto, @item: '>*') {
+    @item_selector: e(@item);
+
+    .position(@value, @position);
+    @{item_selector} {
+        position: absolute;
+        width: @width;
+        height: @height;
+    }
+    @{item_selector}:nth-child(1) { left: 0; top: 0; }
+    @{item_selector}:nth-child(2) { .center-x(top, 0); }
+    @{item_selector}:nth-child(3) { right: 0; top: 0; }
+    @{item_selector}:nth-child(4) { left: 0; bottom: 0; }
+    @{item_selector}:nth-child(5) { .center-x(bottom, 0); }
+    @{item_selector}:nth-child(6) { right: 0; bottom: 0; }
+    img { position: absolute; } // 如果采用高度随宽度自适应的布局方式，那么Android下<img>如果需要用百分比来设置高度，则必须为绝对定位
+}
+// 九宫格布局
+.grid9(@width: 100% / 3, @height: @width, @position: relative, @value: auto, @item: '>*') {
+    @item_selector: e(@item);
+
+    .position(@value, @position);
+    @{item_selector} {
+        position: absolute;
+        width: @width;
+        height: @height;
+    }
+    @{item_selector}:nth-child(1) { left: 0; top: 0; }
+    @{item_selector}:nth-child(2) { .center-x(top, 0); }
+    @{item_selector}:nth-child(3) { right: 0; top: 0; }
+    @{item_selector}:nth-child(4) { .center-y(left, 0); }
+    @{item_selector}:nth-child(5) { .center-xy; }
+    @{item_selector}:nth-child(6) { .center-y(right, 0); }
+    @{item_selector}:nth-child(7) { left: 0; bottom: 0; }
+    @{item_selector}:nth-child(8) { .center-x(bottom, 0); }
+    @{item_selector}:nth-child(9) { right: 0; bottom: 0; }
+    img { position: absolute; } // 如果采用高度随宽度自适应的布局方式，那么Android下<img>如果需要用百分比来设置高度，则必须为绝对定位
+}
+// n宫格布局
+.grid(@col_count: 3, @item: '>*') {
+    @item_selector: e(@item);
+
+    .clear();
+
+    @{item_selector} {
+        position: relative;
+        float: left;
+        text-align: center;
+        .size(1, 1, 100% / @col_count);
+        .border-left();
+        .border-bottom();
+
+        &:nth-child(@{col_count}n) {
+            .border-right-none();
+        }
+
+        @len: @col_count;
+        .loop1(@i) {
+            &:nth-child(@{col_count}n+@{i}) {
+                margin-left: -1px;
+            }
+            & when (@i > 2) {
+                .loop1(@i - 1);
+            }
+        }
+        .loop1(@len);
+
+        @len: @col_count;
+        .loop2(@i) {
+            &:nth-last-child(@{i}) {
+                .nobbd;
+            }
+            & when (@i > 1) {
+                .loop2(@i - 1);
+            }
+        }
+        .loop2(@len);
+    }
+}

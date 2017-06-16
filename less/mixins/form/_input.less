@@ -1,0 +1,139 @@
+// Bootstrap 表单输入字段样式
+// 可应用于以下表单控件:
+// textarea
+// input[type="text"]
+// input[type="password"]
+// input[type="datetime"]
+// input[type="datetime-local"]
+// input[type="date"]
+// input[type="month"]
+// input[type="time"]
+// input[type="week"]
+// input[type="number"]
+// input[type="email"]
+// input[type="url"]
+// input[type="search"]
+// input[type="tel"]
+// input[type="color"]
+
+._input() {
+    .inline-block();
+    padding: .7em;
+    margin: 0;
+    border-width: 1px;
+    border-style: solid;
+    line-height: 1em;
+    vertical-align: middle;
+    color: @input_font_color;
+    .box-sizing(border-box);
+    .placeholder();
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.disabled,
+    &[disabled],
+    &[readonly] {
+        cursor: not-allowed !important;
+    }
+}
+
+// @font_size 可以为两个值的数组
+// 第一个值代表字体大小
+// 第二个值代表高度
+._input-size(@font_size, @border_none: false) {
+    .font-size(extract(@font_size, 1), left);
+    .getSizeAndHeight();
+
+    .getSizeAndHeight() when (length(@font_size) = 1) {
+        @size: @font_size;
+        @height: @font_size * 2.5;
+        height: 2.5em;
+    }
+    .getSizeAndHeight() when (length(@font_size) = 2) {
+        @size: extract(@font_size, 1);
+        @height: extract(@font_size, 2);
+        height: @height;
+    }
+
+    & when (@border_none = true) {
+        padding-top: (@height - @size) * .5;
+        padding-bottom: (@height - @size) * .5;
+    }
+    & when not (@border_none = true) {
+        padding-top: (@height - @size - 2px) * .5;
+        padding-bottom: (@height - @size - 2px) * .5;
+    }
+}
+
+// @border_color 可以为两个值的数组
+// 第一个值代表焦点时的边框色
+// 第二个值代表默认边框色
+.input-border-color(@border_color, @radius: .25em) when (iscolor(extract(@border_color,1))) {
+    & when (length(@border_color) = 1) {
+        border-color: @input_default_border_color;
+    }
+    & when (length(@border_color) = 2) {
+        border-color: extract(@border_color,2);
+    }
+
+    .border-radius(@radius);
+    background: @input_bg_color;
+    .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .1));
+    .transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s;);
+
+    @focus_border_color: extract(@border_color,1);
+    &:focus {
+        border-color: @focus_border_color !important;
+        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .1), 0 0 8px fade(@focus_border_color,60%);) !important;
+    }
+
+    &.disabled,
+    &[disabled],
+    &[readonly] {
+        & when (length(@border_color) = 1) {
+            border-color: @input_default_border_color !important;
+        }
+        & when (length(@border_color) = 2) {
+            border-color: extract(@border_color,2) !important;
+        }
+        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .1)) !important;
+        background: @input_disable_bg_color !important;
+    }
+}
+
+.input-border-color(@border_color, @radius: 0) when not (iscolor(extract(@border_color,1))) {
+    border-color: transparent;
+    .border-radius(@radius);
+    background: transparent;
+    .box-shadow(none);
+    .transition(none);
+
+    &:focus {
+        border-color: transparent !important;
+        .box-shadow(none) !important;
+    }
+
+    &.disabled,
+    &[disabled],
+    &[readonly] {
+        border-color: transparent !important;
+        .box-shadow(none) !important;
+        background: transparent !important;
+    }
+}
+
+.input-remove-out-shadow() {
+    // 某些Android设备下有BUG，如果为textarea设置了外阴影，当textarea文本溢出滚动时，文本会超出textarea顶部
+    // 因此该方法用于消除外阴影
+    &:focus {
+        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .1)) !important;
+    }
+}
+
+.input(@border_color: @input_focus_border_color, @font_size: @form_default_font_size, @radius: .25em) {
+    ._input();
+    ._input-size(@font_size);
+    .input-border-color(@border_color, @radius);
+}

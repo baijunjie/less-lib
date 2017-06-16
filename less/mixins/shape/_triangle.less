@@ -1,0 +1,65 @@
+// 三角
+.triangle(top, @color, @width, @height: @width) {
+    @width_half: @width * .5;
+    .size(0);
+    .border-bottom(@color, @height);
+    .border-left(transparent, @width_half);
+    .border-right(transparent, @width_half);
+}
+.triangle(bottom, @color, @width, @height: @width) {
+    @width_half: @width * .5;
+    .size(0);
+    .border-top(@color, @height);
+    .border-left(transparent, @width_half);
+    .border-right(transparent, @width_half);
+}
+.triangle(left, @color, @width, @height: @width) {
+    @height_half: @height * .5;
+    .size(0);
+    .border-right(@color, @width);
+    .border-top(transparent, @height_half);
+    .border-bottom(transparent, @height_half);
+}
+.triangle(right, @color, @width, @height: @width) {
+    @height_half: @height * .5;
+    .size(0);
+    .border-left(@color, @width);
+    .border-top(transparent, @height_half);
+    .border-bottom(transparent, @height_half);
+}
+.triangle(top-left, @color, @width, @height: @width) {
+    @width_half: @width * .5;
+    @height_half: @height * .5;
+    .size(0);
+    .border-top(@color, @height_half);
+    .border-left(@color, @width_half);
+    .border-bottom(transparent, @height_half);
+    .border-right(transparent, @width_half);
+}
+.triangle(top-right, @color, @width, @height: @width) {
+    @width_half: @width * .5;
+    @height_half: @height * .5;
+    .size(0);
+    .border-top(@color, @height_half);
+    .border-left(transparent, @width_half);
+    .border-bottom(transparent, @height_half);
+    .border-right(@color, @width_half);
+}
+.triangle(bottom-left, @color, @width, @height: @width) {
+    @width_half: @width * .5;
+    @height_half: @height * .5;
+    .size(0);
+    .border-top(transparent, @height_half);
+    .border-left(@color, @width_half);
+    .border-bottom(@color, @height_half);
+    .border-right(transparent, @width_half);
+}
+.triangle(bottom-right, @color, @width, @height: @width) {
+    @width_half: @width * .5;
+    @height_half: @height * .5;
+    .size(0);
+    .border-top(transparent, @height_half);
+    .border-left(transparent, @width_half);
+    .border-bottom(@color, @height_half);
+    .border-right(@color, @width_half);
+}

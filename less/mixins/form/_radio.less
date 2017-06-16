@@ -1,0 +1,67 @@
+// 单选框
+// 可应用于以下表单控件：
+// input[type="radio"]
+// input[type="checkbox"]
+// 文档结构：
+// <div class="radio"><input type="radio"><i></i></div>
+._radio(@border_color, @checked_color, @background_color, @size, @radius, @elem) {
+    @selector: e(@elem);
+
+    position: relative;
+    .inline-block();
+    width: @size;
+    height: @size;
+    .border-radius(@radius);
+    background: @background_color;
+    border: 1px solid @border_color;
+    vertical-align: middle;
+    .box-sizing(border-box);
+
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        pointer-events: none;
+        .opacity(.5);
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        .appearance-none();
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        .opacity(0);
+
+        & + @{selector} {
+            display: block;
+            width: 50%;
+            height: 50%;
+            .border-radius(@radius);
+            background: @checked_color;
+            .center-xy(50%, 50%);
+            .transition(all .3s);
+            .opacity(0);
+            .scale(0);
+        }
+
+        &:checked + @{selector} {
+            .opacity(1);
+            .scale(1);
+        }
+    }
+}
+.radio(@size: 22px, @radius: 100%, @elem: '*') when (isnumber(@size)) {
+    ._radio(@radio_default_color, @radio_default_color, @radio_default_bg_color, @size, @radius, @elem);
+}
+.radio(@color: @blue, @size: 22px, @radius: 100%, @elem: '*') when (length(@color) = 1) and (iscolor(@color)) {
+    ._radio(@color, @color, @radio_default_bg_color, @size, @radius, @elem);
+}
+.radio(@color, @size: 22px, @radius: 100%, @elem: '*') when (length(@color) = 2) {
+    ._radio(extract(@color, 1), extract(@color, 2), @radio_default_bg_color, @size, @radius, @elem);
+}
+.radio(@color, @size: 22px, @radius: 100%, @elem: '*') when (length(@color) = 3) {
+    ._radio(extract(@color, 1), extract(@color, 2), extract(@color, 3), @size, @radius, @elem);
+}

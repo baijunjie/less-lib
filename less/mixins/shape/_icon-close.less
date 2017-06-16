@@ -1,0 +1,9 @@
+// 关闭按钮
+.icon-close(@size: 30px, @radius: 100%) when (isnumber(extract(@size, 1))) {
+    .icon-add(white black white, @size, @radius);
+    .rotate(45deg);
+}
+.icon-close(@color, @size: 30px, @radius: 100%) when (iscolor(extract(@color, 1))) {
+    .icon-add(@color, @size, @radius);
+    .rotate(45deg);
+}

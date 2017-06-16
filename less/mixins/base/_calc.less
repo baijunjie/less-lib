@@ -1,0 +1,10 @@
+// CSS3 运算
+.calc(@proprety, @value) {
+    & when (@prefix = true) {
+        @{proprety}: -webkit-calc(~'@{value}');
+        @{proprety}:    -moz-calc(~'@{value}');
+        @{proprety}:      -o-calc(~'@{value}');
+    }
+
+    @{proprety}: calc(~'@{value}');
+}

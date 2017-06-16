@@ -1,0 +1,78 @@
+// 立体字
+._text-cube(@color) {
+    @ft_color: lighten(@color, max(30%-lightness(@color),0%));
+    color: @ft_color;
+    text-shadow: 0  1px  0   darken(@ft_color, 10%),
+                 0  2px  0   darken(@ft_color, 15%),
+                 0  3px  0   darken(@ft_color, 20%),
+                 0  4px  0   darken(@ft_color, 25%),
+                 0  5px  0   darken(@ft_color, 30%),
+                 0  6px  1px rgba(0, 0, 0, 0.1),
+                 0  0    5px rgba(0, 0, 0, 0.1),
+                 0  1px  3px rgba(0, 0, 0, 0.3),
+                 0  3px  5px rgba(0, 0, 0, 0.2),
+                 0  5px 10px rgba(0, 0, 0, 0.25),
+                 //0 10px 10px rgba(0, 0, 0, 0.2),
+                 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+.text-cube(@color) {
+    ._text-cube(@color);
+}
+.text-cube(@color, @select_color) {
+    ._text-cube(@color);
+
+    & when (@prefix = true) {
+        &::-moz-selection { ._text-cube(@select_color); }
+    }
+    &::selection { ._text-cube(@select_color); }
+}
+
+
+// 文本发光效果
+.text-glow(@radius: 5px) when (isnumber(@radius)) {
+    text-shadow: 0 0 @radius;
+}
+.text-glow(@color, @radius: 5px) when (iscolor(@color)) {
+    text-shadow: 0 0 @radius @color;
+}
+
+
+// 文本模糊效果
+.text-blur(@color, @radius: 0.15em) {
+    color: transparent;
+    text-shadow: 0 0 @radius @color;
+    // 0.1px of spread distance made the shadow visible under IE10
+    text-shadow: 0 0 @radius 0.1px @color;
+}
+
+
+// 文本描边效果
+.text-stroke(@color: #555) {
+    text-shadow: @color 1px 0 0, @color 0 1px 0, @color -1px 0 0, @color 0 -1px 0;
+}
+
+
+// 文字浮凸效果
+.text-embossed(@bg_color) {
+    color: lighten(@bg_color, 3%);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 -1px 0 rgba(255, 255, 255, 0.5);
+}
+
+
+// 文字下陷效果
+.text-debossed(@bg_color) {
+    color: fade(darken(@bg_color, 3%), 80%);
+    text-shadow: 0 1px 1px @bg_color, 0 0 0 #000, 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+
+// 文本长阴影
+.text-longshadow(@color: #aaa, @length: 30, @direction: right) {
+    overflow: hidden;
+    .loop(@i) {
+        & when (@direction = right) { text-shadow+: @i @i @color; }
+        & when (@direction = left) { text-shadow+: -@i @i @color; }
+        & when (@i < @length) { .loop(@i+1); }
+    }
+    .loop(0px);
+}

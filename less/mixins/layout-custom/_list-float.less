@@ -1,0 +1,37 @@
+// 浮动列表（虽然为IE6做了hack，但是由于IE6会将所有小数值转化为整数，因此表现结果会有误差）
+.list-float(@width,
+    @item_width,
+    @col_count: floor(unit(@width / @item_width)),
+    @item: '>*') when not (@width = jy) {
+
+    @item_selector: e(@item);
+
+    .clear();
+    @spacing: (@width - (@item_width * @col_count)) / (@col_count + 1);
+    @half_spacing: @spacing / 2;
+    @{item_selector} {
+        float: left;
+        margin-left: @spacing;
+
+        & when (@compat_ie6 = true) {
+            _margin-left: @half_spacing;
+            _margin-right: @half_spacing;
+        }
+    }
+}
+.list-float(jy,
+    @width,
+    @item_width,
+    @col_count: floor(unit(@width / @item_width)),
+    @item: '>*') {
+
+    @item_selector: e(@item);
+
+    .clear();
+    @spacing: (@width - (@item_width * @col_count)) / (@col_count - 1);
+    @{item_selector} {
+        float: left;
+        margin-right: @spacing;
+    }
+    @{item_selector}:nth-child(@{col_count}n) { margin-right: 0; }
+}

@@ -1,0 +1,17 @@
+// 缩放动画工具
+.animate-scale(@animation_name: animation-scale, @start: 0, @end: 1, @duration: 3s, @easing: ease-in-out, @delay: 0s, @loop: infinite, @repeat: alternate) {
+    .animation(@animation_name @duration @easing @delay @loop @repeat);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        from { @{pf}transform: scale(@start); }
+        to   { @{pf}transform: scale(@end);   }
+    }
+}

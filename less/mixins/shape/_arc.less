@@ -1,0 +1,13 @@
+// 弧形
+.arc(@width, @height: @width, @border_width: 0) when (isnumber(@width)) {
+    .size(@width - @border_width * 2, @height - @border_width * 2);
+    .border-radius(min(@width, @height));
+    border-width: @border_width;
+    border-style: solid;
+}
+.arc(@color, @width, @height: @width, @border_width: 0) when (iscolor(extract(@color, 1))) {
+    .arc(@width, @height, @border_width);
+    background-color: extract(@color, 1);
+    & when (length(@color) = 1) { border-color: extract(@color, 1); }
+    & when (length(@color) = 2) { border-color: extract(@color, 2); }
+}

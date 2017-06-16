@@ -1,0 +1,19 @@
+// 清除掉浏览器对表单元素的默认样式
+.appearance-none() {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    &::-moz-focus-inner { // 火狐浏览器下按钮元素会有私有的 padding 和 border，需要通过私有伪类来重置
+        padding: 0;
+        border: 0;
+    }
+    &::-ms-expand { // 隐藏掉ie10+下拉框的按钮
+        display: none;
+    }
+    &::-ms-clear { // 隐藏IE10+浏览器文本框末尾的关闭小叉叉
+        display: none;
+    }
+}

@@ -1,0 +1,62 @@
+// 减号按钮
+._icon-sub(@color, @size, @radius) {
+
+    .getColor(@color) when (length(@color) = 1) {
+        @border_color: @color;
+        @background_color: @color;
+        @pattern_color: white;
+    }
+    .getColor(@color) when (length(@color) = 2) {
+        @border_color: extract(@color, 1);
+        @background_color: extract(@color, 1);
+        @pattern_color: extract(@color, 2);
+    }
+    .getColor(@color) when (length(@color) = 3) {
+        @border_color: extract(@color, 1);
+        @background_color: extract(@color, 2);
+        @pattern_color: extract(@color, 3);
+    }
+    .getColor(@color);
+
+    .getSize(@size) when (length(@size) = 1) {
+        @pattern_thickness: round(@size * .1 / 2) * 2;
+        @pattern_length: @size - @pattern_thickness * 4;
+        @inner_size: @size - @pattern_thickness * 2;
+    }
+    .getSize(@size) when (length(@size) = 2) {
+        @pattern_thickness: extract(@size, 2);
+        @pattern_length: extract(@size, 1) - @pattern_thickness * 4;
+        @inner_size: extract(@size, 1) - @pattern_thickness * 2;
+    }
+    .getSize(@size) when (length(@size) = 3) {
+        @pattern_thickness: extract(@size, 2);
+        @pattern_length: extract(@size, 3);
+        @inner_size: extract(@size, 1) - @pattern_thickness * 2;
+    }
+    .getSize(@size);
+
+    .inline-block();
+    vertical-align: middle;
+    position: relative;
+    width: @inner_size;
+    height: @inner_size;
+    border: @pattern_thickness solid @border_color;
+    border-radius: @radius;
+    background: @background_color;
+
+    &:before {
+        content: '';
+        display: block;
+        width: @pattern_length;
+        height: @pattern_thickness;
+        font-size: 0;
+        background: @pattern_color;
+        .center-xy(@pattern_length, @pattern_thickness);
+    }
+}
+.icon-sub(@size: 30px, @radius: 100%) when (isnumber(extract(@size, 1))) {
+    ._icon-sub(@red, @size, @radius);
+}
+.icon-sub(@color, @size: 30px, @radius: 100%) when (iscolor(extract(@color, 1))) {
+    ._icon-sub(@color, @size, @radius);
+}

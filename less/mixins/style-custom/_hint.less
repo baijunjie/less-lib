@@ -1,0 +1,81 @@
+// 提醒气泡
+// 默认在元素的 data-title 属性上设置气泡提醒内容
+._hint(@bg_color, @font_size, @z_index, @prop) {
+    @font_color: contrast(@bg_color, black, white, 65%);
+
+    &:before,
+    &:after {
+        .transition(opacity .3s);
+        .opacity(0);
+        pointer-events: none;
+        z-index: @z_index;
+    }
+
+    &:after {
+        content: attr(@prop);
+        padding: 5px 8px;
+        color: @font_color;
+        font-size: @font_size;
+        line-height: 1.5;
+        text-align: center;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: @bg_color;
+        .border-radius(4px);
+    }
+
+    &:hover,
+    &:active {
+        &:before,
+        &:after {
+            .opacity(1);
+        }
+    }
+}
+.hint-top(@color) {
+    .arrow-bottom(@color, 10px, 5px, auto auto 100% 50%, 0 0 5px -5px, before);
+    &:after {
+        .center-x(bottom, 100%);
+        margin-bottom: 10px;
+    }
+}
+.hint-bottom(@color) {
+    .arrow-top(@color, 10px, 5px, 100% auto auto 50%, 5px 0 0 -5px, before);
+    &:after {
+        .center-x(top, 100%);
+        margin-top: 10px;
+    }
+}
+.hint-left(@color) {
+    .arrow-right(@color, 5px, 10px, 50% 100% auto auto, -5px 5px 0 0, before);
+    &:after {
+        .center-y(right, 100%);
+        margin-right: 10px;
+    }
+}
+.hint-right(@color) {
+    .arrow-left(@color, 5px, 10px, 50% auto auto 100%, -5px 0 0 5px, before);
+    &:after {
+        .center-y(left, 100%);
+        margin-left: 10px;
+    }
+}
+.hint(top, @color: @hint_default_color, @font_size: 12px, @z_index: 99999, @prop: data-title) {
+    ._hint(@color, @font_size, @z_index, @prop);
+    .hint-top(@color);
+}
+.hint(bottom, @color: @hint_default_color, @font_size: 12px, @z_index: 99999, @prop: data-title) {
+    ._hint(@color, @font_size, @z_index, @prop);
+    .hint-bottom(@color);
+}
+.hint(left, @color: @hint_default_color, @font_size: 12px, @z_index: 99999, @prop: data-title) {
+    ._hint(@color, @font_size, @z_index, @prop);
+    .hint-left(@color);
+}
+.hint(right, @color: @hint_default_color, @font_size: 12px, @z_index: 99999, @prop: data-title) {
+    ._hint(@color, @font_size, @z_index, @prop);
+    .hint-right(@color);
+}

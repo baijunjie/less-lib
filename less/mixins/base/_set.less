@@ -1,0 +1,23 @@
+// 设置非默认值，如果等于默认值，则不输出
+.set(@proprety, @value, @default: auto) {
+    & when not (@value = @default) {
+        @{proprety}: @value;
+    }
+}
+
+// 可根据参数设置元素是否显示
+.set-width(@width) when (isnumber(@width)) and (@width <= 0) {
+    display: none;
+    width: 0;
+}
+.set-width(@width) when (default()) {
+    width: @width;
+}
+
+.set-height(@height) when (isnumber(@height)) and (@height <= 0) {
+    display: none;
+    height: 0;
+}
+.set-height(@height) when (default()) {
+    height: @height;
+}

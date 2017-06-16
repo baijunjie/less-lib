@@ -1,0 +1,65 @@
+// 抖动
+.animate-quiver(@animation_name: animation-quiver, @duration: 1s, @loop: infinite) {
+    .animation(@animation_name @duration @loop);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        2%  { @{pf}transform: translate(1.5px, 2.5px) rotate(-0.5deg); }
+        4%  { @{pf}transform: translate(1.5px, -1.5px) rotate(0.5deg); }
+        6%  { @{pf}transform: translate(1.5px, -1.5px) rotate(-0.5deg); }
+        8%  { @{pf}transform: translate(0.5px, 2.5px) rotate(0.5deg); }
+        10% { @{pf}transform: translate(-0.5px, -0.5px) rotate(1.5deg); }
+        12% { @{pf}transform: translate(-0.5px, -0.5px) rotate(-0.5deg); }
+        14% { @{pf}transform: translate(2.5px, 0.5px) rotate(-0.5deg); }
+        16% { @{pf}transform: translate(-1.5px, 1.5px) rotate(0.5deg); }
+        18% { @{pf}transform: translate(2.5px, 0.5px) rotate(-0.5deg); }
+        20% { @{pf}transform: translate(-1.5px, 0.5px) rotate(-0.5deg); }
+        22% { @{pf}transform: translate(2.5px, -1.5px) rotate(-0.5deg); }
+        24% { @{pf}transform: translate(1.5px, 2.5px) rotate(1.5deg); }
+        26% { @{pf}transform: translate(-1.5px, -0.5px) rotate(0.5deg); }
+        28% { @{pf}transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
+        30% { @{pf}transform: translate(2.5px, -1.5px) rotate(-0.5deg); }
+        32% { @{pf}transform: translate(0.5px, 2.5px) rotate(-0.5deg); }
+        34% { @{pf}transform: translate(-0.5px, 1.5px) rotate(1.5deg); }
+        36% { @{pf}transform: translate(0.5px, 1.5px) rotate(1.5deg); }
+        38% { @{pf}transform: translate(1.5px, 1.5px) rotate(0.5deg); }
+        40% { @{pf}transform: translate(-0.5px, 1.5px) rotate(0.5deg); }
+        42% { @{pf}transform: translate(-0.5px, 0.5px) rotate(1.5deg); }
+        44% { @{pf}transform: translate(-1.5px, -1.5px) rotate(1.5deg); }
+        46% { @{pf}transform: translate(0.5px, -0.5px) rotate(0.5deg); }
+        48% { @{pf}transform: translate(-0.5px, 1.5px) rotate(-0.5deg); }
+        50% { @{pf}transform: translate(2.5px, -0.5px) rotate(-0.5deg); }
+        52% { @{pf}transform: translate(0.5px, -1.5px) rotate(0.5deg); }
+        54% { @{pf}transform: translate(2.5px, -1.5px) rotate(0.5deg); }
+        56% { @{pf}transform: translate(-1.5px, -0.5px) rotate(0.5deg); }
+        58% { @{pf}transform: translate(-1.5px, 2.5px) rotate(1.5deg); }
+        60% { @{pf}transform: translate(0.5px, -1.5px) rotate(0.5deg); }
+        62% { @{pf}transform: translate(-0.5px, 2.5px) rotate(1.5deg); }
+        64% { @{pf}transform: translate(0.5px, 0.5px) rotate(-0.5deg); }
+        66% { @{pf}transform: translate(1.5px, -0.5px) rotate(1.5deg); }
+        68% { @{pf}transform: translate(-1.5px, -0.5px) rotate(0.5deg); }
+        70% { @{pf}transform: translate(-0.5px, 2.5px) rotate(1.5deg); }
+        72% { @{pf}transform: translate(1.5px, 0.5px) rotate(0.5deg); }
+        74% { @{pf}transform: translate(0.5px, -1.5px) rotate(0.5deg); }
+        76% { @{pf}transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
+        78% { @{pf}transform: translate(2.5px, -1.5px) rotate(0.5deg); }
+        80% { @{pf}transform: translate(-1.5px, 1.5px) rotate(0.5deg); }
+        82% { @{pf}transform: translate(-0.5px, 2.5px) rotate(1.5deg); }
+        84% { @{pf}transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
+        86% { @{pf}transform: translate(2.5px, 0.5px) rotate(1.5deg); }
+        88% { @{pf}transform: translate(-0.5px, -1.5px) rotate(-0.5deg); }
+        90% { @{pf}transform: translate(1.5px, -0.5px) rotate(-0.5deg); }
+        92% { @{pf}transform: translate(0.5px, -1.5px) rotate(1.5deg); }
+        94% { @{pf}transform: translate(-0.5px, -0.5px) rotate(0.5deg); }
+        96% { @{pf}transform: translate(-0.5px, -1.5px) rotate(-0.5deg); }
+        98% { @{pf}transform: translate(-0.5px, -1.5px) rotate(1.5deg); }
+        0%, 100% { @{pf}transform: translate(0, 0) rotate(0); }
+    }
+}

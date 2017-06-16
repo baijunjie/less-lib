@@ -1,0 +1,20 @@
+// tada
+.animate-tada(@animation_name: animation-tada, @duration: 1s, @loop: infinite) {
+    .animation(@animation_name @duration @loop);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        0% { @{pf}transform: scale(1); }
+        10%, 20% { @{pf}transform: scale(0.9) rotate(-3deg); }
+        30%, 50%, 70%, 90% { @{pf}transform: scale(1.1) rotate(3deg); }
+        40%, 60%, 80% { @{pf}transform: scale(1.1) rotate(-3deg); }
+        100% { @{pf}transform: scale(1) rotate(0); }
+    }
+}

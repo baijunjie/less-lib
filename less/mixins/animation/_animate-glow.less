@@ -1,0 +1,17 @@
+// 发光动画
+.animate-glow(@animation_name: animation-glow, @color: #fff, @start: 0 0, @end: 20px 0, @duration: 2s, @easing: ease-in-out, @delay: 0s, @loop: infinite, @repeat: alternate) {
+    .animation(@animation_name @duration @easing @delay @loop @repeat);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes; }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        from { @{pf}box-shadow: 0 0 @start @color; }
+        to   { @{pf}box-shadow: 0 0 @end   @color; }
+    }
+}

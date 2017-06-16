@@ -1,0 +1,22 @@
+// 反弹
+.animate-bounce(@animation_name: animation-bounce, @range: -30px, @duration: 1s, @loop: infinite) {
+    .animation(@animation_name @duration @loop);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    @step1: @range * .3;
+    @step2: @step1 * .3;
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        0%,20%,40%,60%,80%,100% { @{pf}transform: translateY(0); }
+        30% { @{pf}transform: translateY(@range); }
+        50% { @{pf}transform: translateY(@step1); }
+        70% { @{pf}transform: translateY(@step2); }
+    }
+}

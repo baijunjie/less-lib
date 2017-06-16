@@ -1,0 +1,52 @@
+// 牌子掉落
+.animate-hinge(@animation_name: animation-hinge, @isRight: false) {
+    .animation(@animation_name 1.5s);
+    .animation-fill-mode(both);
+
+    .getOrigin(@isRight) when (@isRight = true) {
+        @origin: top right;
+        @direction: -1;
+    }
+    .getOrigin(@isRight) when (@isRight = false) {
+        @origin: top left;
+        @direction: 1;
+    }
+    .getOrigin(@isRight);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        0% {
+            @{pf}transform-origin: @origin;
+            @{pf}transform: rotate(0);
+            @{pf}animation-timing-function: ease-in-out;
+        }
+        20%,60% {
+            @{pf}transform-origin: @origin;
+            @{pf}transform: rotate(80deg * @direction);
+            @{pf}animation-timing-function: ease-in-out;
+        }
+        40% {
+            @{pf}transform-origin: @origin;
+            @{pf}transform: rotate(60deg * @direction);
+            @{pf}animation-timing-function: ease-in-out;
+        }
+        80% {
+            @{pf}transform-origin: @origin;
+            @{pf}transform: rotate(60deg * @direction) translateY(0);
+            @{pf}animation-timing-function: ease-in-out;
+            opacity:1;
+        }
+        100% {
+            @{pf}transform-origin: @origin;
+            @{pf}transform: translateY(700px);
+            opacity:0;
+        }
+    }
+}

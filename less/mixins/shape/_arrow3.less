@@ -1,0 +1,105 @@
+// 粗箭头（IE8及以下浏览器不支持）
+// 参数1：为箭头的颜色
+// 参数2：为箭头的宽度
+// 参数3：为箭头的高度
+// 参数4：为箭头的厚度
+._arrow3(@color, @width, @height, @pseudo_elemen_width, @pseudo_elemen_height, @padding, @before_angle, @after_angle) {
+    width: @width;
+    padding: @padding;
+    height: @height;
+    .font-size(0);
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        width: @pseudo_elemen_width;
+        height: @pseudo_elemen_height;
+        background-color: @color;
+    }
+    &:before {
+        .skew(extract(@before_angle, 1), extract(@before_angle, 2));
+    }
+    &:after {
+        .skew(extract(@after_angle, 1), extract(@after_angle, 2));
+    }
+}
+.arrow3-color(@color) {
+    &:before,
+    &:after {
+        background-color: @color;
+    }
+}
+.arrow3-left(@color, @width, @height, @thickness: @height - @width / 2) {
+    @half_height: @height / 2;
+    @difference: @width - @thickness;
+    @angle: atan(@difference / @half_height);
+
+    ._arrow3(
+        @color,
+        @difference / 2 + @thickness,
+        @height,
+        @thickness,
+        @half_height,
+        0 0 0 @difference / 2,
+        -@angle 0,
+        @angle 0
+    );
+}
+.arrow3-right(@color, @width, @height, @thickness: @height - @width / 2) {
+    @half_height: @height / 2;
+    @difference: @width - @thickness;
+    @angle: atan(@difference / @half_height);
+
+    ._arrow3(
+        @color,
+        @difference / 2 + @thickness,
+        @height,
+        @thickness,
+        @half_height,
+        0 0 0 @difference / 2,
+        @angle 0,
+        -@angle 0
+    );
+}
+.arrow3-top(@color, @width, @height, @thickness: @height - @width / 2) {
+    @half_width: @width / 2;
+    @difference: @height - @thickness;
+    @angle: atan(@difference / @half_width);
+
+    ._arrow3(
+        @color,
+        @width,
+        @difference / 2 + @thickness,
+        @half_width,
+        @thickness,
+        @difference / 2 0 0 0,
+        0 -@angle,
+        0 @angle
+    );
+
+    &:before,
+    &:after {
+        .inline-block();
+    }
+}
+.arrow3-bottom(@color, @width, @height, @thickness: @height - @width / 2) {
+    @half_width: @width / 2;
+    @difference: @height - @thickness;
+    @angle: atan(@difference / @half_width);
+
+    ._arrow3(
+        @color,
+        @width,
+        @difference / 2 + @thickness,
+        @half_width,
+        @thickness,
+        @difference / 2 0 0 0,
+        0 @angle,
+        0 -@angle
+    );
+
+    &:before,
+    &:after {
+        .inline-block();
+    }
+}

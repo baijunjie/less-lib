@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<title>Example</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body ontouchstart>
+
+    <div class="row">
+        <input type="input" class="input" placeholder="默认" />
+        <input type="input" class="input error" placeholder="Error" />
+        <a href="javascript:;" id="navbarToggle">
+            <div class="navbar-toggle"></div>
+        </a>
+    </div>
+    <div class="row">
+        <div class="select">
+            <select>
+                <option value="">请选择</option>
+                <option value="">CSS</option>
+                <option value="">Less</option>
+                <option value="">Sass</option>
+                <option value="">Stylus</option>
+            </select>
+        </div>
+        <div class="select2">
+            <select>
+                <option value="">请选择</option>
+                <option value="">CSS</option>
+                <option value="">Less</option>
+                <option value="">Sass</option>
+                <option value="">Stylus</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="button-flat blue">bule</div>
+        <div class="button-flat green">green</div>
+        <div class="button-flat yellow">yellow</div>
+        <div class="button-flat red">red</div>
+        <div class="button-flat sky">sky</div>
+        <div class="button-flat gray">gray</div>
+        <div class="button-flat blue" disabled>disabled</div>
+    </div>
+    <div class="row">
+        <div class="button-arc blue">bule</div>
+        <div class="button-arc green">green</div>
+        <div class="button-arc yellow">yellow</div>
+        <div class="button-arc red">red</div>
+        <div class="button-arc sky">sky</div>
+        <div class="button-arc gray">gray</div>
+        <div class="button-arc blue" disabled>disabled</div>
+    </div>
+    <div class="row">
+        <div class="button-cube blue">bule</div>
+        <div class="button-cube green">green</div>
+        <div class="button-cube yellow">yellow</div>
+        <div class="button-cube red">red</div>
+        <div class="button-cube sky">sky</div>
+        <div class="button-cube gray">gray</div>
+        <div class="button-cube blue" disabled>disabled</div>
+    </div>
+    <div class="row">
+        <div class="button-hollow blue">bule</div>
+        <div class="button-hollow green">green</div>
+        <div class="button-hollow yellow">yellow</div>
+        <div class="button-hollow red">red</div>
+        <div class="button-hollow sky">sky</div>
+        <div class="button-hollow gray">gray</div>
+        <div class="button-hollow blue" disabled>disabled</div>
+    </div>
+    <div class="row">
+        <div class="loading1"></div>
+        <div class="loading2"></div>
+        <div class="loading3"></div>
+        <div class="loading4"></div>
+        <div class="loading5"></div>
+    </div>
+
+    <div class="row">
+        <div class="progress-flat"><div></div></div>
+        <div class="progress-striped"><div></div></div>
+        <div class="progress"><div></div></div>
+        <div class="progress-arc"><div></div></div>
+        <div class="progress-hollow"><div></div></div>
+    </div>
+
+    <div class="row">
+        <div class="icon-add"></div>
+        <div class="icon-sub"></div>
+        <div class="icon-close"></div>
+        <div class="icon-cross"></div>
+        <div class="icon-fork"></div>
+        <div class="icon-hook"></div>
+        <div class="icon-search"></div>
+    </div>
+
+    <div class="row">
+        <div class="checkbox"><input type="checkbox"><i></i></div>
+        <div class="radio"><input type="checkbox"><i></i></div>
+        <div class="switch"><input type="checkbox"><i></i></div>
+    </div>
+
+    <script>
+        navbarToggle.addEventListener('click', function() {
+            navbarToggle.querySelector('.navbar-toggle').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

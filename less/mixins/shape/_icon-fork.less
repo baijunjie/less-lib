@@ -1,0 +1,9 @@
+// 叉
+.icon-fork(@size: 30px) when (isnumber(extract(@size, 1))) {
+    .icon-cross(@size);
+    .rotate(45deg);
+}
+.icon-fork(@color, @size: 30px) when (iscolor(@color)) {
+    .icon-cross(@color, @size);
+    .rotate(45deg);
+}

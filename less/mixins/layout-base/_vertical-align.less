@@ -1,0 +1,22 @@
+// 容器内所有子元素的垂直对齐方式（包括行内块元素，IE7及以下浏览器不支持。但是配合IE9.js可以支持）
+.vertical-align(@align: middle, @pseudo_elements: after, @item: '>*') {
+    @selector: e(':@{pseudo_elements}');
+    @item_selector: e(@item);
+
+    white-space: nowrap;
+
+    @{item_selector} {
+        .inline-block();
+        vertical-align: @align;
+        white-space: normal;
+    }
+
+    &@{selector} {
+        content: '';
+        .inline-block();
+        width: 0;
+        height: 100%;
+        overflow: hidden;
+        vertical-align: @align;
+    }
+}

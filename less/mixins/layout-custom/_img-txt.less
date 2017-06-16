@@ -1,0 +1,42 @@
+// 图片文本两栏自适应
+.img-txt(@img_width,
+    @img_height,
+    @offset: 14px,
+    @img: '>:first-child',
+    @txt: '>:not(:first-child)') {
+
+    @img_selector: e(@img);
+    @txt_selector: e(@txt);
+
+    .clear();
+    @{img_selector} {
+        float: left;
+        .size(@img_width, @img_height);
+    }
+    @{txt_selector} {
+        display: block;
+        width: auto;
+        margin-left: @img_width + @offset;
+    }
+}
+// 文本图片两栏自适应
+.txt-img(@img_width,
+    @img_height,
+    @offset: 14px,
+    @img: '>:first-child',
+    @txt: '>:not(:first-child)') {
+
+    @img_selector: e(@img);
+    @txt_selector: e(@txt);
+
+    .clear();
+    @{img_selector} {
+        float: right;
+        .size(@img_width, @img_height);
+    }
+    @{txt_selector} {
+        display: block;
+        width: auto;
+        margin-right: @img_width + @offset;
+    }
+}

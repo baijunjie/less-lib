@@ -1,0 +1,105 @@
+// 菜单
+// html 文档结构如下：
+// <ul class="menu">
+//  <li><a href="">menu1</a></li>
+//  <li><a href="">menu2</a></li>
+//  <li><a href="">menu3</a></li>
+//  <li class="line"></li>
+//  <li><a href="">menu4</a></li>
+// </ul>
+.menu(
+    @bg_color: @menu_default_bg_color,
+    @border_color: @menu_default_border_color,
+    @item: 'a',
+    @line: '>.line') {
+
+    @item_selector: e(@item);
+    @line_selector: e(@line);
+
+    position: absolute;
+    z-index: 1;
+    padding: .5em 0;
+    list-style: none;
+    text-align: left;
+    background-color: @bg_color;
+    border: 1px solid @border_color;
+    .border-radius(4px);
+    .box-shadow(0 6px 12px rgba(0,0,0,.175));
+
+    .menu-bottom-left();
+
+    @{item_selector} {
+        display: block;
+        padding: .3em 1.5em;
+        line-height: 1.5;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    a {
+        .link-color(none);
+    }
+
+    @{line_selector} {
+        height: 1px;
+        margin: .5em 0;
+        overflow: hidden;
+        background-color: @menu_line_color;
+    }
+}
+.menu-bottom-left() {
+    top: 100%;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    margin: 2px 0 0 0;
+}
+.menu-bottom-right() {
+    top: 100%;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    margin: 2px 0 0 0;
+}
+.menu-top-left() {
+    top: auto;
+    right: auto;
+    bottom: 100%;
+    left: 0;
+    margin: 0 0 2px 0;
+}
+.menu-top-right() {
+    top: auto;
+    right: 0;
+    bottom: 100%;
+    left: auto;
+    margin: 0 0 2px 0;
+}
+.menu-left-top() {
+    top: 0;
+    right: 100%;
+    bottom: auto;
+    left: auto;
+    margin: 0 2px 0 0;
+}
+.menu-left-bottom() {
+    top: auto;
+    right: 100%;
+    bottom: 0;
+    left: auto;
+    margin: 0 2px 0 0;
+}
+.menu-right-top() {
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 100%;
+    margin: 0 0 0 2px;
+}
+.menu-right-bottom() {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 100%;
+    margin: 0 0 0 2px;
+}

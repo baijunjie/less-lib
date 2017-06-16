@@ -1,0 +1,5 @@
+// 剩余空间自适应（父容器需要设置成定位元素。但是IE6不支持这种方法，需要另外做hack）
+.fit(@args: 0, @position: absolute) {
+    .size(auto);
+    .position(@args, @position);
+}

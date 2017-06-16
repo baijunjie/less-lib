@@ -1,0 +1,44 @@
+// 垂直列表（IE6-7下计算结果会有误差）
+.list(@height,
+    @item_height,
+    @count: floor(unit(@height / @item_height)),
+    @item: '>*') when not (@height = jy) {
+
+    @row_count: extract(@count, 1);
+    @item_selector: e(@item);
+
+    .fix();
+    @spacing: (@height - (@item_height * @row_count)) / (@row_count + 1);
+    @{item_selector} { margin-top: @spacing; }
+}
+.list(jy,
+    @height,
+    @item_height,
+    @count: floor(unit(@height / @item_height)),
+    @item: '>*') {
+
+    @col_count: extract(@count, 2);
+    @row_count: extract(@count, 1);
+    @item_selector: e(@item);
+
+    .fix();
+    @spacing: (@height - (@item_height * @row_count)) / (@row_count - 1);
+    @{item_selector} { margin-bottom: @spacing; }
+
+    & when not(isnumber(@col_count)) {
+        @{item_selector}:last-child { margin-bottom: 0; }
+    }
+
+    & when (isnumber(@col_count)) {
+        @len: @col_count;
+        .loop(@i) {
+            @{item_selector}:nth-last-child(@{i}) {
+                margin-bottom: 0;
+            }
+            & when (@i > 1) {
+                .loop(@i - 1);
+            }
+        }
+        .loop(@len);
+    }
+}

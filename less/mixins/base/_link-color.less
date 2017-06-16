@@ -1,0 +1,30 @@
+// 设置<a>链接的颜色及样式
+// @color 如果不是颜色，则表示其他参数向前顺延
+// @decoration 定义链接hover时，是否显示下划线
+._link-color(@color, @active_color, @decoration: underline, @active_class: active) {
+    color: @color;
+    text-decoration: none;
+
+    .hover({
+        color: @active_color;
+
+        & when (@decoration = none) {
+            text-decoration: none;
+        }
+
+        & when not (@decoration = none) {
+            text-decoration: underline;
+        }
+
+    }, @active_class);
+}
+
+.link-color(@color, @decoration: underline, @active_class: active) when (iscolor(@color)) {
+    ._link-color(@color, @color, @decoration, @active_class);
+}
+.link-color(@color, @decoration: underline, @active_class: active) when (length(@color) > 1) {
+    ._link-color(extract(@color, 1), extract(@color, 2), @decoration, @active_class);
+}
+.link-color(@color, @decoration: none, @active_class: active) when (length(@color) = 1) and not (iscolor(@color)) {
+    ._link-color(inherit, inherit, @decoration, @active_class);
+}

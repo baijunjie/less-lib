@@ -1,0 +1,8 @@
+// 透明度
+.opacity(@opacity) {
+    opacity: @opacity;
+
+    & when (@compat_ie8 = true) {
+        filter: e(%('alpha(opacity=%s)', @opacity * 100)); // IE8
+    }
+}

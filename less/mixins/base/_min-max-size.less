@@ -1,0 +1,29 @@
+// IE6兼容最小最大宽高（仅支持像素的数值）
+.min-width(@min_width) {
+    min-width: @min_width;
+    & when (@compat_ie6 = true) {
+        @minw: unit(@min_width);
+        _width: e('expression(this.scrollWidth <= @{minw} ? "@{minw}px" : "auto")');
+    }
+}
+.max-width(@max_width) {
+    max-width: @max_width;
+    & when (@compat_ie6 = true) {
+        @maxw: unit(@max_width);
+        _width: e('expression(this.scrollWidth >= @{maxw} ? "@{maxw}px" : "auto")');
+    }
+}
+.min-height(@min_height) {
+    min-height: @min_height;
+    & when (@compat_ie6 = true) {
+        @minh: unit(@min_height);
+        _height: e('expression(this.scrollHeight <= @{minh} ? "@{minh}px" : "auto")');
+    }
+}
+.max-height(@max_height) {
+    max-height: @max_height;
+    & when (@compat_ie6 = true) {
+        @maxh: unit(@max_height);
+        _height: e('expression(this.scrollHeight >= @{maxh} ? "@{maxh}px" : "auto")');
+    }
+}

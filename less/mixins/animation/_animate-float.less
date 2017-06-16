@@ -1,0 +1,28 @@
+// 四个点之间漂浮
+.animate-float(@animation_name: animation-float, @range: 10px, @duration: 6s, @isCCW: false) {
+    .animation(@animation_name @duration linear infinite);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes(@isCCW, '-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes(@isCCW, '-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes(@isCCW); }
+
+    .keyframes(@isCCW, @prefix: '') when (@isCCW = false) {
+        @pf: e('@{prefix}');
+        0%   { @{pf}transform: translate(-@range, 0); }
+        25%  { @{pf}transform: translate(0, -@range); }
+        50%  { @{pf}transform: translate(@range, 0);  }
+        75%  { @{pf}transform: translate(0, @range);  }
+        100% { @{pf}transform: translate(-@range, 0); }
+    }
+    .keyframes(@isCCW, @prefix: '') when (@isCCW = true) {
+        @pf: e('@{prefix}');
+        0%   { @{pf}transform: translate(@range, 0);  }
+        25%  { @{pf}transform: translate(0, -@range); }
+        50%  { @{pf}transform: translate(-@range, 0); }
+        75%  { @{pf}transform: translate(0, @range);  }
+        100% { @{pf}transform: translate(@range, 0);  }
+    }
+}

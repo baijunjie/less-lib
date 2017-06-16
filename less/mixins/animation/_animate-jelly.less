@@ -1,0 +1,31 @@
+// 果冻
+.animate-jelly(@animation_name: animation-jelly, @range: 1, @duration: 2s, @loop: infinite) {
+    .animation(@animation_name @duration @loop);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes('-moz-'); }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    @step1: @range * .3;
+    @step2: @step1 * .3;
+    @step3: @step2 * .3;
+    @step4: @step3 * .3;
+
+    .keyframes(@prefix: '') {
+        @pf: e('@{prefix}');
+        0%   { @{pf}transform: scale(1 + @step2, 1 + @step2); }
+        10%  { @{pf}transform: scale(1         , 1 + @step1); }
+        20%  { @{pf}transform: scale(1 + @step1, 1         ); }
+        30%  { @{pf}transform: scale(1         , 1 + @step2); }
+        40%  { @{pf}transform: scale(1 + @step2, 1         ); }
+        50%  { @{pf}transform: scale(1         , 1 + @step3); }
+        60%  { @{pf}transform: scale(1 + @step3, 1         ); }
+        70%  { @{pf}transform: scale(1         , 1 + @step4); }
+        80%  { @{pf}transform: scale(1 + @step4, 1         ); }
+        90%  { @{pf}transform: scale(1         , 1         ); }
+        100% { @{pf}transform: scale(1         , 1         ); }
+    }
+}

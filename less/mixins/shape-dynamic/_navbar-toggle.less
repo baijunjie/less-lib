@@ -1,0 +1,93 @@
+// 导航条开关
+._navbar-toggle(@color, @size, @active_class) {
+
+    .getColor(@color) when (length(@color) = 1) {
+        @bg_color: @color;
+        @active_bg_color: @color;
+    }
+    .getColor(@color) when (length(@color) = 2) {
+        @bg_color: extract(@color, 1);
+        @active_bg_color: extract(@color, 2);
+    }
+    .getColor(@color);
+
+    @width: extract(@size, 1);
+    @height: round(@width * .8 / 2) * 2;
+
+    .getSize(@size) when (length(@size) = 1) {
+        @thickness: round(@size * .15 / 2) * 2;
+    }
+    .getSize(@size) when (length(@size) = 2) {
+        @thickness: extract(@size, 2);
+    }
+    .getSize(@size);
+
+    @easing: cubic-bezier(.175, .885,.32,1.275);
+
+    width: @width;
+    height: @thickness;
+    margin-top: (@height - @thickness) * .5;
+    margin-bottom: (@height - @thickness) * .5;
+    background: @bg_color;
+    position: relative;
+    .transition(height .4s);
+    .transition(margin .4s);
+    .transition(background .4s);
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        width: @width;
+        height: @thickness;
+        font-size: 0;
+        background: @color;
+        position: absolute;
+        left: 0;
+        .transform-origin(center);
+    }
+
+    &:before {
+        top: 0;
+        margin-top: (@height - @thickness) * .5;
+        .transition(background .4s @easing);
+        .transition(top .4s @easing);
+        .transition(margin .4s @easing);
+        .transition-transform(.4s @easing);
+    }
+
+    &:after {
+        bottom: 0;
+        margin-bottom: (@height - @thickness) * .5;
+        .transition(background .4s @easing);
+        .transition(bottom .4s @easing);
+        .transition(margin .4s @easing);
+        .transition-transform(.4s @easing);
+    }
+
+    &.@{active_class} {
+        height: 0;
+        margin-top: @height * .5;
+        margin-bottom: @height * .5;
+        background: transparent;
+
+        &:before {
+            background: @active_bg_color;
+            top: 50%;
+            margin-top: -@thickness * .5;
+            .rotate(45deg);
+        }
+        &:after {
+            background: @active_bg_color;
+            bottom: 50%;
+            margin-bottom: -@thickness * .5;
+            .rotate(-45deg);
+        }
+    }
+}
+.navbar-toggle(@size: 24px, @active_class: active) when (isnumber(extract(@size, 1))) {
+    ._navbar-toggle(black, @size, @active_class);
+}
+.navbar-toggle(@color, @size: 24px, @active_class: active) when (iscolor(extract(@color, 1))) {
+    ._navbar-toggle(@color, @size, @active_class);
+}

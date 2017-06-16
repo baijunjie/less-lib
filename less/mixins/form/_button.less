@@ -1,0 +1,333 @@
+// 按钮初始化
+._button() {
+    .inline-block();
+    outline: none;
+    cursor: pointer;
+    line-height: 1em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none !important;
+    white-space: nowrap;
+    padding: 0 1em;
+    margin: 0; // 清除 webkit 浏览器中所有表单元素会有默认的 margin：2px
+    border: 0;
+    background: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    .box-sizing(border-box);
+    .user-select(none);
+    -webkit-appearance: none; // IOS下的表单元素会有默认的样式，且无法通过CSS重置，因此需要将其的渲染设置为 none
+    -moz-appearance: none;
+    -webkit-touch-callout: none; // 禁止长按弹出菜单
+
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    // 火狐浏览器下按钮元素会有私有的 padding 和 border，需要通过私有伪类来重置
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+}
+// @font_size 可以为两个值的数组
+// 第一个值代表字体大小
+// 第二个值代表高度
+._button-size(@font_size, @no_border: false) {
+    .font-size(extract(@font_size, 1), center);
+    .getSizeAndHeight();
+
+    .getSizeAndHeight() when (length(@font_size) = 1) {
+        @size: @font_size;
+        @height: @font_size * 2.5;
+        height: 2.5em;
+    }
+    .getSizeAndHeight() when (length(@font_size) = 2) {
+        @size: extract(@font_size, 1);
+        @height: extract(@font_size, 2);
+        height: @height;
+    }
+
+    & when (@no_border = true) {
+        padding-top: (@height - @size) * .5;
+        padding-bottom: (@height - @size) * .5;
+    }
+    & when not (@no_border = true) {
+        padding-top: (@height - @size - 2px) * .5;
+        padding-bottom: (@height - @size - 2px) * .5;
+    }
+}
+
+
+// 扁平按钮
+.button-flat-color(@btn_color) {
+    @new_color: darken(@btn_color, max(lightness(@btn_color)-95%,0%));
+    @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
+    @bg_color2: desaturate(@bg_color, 20%);
+    @bg_color_lighten: lighten(@bg_color, 5%);
+    @bg_color_darken: darken(@bg_color, 5%);
+    @bg_color_darken2: darken(@bg_color, 20%);
+    @ft_color: contrast(@bg_color, black, white, 65%); //根据背景色的深浅判断字体颜色为白色还是黑色
+    @bd_color: darken(@bg_color_darken,max(lightness(@bg_color_darken)-70%,0%)); //边框色的亮度值不超过70%
+    @bd_color_lighten: lighten(@bd_color, 5%);
+    @ttsd_color: contrast(@ft_color, fade(@bg_color_darken2, 40%), white, 40%); //根据字体色的深浅判断字体阴影颜色为白色还是暗色
+    @ttsd_color2: rgba(255, 255, 255, .4);
+
+    @disabled_color: @gray;
+    @disabled_color_darken: darken(@disabled_color, 30%);
+
+    color: @ft_color;
+    text-shadow: 0 -1px 0 @ttsd_color;
+    border-color: @bd_color;
+    background: @bg_color;
+
+    &.disabled,
+    &[disabled] {
+        color: white !important;
+        text-shadow: 0 -1px 0 fade(@disabled_color_darken, 40%) !important;
+        border-color: @disabled_color !important;
+        .box-shadow(none) !important;
+        background: @disabled_color !important;
+    }
+
+    &:hover {
+        color: @ft_color;
+        border-color: @bd_color_lighten;
+        background: @bg_color_lighten;
+    }
+    &:active,
+    &.active {
+        color: @bg_color_darken2;
+        text-shadow: 0 1px 0 @ttsd_color2;
+        .box-shadow(inset 0 1px 3px rgba(0, 0, 0, .3));
+        background: @bg_color2;
+    }
+}
+.button-flat(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
+    ._button();
+    ._button-size(@font_size);
+    .button-flat-color(@btn_flat_defalut_color);
+    .transition(all .15s);
+    border-width: 1px;
+    border-style: solid;
+    .border-radius(@radius);
+}
+.button-flat(@btn_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
+    ._button();
+    ._button-size(@font_size);
+    .button-flat-color(@btn_color);
+    .transition(all .15s);
+    border-width: 1px;
+    border-style: solid;
+    .border-radius(@radius);
+}
+
+
+// 弧面按钮
+.button-arc-color(@btn_color) {
+    // 控制背景色的亮度值在10%~90%之间
+    @new_color: darken(@btn_color, max(lightness(@btn_color)-90%,0%));
+    @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
+    @bg_color2: desaturate(@bg_color, 20%);
+    @bg_color_lighten: lighten(@bg_color, 10%);
+    @bg_color_darken: darken(@bg_color, 10%);
+    @bg_color_darken2: darken(@bg_color, 20%);
+    @ft_color: contrast(@bg_color, black, white, 65%); //根据背景色的深浅判断字体颜色为白色还是黑色
+    @bd_color: darken(@bg_color_darken,max(lightness(@bg_color_darken)-70%,0%)); //边框色的亮度值不超过70%
+    @ttsd_color: contrast(@ft_color, fade(@bg_color_darken2, 40%), white, 40%); //根据字体色的深浅判断字体阴影颜色为白色还是暗色
+    @ttsd_color2: rgba(255, 255, 255, .4);
+
+    @disabled_color: @gray;
+    @disabled_color_lighten: lighten(@disabled_color, 5%);
+    @disabled_color_darken: darken(@disabled_color, 5%);
+    @disabled_color_darken2: darken(@disabled_color, 30%);
+
+    color: @ft_color;
+    background-color: @bg_color2;
+    text-shadow: 0 -1px 0 @ttsd_color;
+    border-color: @bd_color;
+    .box-shadow(inset 0 1px 0 rgba(255, 255, 255, .4), 0 1px 2px rgba(0, 0, 0, .3););
+    .gradient-y(@bg_color_lighten, @bg_color_darken);
+
+    &.disabled,
+    &[disabled] {
+        color: white !important;
+        text-shadow: 0 -1px 0 fade(@disabled_color_darken2, 40%) !important;
+        border-color: @disabled_color !important;
+        .box-shadow(inset 0 1px 0 rgba(255, 255, 255, .4), 0 1px 2px rgba(0, 0, 0, .3);) !important;
+        .gradient-y(@disabled_color_lighten, @disabled_color_darken) !important;
+    }
+
+    &:hover {
+        color: @ft_color;
+        .gradient-y(@bg_color_darken, @bg_color_lighten);
+    }
+    &:active,
+    &.active {
+        color: @bg_color_darken2;
+        text-shadow: 0 1px 0 @ttsd_color2;
+        .box-shadow(inset 0 1px 3px rgba(0, 0, 0, .3), 0 1px 0 rgba(255, 255, 255, .4););
+        background-image: none;
+        .reset-filter;
+    }
+}
+.button-arc(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
+    ._button();
+    ._button-size(@font_size);
+    .button-arc-color(@btn_arc_defalut_color);
+    .transition(all .15s);
+    border-width: 1px;
+    border-style: solid;
+    .border-radius(@radius);
+}
+.button-arc(@btn_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
+    ._button();
+    ._button-size(@font_size);
+    .button-arc-color(@btn_color);
+    .transition(all .15s);
+    border-width: 1px;
+    border-style: solid;
+    .border-radius(@radius);
+}
+
+
+// 立体按钮
+.button-cube-color(@btn_color) {
+    @new_color: darken(@btn_color, max(lightness(@btn_color)-95%,0%));
+    @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
+    @bg_color_lighten: lighten(@bg_color, 5%);
+    @bg_color_darken: darken(@bg_color, 10%);
+    @bg_color_darken2: darken(@bg_color, 20%);
+    @ft_color: contrast(@bg_color, black, white, 65%); //根据背景色的深浅判断字体颜色为白色还是黑色
+    @ttsd_color: contrast(@ft_color, fade(@bg_color_darken2, 40%), white, 40%); //根据字体色的深浅判断字体阴影颜色为白色还是暗色
+    @bxsd_color: rgba(0, 0, 0, 0.1);
+    @bxsd_color2: rgba(255, 255, 255, .4);
+    @bxsd_color3: rgba(255, 255, 255, .1);
+
+    @disabled_color: @gray;
+    @disabled_color_darken: darken(@disabled_color, 10%);
+    @disabled_color_darken2: darken(@disabled_color, 30%);
+
+    color: @ft_color;
+    background: @bg_color;
+    text-shadow: 0 1px 0 @ttsd_color;
+    .box-shadow(0 .25em 0 @bg_color_darken);
+    .box-shadow(0 .5em 0 @bxsd_color);
+    .box-shadow(inset 0 1px 0 @bxsd_color2);
+    .box-shadow(inset 0 -1px 0 @bxsd_color3);
+
+    &.disabled,
+    &[disabled] {
+        color: white !important;
+        text-shadow: 0 1px 0 fade(@disabled_color_darken2, 40%) !important;
+        .box-shadow(0 .25em 0 @disabled_color_darken) !important;
+        .box-shadow(0 .5em 0 @bxsd_color) !important;
+        .box-shadow(inset 0 1px 0 @bxsd_color2) !important;
+        .box-shadow(inset 0 -1px 0 @bxsd_color3) !important;
+        background: @disabled_color !important;
+    }
+
+    &:hover {
+        color: @ft_color;
+        background: @bg_color_lighten;
+    }
+    &:active,
+    &.active {
+        color: @ft_color;
+        .box-shadow(0 .1em 0 @bg_color_darken);
+        .box-shadow(0 .2em 0 @bxsd_color);
+        .box-shadow(inset 0 1px 0 @bxsd_color2);
+        .box-shadow(inset 0 -1px 0 @bxsd_color3);
+    }
+}
+.button-cube(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
+    ._button();
+    ._button-size(@font_size, true);
+    .button-cube-color(@btn_cube_defalut_color);
+    .transition(all .15s);
+    font-weight: bold;
+    .border-radius(@radius);
+
+    position: relative;
+    top: 0;
+    margin-bottom: .5em;
+
+    &:active,
+    &.active {
+        top: .15em;
+    }
+}
+.button-cube(@btn_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
+    ._button();
+    ._button-size(@font_size, true);
+    .button-cube-color(@btn_color);
+    .transition(all .15s);
+    font-weight: bold;
+    .border-radius(@radius);
+
+    position: relative;
+    top: 0;
+    margin-bottom: .5em;
+
+    &:active,
+    &.active {
+        top: .15em;
+    }
+}
+
+
+// apple 空心按钮
+.button-hollow-color(@color) {
+    .getColor(@color) when (iscolor(@color)) {
+        @btn_color: @color;
+        @bg_color: contrast(@color, black, white, 65%); //根据按钮色的深浅判断背景颜色为白色还是按钮色
+    }
+    .getColor(@color) when (length(@color) = 2) {
+        @btn_color: extract(@color, 1);
+        @bg_color: extract(@color, 2);
+    }
+    .getColor(@color);
+
+    color: @btn_color;
+    border-color: @btn_color;
+    background: transparent;
+
+    &.disabled,
+    &[disabled] {
+        color: @gray !important;
+        border-color: @gray !important;
+        background: transparent !important;
+    }
+
+    &:hover {
+        color: @btn_color;
+        background: fade(@btn_color, 10%);
+    }
+    &:active,
+    &.active {
+        color: @bg_color;
+        background: @btn_color;
+    }
+}
+.button-hollow(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
+    ._button();
+    ._button-size(@font_size);
+    .button-hollow-color(@btn_hollow_defalut_color #ffffff);
+    .transition(all .15s);
+    border-width: 1px;
+    border-style: solid;
+    .border-radius(@radius);
+}
+.button-hollow(@btn_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
+    ._button();
+    ._button-size(@font_size);
+    .button-hollow-color(@btn_color);
+    .transition(all .15s);
+    border-width: 1px;
+    border-style: solid;
+    .border-radius(@radius);
+}
+.button-hollow-background-color(@bg_color) {
+    &:active,
+    &.active { color: @bg_color; }
+}

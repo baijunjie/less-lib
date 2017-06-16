@@ -1,0 +1,11 @@
+// 多列平均分布
+.mean(@column_count, @item: '>*') {
+    @item_selector: e(@item);
+
+    .clear();
+
+    @{item_selector} {
+        float: left;
+        width: 100% / @column_count;
+    }
+}

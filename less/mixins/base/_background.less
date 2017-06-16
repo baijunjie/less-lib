@@ -1,0 +1,78 @@
+// 设置背景颜色
+.background-color(@color, @active_class: active) {
+    background-color: extract(@color, 1);
+
+    & when (length(@color) = 2) {
+        .hover({
+            background-color: extract(@color, 2);
+        }, @active_class);
+    }
+}
+
+// 设置背景图
+.background-image(@url, @position: center, @repeat: no-repeat) {
+
+    & when (@url = none) {
+        background-image: none;
+    }
+
+    & when not (@url = none) {
+        @len: length(@url);
+        .loop(@i) {
+            @src: e(extract(@url, @i));
+            background-image+: url(@src);
+            & when (@i < @len) {
+                .loop(@i+1);
+            }
+        }
+        .loop(1);
+        background-position+: @position;
+        background-repeat+: @repeat;
+    }
+}
+
+// 采用base64转码背景图
+.background-image2(@url, @position: center, @repeat: no-repeat) {
+    @len: length(@url);
+    .loop(@i) {
+        @src: e(extract(@url, @i));
+        background-image+: data-uri(@src);
+        & when (@i < @len) {
+            .loop(@i+1);
+        }
+    }
+    .loop(1);
+    background-position+: @position;
+    background-repeat+: @repeat;
+}
+
+// 设置svg背景
+.background-svg(@svg, @position: center, @repeat: no-repeat) {
+    background-image+: url('data:image/svg+xml;charset=utf-8,`encodeURIComponent(@{svg})`');
+    background-position+: @position;
+    background-repeat+: @repeat;
+}
+
+// 背景图大小
+.background-size(@size) {
+    & when (@prefix = true) {
+        -webkit-background-size+: @size;
+           -moz-background-size+: @size;
+    }
+    background-size+: @size;
+}
+
+// 生成背景图列表（由于火狐不支持过长的 sprite 图片，因此在制作序列图时需要这样处理）
+// 图片名称必须以数字结尾，数字部分从0开始
+// .create-background-image-list('360/sp-', 72, 'sp360-');
+.create-background-image-list(@path, @count, @prefix: 'img', @extension: 'png') {
+    .loop(@i) {
+        @className: ~'@{prefix}@{i}';
+        @src: ~'@{path}@{i}.@{extension}';
+        .@{className} { background-image: url(@src); }
+        & when (@i < @count) {
+            .loop(@i + 1);
+        }
+    }
+    .loop(0);
+}

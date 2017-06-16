@@ -1,0 +1,284 @@
+// 三角小箭头
+._arrow(@position, @margin, @pseudo_elements) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        .position(@position);
+        margin: @margin;
+    }
+}
+
+// 左箭头
+._arrow-left(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    @height_half: @height / 2;
+    &@{selector} {
+        .border-top(transparent, @height_half);
+        .border-bottom(transparent, @height_half);
+        .border-right(extract(@color, 1), @width);
+
+        & when (@compat_ie6 = true) {
+            _border-top-color: extract(@color, 2);
+            _border-bottom-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-left(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-right-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-top-color: extract(@color, 2); //为了兼容 IE6，可以将其设置为与背景颜色相同
+            _border-bottom-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-left(@color, @width, @height, @pseudo_elements: before) {
+    @height_half: @height / 2;
+    ._arrow(50% 100% auto auto, -@height_half -1px 0 0, @pseudo_elements);
+    ._arrow-left(@color, @width, @height, @pseudo_elements);
+}
+.arrow-left(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-left(@color, @width, @height, @pseudo_elements);
+}
+
+// 右箭头
+._arrow-right(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    @height_half: @height / 2;
+    &@{selector} {
+        .border-top(transparent, @height_half);
+        .border-bottom(transparent, @height_half);
+        .border-left(extract(@color, 1), @width);
+
+        & when (@compat_ie6 = true) {
+            _border-top-color: extract(@color, 2);
+            _border-bottom-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-left-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-top-color: extract(@color, 2);
+            _border-bottom-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right(@color, @width, @height, @pseudo_elements: before) {
+    @height_half: @height / 2;
+    ._arrow(50% auto auto 100%, -@height_half 0 0 -1px, @pseudo_elements);
+    ._arrow-right(@color, @width, @height, @pseudo_elements);
+}
+.arrow-right(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-right(@color, @width, @height, @pseudo_elements);
+}
+
+// 上箭头
+._arrow-top(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    @width_half: @width / 2;
+    &@{selector} {
+        .border-left(transparent, @width_half);
+        .border-right(transparent, @width_half);
+        .border-bottom(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-bottom-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-top(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(auto auto 100% 50%, 0 0 -1px -@width_half, @pseudo_elements);
+    ._arrow-top(@color, @width, @height, @pseudo_elements);
+}
+.arrow-top(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-top(@color, @width, @height, @pseudo_elements);
+}
+
+// 下箭头
+._arrow-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    @width_half: @width / 2;
+    &@{selector} {
+        .border-left(transparent, @width_half);
+        .border-right(transparent, @width_half);
+        .border-top(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-top-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(100% auto auto 50%, -1px 0 0 -@width_half, @pseudo_elements);
+    ._arrow-bottom(@color, @width, @height, @pseudo_elements);
+}
+.arrow-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-bottom(@color, @width, @height, @pseudo_elements);
+}
+
+// 气泡箭头左下
+._arrow-left-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .border-left(transparent, @width);
+        .border-top(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-left-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-top-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-left-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(100% auto auto 1em, -1px 0 0 0, @pseudo_elements);
+    ._arrow-left-bottom(@color, @width, @height, @pseudo_elements);
+}
+.arrow-left-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-left-bottom(@color, @width, @height, @pseudo_elements);
+}
+
+// 气泡箭头右下
+._arrow-right-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .border-right(transparent, @width);
+        .border-top(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-top-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(100% 1em auto auto, -1px 0 0 0, @pseudo_elements);
+    ._arrow-right-bottom(@color, @width, @height, @pseudo_elements);
+}
+.arrow-right-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-right-bottom(@color, @width, @height, @pseudo_elements);
+}
+
+// 气泡箭头左上
+._arrow-left-top(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .border-left(transparent, @width);
+        .border-bottom(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-left-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-bottom-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-left-top(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(auto auto 100% 1em, 0 0 -1px 0, @pseudo_elements);
+    ._arrow-left-top(@color, @width, @height, @pseudo_elements);
+}
+.arrow-left-top(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-left-top(@color, @width, @height, @pseudo_elements);
+}
+
+// 气泡箭头右上
+._arrow-right-top(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .border-right(transparent, @width);
+        .border-bottom(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-bottom-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-right-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-top(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(auto 1em 100% auto, 0 0 -1px 0, @pseudo_elements);
+    ._arrow-right-top(@color, @width, @height, @pseudo_elements);
+}
+.arrow-right-top(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-right-top(@color, @width, @height, @pseudo_elements);
+}

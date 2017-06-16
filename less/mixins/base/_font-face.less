@@ -1,0 +1,15 @@
+// 服务器字体
+.font-face(@name, @url, @font_weight: normal, @font_style: normal) {
+    @font-face {
+        font-family: '@{name}'; // 定义字体名称
+        src: url('@{url}.eot'); // IE9 Compat Modes
+        src: local('@{url}.ttf'),
+            url('@{url}.eot?#iefix') format('embedded-opentype'), // IE6-IE8
+            url('@{url}.woff2') format('woff2'),
+            url('@{url}.woff') format('woff'), // Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+
+            url('@{url}.ttf') format('truetype'), // Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5
+            url('@{url}.svg#@{name}') format('svg'); // Legacy iOS
+        font-weight: @font_weight; // 定义字体粗细
+        font-style: @font_style; // 定义字体样式，如斜体
+    }
+}

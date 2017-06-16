@@ -1,0 +1,15 @@
+// 箭头
+.animate-arrow(@animation_name: animation-arrow, @range: -20px, @duration: 1s, @direction: y) {
+    .getPoint(@direction) when (@direction = y) {
+        @start_point: 0 0;
+        @end_point: 0 @range;
+    }
+    .getPoint(@direction) when (@direction = x) {
+        @start_point: 0 0;
+        @end_point: @range 0;
+    }
+    .getPoint(@direction);
+
+    .animate-move(e('@{animation_name}-move'), @start_point, @end_point, @duration, ease, 0s, @loop: infinite, normal);
+    .animate-opacity(e('@{animation_name}-opacity'), 0, 1, @duration, ease, 0s, @loop: infinite, normal);
+}

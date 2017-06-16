@@ -1,0 +1,47 @@
+// 镂空小箭头（IE8及以下浏览器不支持）
+._arrow2(@color, @size, @thickness, @position, @margin, @pseudo_elements) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        content: '';
+        display: block;
+        .size(@size - @thickness);
+        .border-top(@color, @thickness);
+        .border-left(@color, @thickness);
+        .position(@position);
+        margin: @margin;
+    }
+}
+.arrow2-color(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-color: @color;
+    }
+}
+.arrow2-left(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
+    ._arrow2(@color, @size, @thickness, @position, @margin, @pseudo_elements);
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .rotate(-45deg);
+    }
+}
+.arrow2-right(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
+    ._arrow2(@color, @size, @thickness, @position, @margin, @pseudo_elements);
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .rotate(135deg);
+    }
+}
+.arrow2-top(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
+    ._arrow2(@color, @size, @thickness, @position, @margin, @pseudo_elements);
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .rotate(45deg);
+    }
+}
+.arrow2-bottom(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
+    ._arrow2(@color, @size, @thickness, @position, @margin, @pseudo_elements);
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .rotate(-135deg);
+    }
+}

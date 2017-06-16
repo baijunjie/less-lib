@@ -1,0 +1,52 @@
+// ======================================================================
+// 常用变量配置
+// ======================================================================
+
+// 是否兼容
+@compat_ie6: false;
+@compat_ie7: `false || @{compat_ie6}`;
+@compat_ie8: `false || @{compat_ie7}`;
+
+// 是否添加浏览器兼容前缀
+@prefix: true;
+
+// 表单元素默认字体大小
+@form_default_font_size: 14px;
+
+// 响应式配置
+@screen_lg: 1200px;
+@screen_md: 992px;
+@screen_sm: 768px;
+@screen_xs: 375px;
+// 大屏幕（桌面）
+@screen_lg_min: @screen_lg;
+// 中等屏幕（笔记本）
+@screen_md_min: @screen_md;
+@screen_md_max: (@screen_lg - 1);
+// 中小屏幕（平板）
+@screen_sm_min: @screen_sm;
+@screen_sm_max: (@screen_md - 1);
+// 小屏幕（手机）
+@screen_xs_min: @screen_xs;
+@screen_xs_max: (@screen_sm - 1);
+// 超小屏幕（手机）
+@screen_ss_max: (@screen_xs - 1);
+
+@ftdef: Helvetica, Arial, Verdana, sans-serif;  //页面默认备用字体
+@ft: Microsoft YaHei;  //页面默认首选字体（微软雅黑）
+@ft2: SimSun;  //常用字体2（宋体）
+@ft3: SimHei;  //常用字体3（黑体）
+@ft4: Arial;  //常用字体4
+@ft5: Impact;  //常用字体5
+@ftsz: 14px;  //页面默认字体大小
+@min_width: 1024px; //页面最小宽度
+
+// 页面常用色
+@ftcl: #333;  //常用字体颜色（黑）
+@ftcl2: #666;  //常用字体颜色（深灰）
+@ftcl3: #999;  //常用字体颜色（灰）
+@ftcl4: #fff;  //常用字体颜色（白）
+@bgcl: #fff;  //页面默认背景颜色（白）
+@bgcl2: #eee;  //页面背景颜色（暗白）
+@bgcl3: #e5e5e5;  //页面背景颜色（淡灰）
+@lkcl: #05a;  //页面默认链接颜色（蓝）

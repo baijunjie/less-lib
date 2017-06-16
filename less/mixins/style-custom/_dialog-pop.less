@@ -1,0 +1,29 @@
+// 对话框泡泡
+.dialog-pop(@direction, @color: #fff) {
+    @new_color: darken(@color, max(lightness(@color)-95%,0%));
+    @bg_color: lighten(@new_color, max(10%-lightness(@new_color),0%));
+    @bg_color_lighten: lighten(@bg_color, 5%);
+    @bg_color_darken: darken(@bg_color, 5%);
+    @bd_color: darken(@bg_color, 10%);
+
+    position: relative;
+    padding: 10px;
+    .background-color(@bg_color);
+    .border(@bd_color);
+    .border-radius(10px);
+    .box-shadow(inset 0 1px 0 rgba(255, 255, 255, .4), 0 1px 2px rgba(0, 0, 0, .3););
+    background-image: -webkit-linear-gradient(top, @bg_color_lighten, @bg_color 10px, @bg_color calc(~'100% - 10px'), @bg_color_darken);
+    background-image: -o-linear-gradient(top, @bg_color_lighten, @bg_color 10px, @bg_color calc(~'100% - 10px'), @bg_color_darken);
+    background-image: linear-gradient(to bottom, @bg_color_lighten, @bg_color 10px, @bg_color calc(~'100% - 10px'), @bg_color_darken);
+    background-repeat: no-repeat;
+
+    & when (@direction = left) {
+        .arrow-left(@bd_color, 10px, 20px, 10px 100% auto auto, 0 0 0 0, before);
+        .arrow-left(@bg_color, 10px, 20px, 10px 100% auto auto, 0 -2px 0 0, after);
+    }
+
+    & when (@direction = right) {
+        .arrow-right(@bd_color, 10px, 20px, 10px auto auto 100%, 0 0 0 0, before);
+        .arrow-right(@bg_color, 10px, 20px, 10px auto auto 100%, 0 0 0 -2px, after);
+    }
+}

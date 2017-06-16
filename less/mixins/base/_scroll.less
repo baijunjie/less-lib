@@ -1,0 +1,19 @@
+// IOS设备上使一般容器的scroll区域获得弹性滑动效果
+.scroll(@direction: y) {
+
+    & when (@direction = xy) {
+        overflow: auto;
+    }
+
+    & when (@direction = x) {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    & when (@direction = y) {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    -webkit-overflow-scrolling: touch;
+}

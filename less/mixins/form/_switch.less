@@ -1,0 +1,109 @@
+// 仿苹果开关
+// 可应用于以下表单控件：
+// input[type="radio"]
+// input[type="checkbox"]
+// 文档结构：
+// <div class="switch"><input type="checkbox"><i></i></div>
+._switch(@color, @width, @height, @elem) {
+    @inner_width: @width - 4px;
+    @inner_height: @height - 4px;
+    @selector: e(@elem);
+
+    .getColor(@color) when (length(@color) = 1) {
+        @checked_color: @color;
+        @border_color: @switch_border_color;
+        @bg_color: #fff;
+    }
+    .getColor(@color) when (length(@color) = 2) {
+        @checked_color: extract(@color, 1);
+        @border_color: extract(@color, 2);
+        @bg_color: transparent;
+    }
+    .getColor(@color);
+
+    position: relative;
+    .inline-block();
+    width: @width;
+    height: @height;
+    vertical-align: middle;
+
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        pointer-events: none;
+        .opacity(.5);
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        .appearance-none();
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        .opacity(0);
+        cursor: pointer;
+
+        &.disabled,
+        &[disabled] {
+            cursor: not-allowed;
+            pointer-events: none;
+            .opacity(.5);
+
+            & + @{selector} { .opacity(.5); }
+        }
+
+        & + @{selector} {
+            position: relative;
+            display: block;
+            width: @inner_width;
+            height: @inner_height;
+            .border-radius(@height / 2);
+            border: 2px solid @border_color;
+            background: @border_color;
+            .transition(background-color .3s, border-color .3s;);
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                .border-radius(@height / 2);
+                background: @bg_color;
+                .transform-origin(70% center);
+                .transition-transform(.3s cubic-bezier(0, .5, .5, 1));
+            }
+            &:after {
+                content: '';
+                display: block;
+                width: @inner_height;
+                height: @inner_height;
+                .border-radius(100%);
+                background: white;
+                .box-shadow(0 2px 7px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.15););
+                .transition-transform(.3s cubic-bezier(0, 1.1, 1, 1.1));
+                .translate(0, 0);
+            }
+        }
+
+        &:checked + @{selector} {
+            background: @checked_color;
+            border-color: @checked_color;
+            &:before {
+                .scale(0);
+            }
+            &:after {
+                .translate(@inner_width - @inner_height, 0);
+            }
+        }
+    }
+}
+.switch(@width: 50px, @height: 30px, @elem: '*') when (isnumber(@width)) {
+    ._switch(@switch_default_color, @width, @height, @elem);
+}
+.switch(@color, @width: 50px, @height: 30px, @elem: '*') when (iscolor(extract(@color, 1))) {
+    ._switch(@color, @width, @height, @elem);
+}

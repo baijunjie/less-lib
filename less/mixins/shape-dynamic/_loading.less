@@ -1,0 +1,213 @@
+// loading 加载中动画
+
+// chrome-loading
+.loading(@color: @loading_default_color, @size: 30px, @animation_name: animation-loading) {
+
+    .getSize(@size) when (length(@size) = 1) {
+        @pattern_size: @size;
+        @pattern_thickness: 2.25px;
+    }
+    .getSize(@size) when (length(@size) = 2) {
+        @pattern_size: extract(@size, 1);
+        @pattern_thickness: extract(@size, 2);
+    }
+    .getSize(@size);
+
+    width: @pattern_size;
+    height: @pattern_size;
+    .background-svg('<svg version="1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 16 16"><style type="text/css">.qp-circular-loader{width:16px;height:16px}.qp-circular-loader-path{stroke-dasharray:32.4;stroke-dashoffset:32.4}.qp-circular-loader,.qp-circular-loader *{transform-origin:50% 50%}@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.qp-circular-loader{animation-duration:1568.63ms;animation-iteration-count:infinite;animation-name:rotate;animation-timing-function:linear}@keyframes fillunfill{from{stroke-dashoffset:32.3}50%{stroke-dashoffset:0}to{stroke-dashoffset:-31.9}}@keyframes rot{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}@keyframes colors{from{stroke:@{color}}to{stroke:@{color}}}.qp-circular-loader-path{animation-duration:1333ms,5332ms,5332ms;animation-fill-mode:forwards;animation-iteration-count:infinite,infinite,infinite;animation-name:fillunfill,rot,colors;animation-play-state:running,running,running;animation-timing-function:cubic-bezier(0.4,0,.2,1),steps(4),linear}</style><g class="qp-circular-loader"><path class="qp-circular-loader-path" fill="none" d="M 8,1.125 A 6.875,6.875 0 1 1 1.125,8" stroke-width="@{pattern_thickness}" stroke-linecap="round"></path></g></svg>');
+    .background-size(100%);
+}
+
+// 传统菊花
+.loading2(@color: @loading_default_color, @size: 30px, @animation_name: animation-loading2) {
+    width: @size;
+    height: @size;
+
+    &:before {
+        content: '';
+        display: block;
+        width: @size;
+        height: @size;
+        .background-svg('<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><line id="l" x1="60" x2="60" y1="7" y2="27" stroke="@{color}" stroke-width="11" stroke-linecap="round"/></defs><g><use xlink:href="#l" opacity=".27"/><use xlink:href="#l" opacity=".27" transform="rotate(30 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(60 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(90 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(120 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(150 60,60)"/><use xlink:href="#l" opacity=".37" transform="rotate(180 60,60)"/><use xlink:href="#l" opacity=".46" transform="rotate(210 60,60)"/><use xlink:href="#l" opacity=".56" transform="rotate(240 60,60)"/><use xlink:href="#l" opacity=".66" transform="rotate(270 60,60)"/><use xlink:href="#l" opacity=".75" transform="rotate(300 60,60)"/><use xlink:href="#l" opacity=".85" transform="rotate(330 60,60)"/></g></svg>');
+        .background-size(100%);
+        .animate-rotate(@animation_name, @duration: 1s, @easing: steps(12, end), @loop: infinite);
+    }
+}
+
+// 圆环
+.loading3(@color: @loading_default_color, @size: 30px, @animation_name: animation-loading3) {
+    .getSize(@size) when (length(@size) = 1) {
+        @pattern_size: @size;
+        @pattern_thickness: @size * .15;
+    }
+    .getSize(@size) when (length(@size) = 2) {
+        @pattern_size: extract(@size, 1);
+        @pattern_thickness: extract(@size, 2);
+    }
+    .getSize(@size);
+
+    width: @pattern_size;
+    height: @pattern_size;
+
+    &:before {
+        content: '';
+        display: block;
+        width: @pattern_size - @pattern_thickness * 2;
+        height: @pattern_size - @pattern_thickness * 2;
+        border-radius: 50%;
+        border-top: @pattern_thickness solid fade(@color, 20%);
+        border-right: @pattern_thickness solid fade(@color, 20%);
+        border-bottom: @pattern_thickness solid fade(@color, 20%);
+        border-left: @pattern_thickness solid @color;
+        .animate-rotate(@animation_name, 1s);
+    }
+}
+
+// 半圆环
+.loading4(@color: @loading_default_color, @size: 30px, @animation_name: animation-loading4) {
+    .getSize(@size) when (length(@size) = 1) {
+        @pattern_size: @size;
+        @pattern_thickness: round(@size * .1);
+    }
+    .getSize(@size) when (length(@size) = 2) {
+        @pattern_size: extract(@size, 1);
+        @pattern_thickness: extract(@size, 2);
+    }
+    .getSize(@size);
+
+    position: relative;
+    width: @pattern_size;
+    height: @pattern_size;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: @pattern_size - @pattern_thickness * 2;
+        height: @pattern_size - @pattern_thickness * 2;
+        border-radius: 50%;
+        clip: rect(0px, @pattern_size / 2, @pattern_size, 0);
+        border: @pattern_thickness solid @color;
+        -webkit-mask: -webkit-gradient(linear,0 0,0 100%, from(rgba(255,255,255,1)), to(rgba(255,255,255,0)));
+        .animate-rotate(@animation_name, 1s);
+    }
+}
+
+// 菊花点
+.loading5(@color: @loading_default_color, @size: 30px, @animation_name: animation-loading5) {
+
+    @padding: @size*.4;
+    @wh: @size*.2;
+    @xy1: @size*.24;
+    @xy2: @size*.36;
+    @diffuse1: @size*.02;
+    @diffuse2: @size*.1;
+
+    width: @wh;
+    height: @wh;
+    padding: @padding;
+
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        position: relative;
+        .animation(@animation_name 1.4s linear infinite);
+    }
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes('-webkit-'); }
+        @-moz-keyframes @animation_name { .keyframes; }
+    }
+
+    @keyframes @animation_name { .keyframes; }
+
+    .keyframes(@prefixStr: '') {
+        @prefix: e('@{prefixStr}');
+        0%,100% {
+            @{prefix}box-shadow: 0 -@xy2 0 @diffuse1 @color,
+            @xy1 -@xy1 0 0 @color,
+            @xy2 0 0 -@diffuse2 @color,
+            @xy1 @xy1 0 -@diffuse2 @color,
+            0 @xy2 0 -@diffuse2 @color,
+            -@xy1 @xy1 0 -@diffuse2 @color,
+            -@xy2 0 0 -@diffuse2 @color,
+            -@xy1 -@xy1 0 0 @color;
+        }
+        12.5% {
+            @{prefix}box-shadow: 0 -@xy2 0 0 @color,
+            @xy1 -@xy1 0 @diffuse1 @color,
+            @xy2 0 0 0 @color,
+            @xy1 @xy1 0 -@diffuse2 @color,
+            0 @xy2 0 -@diffuse2 @color,
+            -@xy1 @xy1 0 -@diffuse2 @color,
+            -@xy2 0 0 -@diffuse2 @color,
+            -@xy1 -@xy1 0 -@diffuse2 @color;
+        }
+        25% {
+            @{prefix}box-shadow: 0 -@xy2 0 -@diffuse2 @color,
+            @xy1 -@xy1 0 0 @color,
+            @xy2 0 0 @diffuse1 @color,
+            @xy1 @xy1 0 0 @color,
+            0 @xy2 0 -@diffuse2 @color,
+            -@xy1 @xy1 0 -@diffuse2 @color,
+            -@xy2 0 0 -@diffuse2 @color,
+            -@xy1 -@xy1 0 -@diffuse2 @color;
+        }
+        37.5% {
+            @{prefix}box-shadow: 0 -@xy2 0 -@diffuse2 @color,
+            @xy1 -@xy1 0 -@diffuse2 @color,
+            @xy2 0 0 0 @color,
+            @xy1 @xy1 0 @diffuse1 @color,
+            0 @xy2 0 0 @color,
+            -@xy1 @xy1 0 -@diffuse2 @color,
+            -@xy2 0 0 -@diffuse2 @color,
+            -@xy1 -@xy1 0 -@diffuse2 @color;
+        }
+        50% {
+            @{prefix}box-shadow: 0 -@xy2 0 -@diffuse2 @color,
+            @xy1 -@xy1 0 -@diffuse2 @color,
+            @xy2 0 0 -@diffuse2 @color,
+            @xy1 @xy1 0 0 @color,
+            0 @xy2 0 @diffuse1 @color,
+            -@xy1 @xy1 0 0 @color,
+            -@xy2 0 0 -@diffuse2 @color,
+            -@xy1 -@xy1 0 -@diffuse2 @color;
+        }
+        62.5% {
+            @{prefix}box-shadow: 0 -@xy2 0 -@diffuse2 @color,
+            @xy1 -@xy1 0 -@diffuse2 @color,
+            @xy2 0 0 -@diffuse2 @color,
+            @xy1 @xy1 0 -@diffuse2 @color,
+            0 @xy2 0 0 @color,
+            -@xy1 @xy1 0 @diffuse1 @color,
+            -@xy2 0 0 0 @color,
+            -@xy1 -@xy1 0 -@diffuse2 @color;
+        }
+        75% {
+            @{prefix}box-shadow: 0 -@xy2 0 -@diffuse2 @color,
+            @xy1 -@xy1 0 -@diffuse2 @color,
+            @xy2 0 0 -@diffuse2 @color,
+            @xy1 @xy1 0 -@diffuse2 @color,
+            0 @xy2 0 -@diffuse2 @color,
+            -@xy1 @xy1 0 0 @color,
+            -@xy2 0 0 @diffuse1 @color,
+            -@xy1 -@xy1 0 0 @color;
+        }
+        87.5% {
+            @{prefix}box-shadow: 0 -@xy2 0 0 @color,
+            @xy1 -@xy1 0 -@diffuse2 @color,
+            @xy2 0 0 -@diffuse2 @color,
+            @xy1 @xy1 0 -@diffuse2 @color,
+            0 @xy2 0 -@diffuse2 @color,
+            -@xy1 @xy1 0 0 @color,
+            -@xy2 0 0 0 @color,
+            -@xy1 -@xy1 0 @diffuse1 @color;
+        }
+    }
+}

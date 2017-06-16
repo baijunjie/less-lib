@@ -1,0 +1,130 @@
+// 两栏自适应
+// @offset 参数表示左右内边距+边框的值
+// 左栏定宽，右栏自适应（高度100%时，两栏不可以有上下内边距和边框）
+.col2(float, @height: auto, @width, @offset: 0, @left: '>:first-child', @right: '>:nth-child(2)') {
+    @left_selector: e(@left);
+    @right_selector: e(@right);
+
+    .clear();
+    @{left_selector} {
+        float: left;
+        .set-width(@width);
+        .set(height, @height);
+    }
+    @{right_selector} {
+        display: block;
+        width: auto;
+        .set(height, @height);
+        margin-left: @width + @offset;
+    }
+}
+
+// 如果某一栏需要设置上下内边距，且必须高度自适应，可以使用绝对定位的方法
+.col2(@width, @offset: 0, @left: '>:first-child', @right: '>:nth-child(2)') when not (@width = float) {
+    @left_selector: e(@left);
+    @right_selector: e(@right);
+
+    @{left_selector} {
+        .position(0 auto 0 0);
+        .set-width(@width);
+    }
+    @{right_selector} {
+        .fit(0 0 0 @width + @offset);
+    }
+}
+
+// 右栏定宽，左栏自适应
+// 如果不使用绝对定位的方法，那么由于固定栏为浮动元素，因此右栏在文档树中必须位于左栏前面
+.col2-r(float, @height: auto, @width, @offset: 0, @left: '>:nth-child(2)', @right: '>:first-child') {
+    @left_selector: e(@left);
+    @right_selector: e(@right);
+
+    .clear();
+    @{left_selector} {
+        display: block;
+        width: auto;
+        .set(height, @height);
+        margin-right: @width + @offset;
+    }
+    @{right_selector} {
+        float: right;
+        .set-width(@width);
+        .set(height, @height);
+    }
+}
+
+// 如果某一栏需要设置上下内边距，且必须高度自适应，可以使用绝对定位的方法
+.col2-r(@width, @offset: 0, @left: '>:first-child', @right: '>:nth-child(2)') when not (@width = float) {
+    @left_selector: e(@left);
+    @right_selector: e(@right);
+
+    @{left_selector} {
+        .fit(0 @width + @offset 0 0);
+    }
+    @{right_selector} {
+        .position(0 0 0 auto);
+        .set-width(@width);
+    }
+}
+
+// 三栏自适应
+// 如果不使用绝对定位的方法，那么由于固定栏为浮动元素，因此左右两栏在文档树中必须位于中间栏前面
+.col3(float,
+    @height: auto,
+    @left_width,
+    @right_width,
+    @left_offset: 0,
+    @right_offset: 0,
+    @left: '>:first-child',
+    @middle: '>:nth-child(3)',
+    @right: '>:nth-child(2)') {
+
+    @left_selector: e(@left);
+    @middle_selector: e(@middle);
+    @right_selector: e(@right);
+
+    .clear();
+    @{left_selector} {
+        float: left;
+        .set-width(@left_width);
+        .set(height, @height);
+    }
+    @{middle_selector} {
+        display: block;
+        width: auto;
+        .set(height, @height);
+        margin-left: @left_width + @left_offset;
+        margin-right: @right_width + @right_offset;
+    }
+    @{right_selector} {
+        float: right;
+        .set-width(@right_width);
+        .set(height, @height);
+    }
+}
+
+// 如果某一栏需要设置上下内边距，且必须高度自适应，可以使用绝对定位的方法
+.col3(@left_width,
+    @right_width,
+    @left_offset: 0,
+    @right_offset: 0,
+    @left: '>:first-child',
+    @middle: '>:nth-child(2)',
+    @right: '>:nth-child(3)') when not (@left_width = float) {
+
+    @left_selector: e(@left);
+    @middle_selector: e(@middle);
+    @right_selector: e(@right);
+
+    @{left_selector} {
+        .position(0 auto 0 0);
+        .set-width(@left_width);
+    }
+    @{middle_selector} {
+        .fit(0 @right_width + @right_offset 0 @left_width + @left_offset);
+    }
+    @{right_selector} {
+        .position(0 0 0 auto);
+        .set-width(@right_width);
+    }
+}

@@ -1,0 +1,28 @@
+// 字符×按钮
+.button-x(@color: #000, @size: 20px, @active_class: active) {
+    .appearance-none();
+    .inline-block();
+    vertical-align: middle;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: @size;
+    font-weight: 700;
+    line-height: 1;
+    color: @color;
+    text-shadow: 0 1px 0 #fff;
+    .size(1em);
+    .opacity(.2);
+
+    &:after {
+        content: '×';
+        display: block;
+        line-height: 1;
+        text-align: center;
+        position: relative;
+        top: -0.06em;
+    }
+
+    .hover({
+        .opacity(.5);
+    }, @active_class);
+}

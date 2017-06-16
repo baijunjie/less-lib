@@ -1,0 +1,13 @@
+// 文本溢出三点显示
+.overflow-3-piont(@line_count: 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    // 多行文本截断并加三点（webkit 专用）
+    & when (@line_count > 1) {
+        display: -webkit-box;
+        -webkit-line-clamp: @line_count;
+        -webkit-box-orient: vertical;
+    }
+}

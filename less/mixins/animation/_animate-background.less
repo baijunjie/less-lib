@@ -1,0 +1,29 @@
+// 背景浮动
+.animate-background(@animation_name: animation-background, @range: 10, @duration: 60s, @isCCW: false) {
+    .animation(@animation_name @duration linear infinite);
+
+    & when (@prefix = true) {
+        @-webkit-keyframes @animation_name { .keyframes(@isCCW); }
+        @-moz-keyframes @animation_name { .keyframes(@isCCW); }
+    }
+
+    @keyframes @animation_name { .keyframes(@isCCW); }
+
+    @base: 50%;
+    @add: @base + @range;
+    @sub: @base - @range;
+    .keyframes(@isCCW) when (@isCCW = false) {
+        0%   { background-position: @sub @base; }
+        25%  { background-position: @base @sub; }
+        50%  { background-position: @add @base; }
+        75%  { background-position: @base @add; }
+        100% { background-position: @sub @base; }
+    }
+    .keyframes(@isCCW) when (@isCCW = true) {
+        0%   { background-position: @add @base; }
+        25%  { background-position: @base @sub; }
+        50%  { background-position: @sub @base; }
+        75%  { background-position: @base @add; }
+        100% { background-position: @add @base; }
+    }
+}

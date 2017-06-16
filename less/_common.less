@@ -1,0 +1,80 @@
+html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, form, input { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+i, em { font-style: normal; }
+img { max-width: 100%; }
+
+body {
+	.fix();
+	position: relative;
+	font-size: @ftsz;
+	background-color: @bgcl;
+	color: @ftcl;
+	.wbw();
+}
+
+a { .acl(@lkcl); }
+
+// 常用类
+.hide { visibility: hidden !important; }
+.none, [v-cloak] { display: none !important; }
+
+.noa {
+	.acl(none);
+}
+
+.full {
+	width: 100%;
+}
+
+.wrap {
+	width: @min_width - 20px;
+	padding: 0 10px;
+	.cxbl();
+}
+
+.share-img {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.opacity-img {
+	.transition(opacity .3s);
+	.active({ .op(.8) !important; });
+}
+
+.shadow-box {
+	.transition(box-shadow .3s);
+	.active({
+		.bxsd(box) !important;
+	});
+}
+
+.directload img,
+.lazyload img {
+	.sz(100%);
+	.bgcl(#ccc);
+	.bgsz(80%);
+}
+
+@media screen and (max-width: @screen_xs_max) { // 小屏幕（手机）
+
+}
+@media screen and (max-width: @screen_ss_max) { // 超小屏幕（手机）
+
+}
+@media screen and (min-width: @screen_sm_min) { // 除小屏幕以外（非手机）
+
+}
+@media screen and (min-width: @screen_sm_min) and (max-width: @screen_sm_max) { // 中小屏幕（平板）
+
+}
+@media screen and (min-width: @screen_md_min) and (max-width: @screen_md_max) { // 中等屏幕（笔记本）
+
+}
+@media screen and (min-width: @screen_lg_min) { // 大屏幕（桌面）
+
+}
