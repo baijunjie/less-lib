@@ -3,7 +3,6 @@
     .inline-block();
     outline: none;
     cursor: pointer;
-    line-height: 1em;
     vertical-align: middle;
     text-align: center;
     text-decoration: none !important;
@@ -41,11 +40,13 @@
         @size: @font_size;
         @height: @font_size * 2.5;
         height: 2.5em;
+        line-height: 2.5em;
     }
     .getSizeAndHeight() when (length(@font_size) = 2) {
         @size: extract(@font_size, 1);
         @height: extract(@font_size, 2);
         height: @height;
+        line-height: @height;
     }
 
     & when (@no_border = true) {

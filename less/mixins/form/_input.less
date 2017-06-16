@@ -22,7 +22,6 @@
     margin: 0;
     border-width: 1px;
     border-style: solid;
-    line-height: 1em;
     vertical-align: middle;
     color: @input_font_color;
     .box-sizing(border-box);
@@ -50,11 +49,13 @@
         @size: @font_size;
         @height: @font_size * 2.5;
         height: 2.5em;
+        line-height: 2.5em;
     }
     .getSizeAndHeight() when (length(@font_size) = 2) {
         @size: extract(@font_size, 1);
         @height: extract(@font_size, 2);
         height: @height;
+        line-height: @height;
     }
 
     & when (@border_none = true) {

@@ -563,7 +563,6 @@ a:hover {
   margin: 0;
   border-width: 1px;
   border-style: solid;
-  line-height: 1em;
   vertical-align: middle;
   color: #555555;
   -webkit-box-sizing: border-box;
@@ -571,6 +570,7 @@ a:hover {
   box-sizing: border-box;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   border-color: #cccccc;
@@ -682,7 +682,6 @@ a:hover {
   display: inline-block;
   outline: none;
   cursor: pointer;
-  line-height: 1em;
   vertical-align: middle;
   text-align: center;
   text-decoration: none !important;
@@ -703,6 +702,7 @@ a:hover {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: white;
@@ -1131,7 +1131,6 @@ a:hover {
   margin: 0;
   border-width: 1px;
   border-style: solid;
-  line-height: 1em;
   vertical-align: middle;
   color: #555555;
   -webkit-box-sizing: border-box;
@@ -1139,6 +1138,7 @@ a:hover {
   box-sizing: border-box;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   border-color: #cccccc;
@@ -1255,7 +1255,6 @@ a:hover {
   margin: 0;
   border-width: 1px;
   border-style: solid;
-  line-height: 1em;
   vertical-align: middle;
   color: #555555;
   -webkit-box-sizing: border-box;
@@ -1263,6 +1262,7 @@ a:hover {
   box-sizing: border-box;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   border-color: #cccccc;
@@ -2120,7 +2120,6 @@ body {
   display: inline-block;
   outline: none;
   cursor: pointer;
-  line-height: 1em;
   vertical-align: middle;
   text-align: center;
   text-decoration: none !important;
@@ -2141,6 +2140,7 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: white;
@@ -2362,7 +2362,6 @@ body {
   display: inline-block;
   outline: none;
   cursor: pointer;
-  line-height: 1em;
   vertical-align: middle;
   text-align: center;
   text-decoration: none !important;
@@ -2383,6 +2382,7 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: white;
@@ -2688,7 +2688,6 @@ body {
   display: inline-block;
   outline: none;
   cursor: pointer;
-  line-height: 1em;
   vertical-align: middle;
   text-align: center;
   text-decoration: none !important;
@@ -2709,6 +2708,7 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 10.5px;
   padding-bottom: 10.5px;
   color: white;
@@ -2915,7 +2915,6 @@ body {
   display: inline-block;
   outline: none;
   cursor: pointer;
-  line-height: 1em;
   vertical-align: middle;
   text-align: center;
   text-decoration: none !important;
@@ -2936,6 +2935,7 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
+  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: #007aff;
