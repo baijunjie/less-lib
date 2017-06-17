@@ -1303,6 +1303,31 @@ a:hover {
   pointer-events: none;
   border-color: #cccccc !important;
 }
+.select2 select {
+  border-color: #cccccc;
+  -webkit-border-radius: 0.25em;
+  border-radius: 0.25em;
+  background: #ffffff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.select2 select:focus {
+  border-color: #20A0FF !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
+}
+.select2 select.disabled,
+.select2 select[disabled],
+.select2 select[readonly] {
+  border-color: #cccccc !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+  background: #eeeeee !important;
+}
 .select2:after {
   content: '';
   display: block;
@@ -1846,7 +1871,7 @@ a:hover {
 .loading {
   width: 30px;
   height: 30px;
-  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.qp-circular-loader%7Bwidth%3A16px%3Bheight%3A16px%7D.qp-circular-loader-path%7Bstroke-dasharray%3A32.4%3Bstroke-dashoffset%3A32.4%7D.qp-circular-loader%2C.qp-circular-loader%20*%7Btransform-origin%3A50%25%2050%25%7D%40keyframes%20rotate%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(360deg)%7D%7D.qp-circular-loader%7Banimation-duration%3A1568.63ms%3Banimation-iteration-count%3Ainfinite%3Banimation-name%3Arotate%3Banimation-timing-function%3Alinear%7D%40keyframes%20fillunfill%7Bfrom%7Bstroke-dashoffset%3A32.3%7D50%25%7Bstroke-dashoffset%3A0%7Dto%7Bstroke-dashoffset%3A-31.9%7D%7D%40keyframes%20rot%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(-360deg)%7D%7D%40keyframes%20colors%7Bfrom%7Bstroke%3A%2320A0FF%7Dto%7Bstroke%3A%2320A0FF%7D%7D.qp-circular-loader-path%7Banimation-duration%3A1333ms%2C5332ms%2C5332ms%3Banimation-fill-mode%3Aforwards%3Banimation-iteration-count%3Ainfinite%2Cinfinite%2Cinfinite%3Banimation-name%3Afillunfill%2Crot%2Ccolors%3Banimation-play-state%3Arunning%2Crunning%2Crunning%3Banimation-timing-function%3Acubic-bezier(0.4%2C0%2C.2%2C1)%2Csteps(4)%2Clinear%7D%3C%2Fstyle%3E%3Cg%20class%3D%22qp-circular-loader%22%3E%3Cpath%20class%3D%22qp-circular-loader-path%22%20fill%3D%22none%22%20d%3D%22M%208%2C1.125%20A%206.875%2C6.875%200%201%201%201.125%2C8%22%20stroke-width%3D%222.25px%22%20stroke-linecap%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.qp-circular-loader%7Bwidth%3A16px%3Bheight%3A16px%7D.qp-circular-loader-path%7Bstroke-dasharray%3A32.4%3Bstroke-dashoffset%3A32.4%7D.qp-circular-loader%2C.qp-circular-loader%20*%7Btransform-origin%3A50%25%2050%25%7D%40keyframes%20rotate%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(360deg)%7D%7D.qp-circular-loader%7Banimation-duration%3A1568.63ms%3Banimation-iteration-count%3Ainfinite%3Banimation-name%3Arotate%3Banimation-timing-function%3Alinear%7D%40keyframes%20fillunfill%7Bfrom%7Bstroke-dashoffset%3A32.3%7D50%25%7Bstroke-dashoffset%3A0%7Dto%7Bstroke-dashoffset%3A-31.9%7D%7D%40keyframes%20rot%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(-360deg)%7D%7D%40keyframes%20colors%7Bfrom%7Bstroke%3A%2320A0FF%7Dto%7Bstroke%3A%2320A0FF%7D%7D.qp-circular-loader-path%7Banimation-duration%3A1333ms%2C5332ms%2C5332ms%3Banimation-fill-mode%3Aforwards%3Banimation-iteration-count%3Ainfinite%2Cinfinite%2Cinfinite%3Banimation-name%3Afillunfill%2Crot%2Ccolors%3Banimation-play-state%3Arunning%2Crunning%2Crunning%3Banimation-timing-function%3Acubic-bezier(0.4%2C0%2C.2%2C1)%2Csteps(4)%2Clinear%7D%3C%2Fstyle%3E%3Cg%20class%3D%22qp-circular-loader%22%3E%3Cpath%20class%3D%22qp-circular-loader-path%22%20fill%3D%22none%22%20d%3D%22M%208%2C1.125%20A%206.875%2C6.875%200%201%201%201.125%2C8%22%20stroke-width%3D%222.25px%22%20stroke-linecap%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   background-position: center;
   background-repeat: no-repeat;
   -webkit-background-size: 100%;
@@ -3080,7 +3105,7 @@ body {
 .loading1 {
   width: 30px;
   height: 30px;
-  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.qp-circular-loader%7Bwidth%3A16px%3Bheight%3A16px%7D.qp-circular-loader-path%7Bstroke-dasharray%3A32.4%3Bstroke-dashoffset%3A32.4%7D.qp-circular-loader%2C.qp-circular-loader%20*%7Btransform-origin%3A50%25%2050%25%7D%40keyframes%20rotate%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(360deg)%7D%7D.qp-circular-loader%7Banimation-duration%3A1568.63ms%3Banimation-iteration-count%3Ainfinite%3Banimation-name%3Arotate%3Banimation-timing-function%3Alinear%7D%40keyframes%20fillunfill%7Bfrom%7Bstroke-dashoffset%3A32.3%7D50%25%7Bstroke-dashoffset%3A0%7Dto%7Bstroke-dashoffset%3A-31.9%7D%7D%40keyframes%20rot%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(-360deg)%7D%7D%40keyframes%20colors%7Bfrom%7Bstroke%3A%2320A0FF%7Dto%7Bstroke%3A%2320A0FF%7D%7D.qp-circular-loader-path%7Banimation-duration%3A1333ms%2C5332ms%2C5332ms%3Banimation-fill-mode%3Aforwards%3Banimation-iteration-count%3Ainfinite%2Cinfinite%2Cinfinite%3Banimation-name%3Afillunfill%2Crot%2Ccolors%3Banimation-play-state%3Arunning%2Crunning%2Crunning%3Banimation-timing-function%3Acubic-bezier(0.4%2C0%2C.2%2C1)%2Csteps(4)%2Clinear%7D%3C%2Fstyle%3E%3Cg%20class%3D%22qp-circular-loader%22%3E%3Cpath%20class%3D%22qp-circular-loader-path%22%20fill%3D%22none%22%20d%3D%22M%208%2C1.125%20A%206.875%2C6.875%200%201%201%201.125%2C8%22%20stroke-width%3D%222.25px%22%20stroke-linecap%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.qp-circular-loader%7Bwidth%3A16px%3Bheight%3A16px%7D.qp-circular-loader-path%7Bstroke-dasharray%3A32.4%3Bstroke-dashoffset%3A32.4%7D.qp-circular-loader%2C.qp-circular-loader%20*%7Btransform-origin%3A50%25%2050%25%7D%40keyframes%20rotate%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(360deg)%7D%7D.qp-circular-loader%7Banimation-duration%3A1568.63ms%3Banimation-iteration-count%3Ainfinite%3Banimation-name%3Arotate%3Banimation-timing-function%3Alinear%7D%40keyframes%20fillunfill%7Bfrom%7Bstroke-dashoffset%3A32.3%7D50%25%7Bstroke-dashoffset%3A0%7Dto%7Bstroke-dashoffset%3A-31.9%7D%7D%40keyframes%20rot%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(-360deg)%7D%7D%40keyframes%20colors%7Bfrom%7Bstroke%3A%2320A0FF%7Dto%7Bstroke%3A%2320A0FF%7D%7D.qp-circular-loader-path%7Banimation-duration%3A1333ms%2C5332ms%2C5332ms%3Banimation-fill-mode%3Aforwards%3Banimation-iteration-count%3Ainfinite%2Cinfinite%2Cinfinite%3Banimation-name%3Afillunfill%2Crot%2Ccolors%3Banimation-play-state%3Arunning%2Crunning%2Crunning%3Banimation-timing-function%3Acubic-bezier(0.4%2C0%2C.2%2C1)%2Csteps(4)%2Clinear%7D%3C%2Fstyle%3E%3Cg%20class%3D%22qp-circular-loader%22%3E%3Cpath%20class%3D%22qp-circular-loader-path%22%20fill%3D%22none%22%20d%3D%22M%208%2C1.125%20A%206.875%2C6.875%200%201%201%201.125%2C8%22%20stroke-width%3D%222.25px%22%20stroke-linecap%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   background-position: center;
   background-repeat: no-repeat;
   -webkit-background-size: 100%;

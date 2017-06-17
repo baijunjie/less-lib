@@ -9,7 +9,7 @@
 // </div>
 //
 // @select 为false时只需要一个单标签即可
-._select-style(@border_color, @font_size, @radius, @select) {
+._select-style(@border_color, @font_size, @select) {
 
     & when (@select = false) {
         ._input();
@@ -74,7 +74,7 @@
 }
 // 正常箭头
 ._select(@border_color, @arrow_color, @font_size, @radius, @select) {
-    ._select-style(@border_color, @font_size, @radius, @select);
+    ._select-style(@border_color, @font_size, @select);
     .select-border-color(@border_color, @radius, @select);
     .arrow-bottom(@arrow_color @input_bg_color, .5em, .5em, 50% .5em auto auto, -.25em 0 0 0, after);
     &:after { z-index: 1; }
@@ -97,7 +97,8 @@
 
 // 右下箭头
 ._select2(@border_color, @arrow_color, @font_size, @radius, @select) {
-    ._select-style(@border_color, @font_size, @radius, @select);
+    ._select-style(@border_color, @font_size, @select);
+    .select-border-color(@border_color, @radius, @select);
     .arrow-bottom(@arrow_color @input_bg_color, 1em, .5em, auto 0 .2em auto, 0, after);
     &:after {
         z-index: 1;
