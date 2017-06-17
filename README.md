@@ -4,7 +4,7 @@
 
 [**Example**](http://htmlpreview.github.io/?https://github.com/baijunjie/less-lib/blob/master/index.html)
 
-从2013年创建这个库，一点点的添加完善，目前已经功能已经比较稳定，现在它可以帮助我**快速**完成几乎所有的样式书写工作。对！就是**快！**
+从2013年创建这个库，一点点的添加完善，目前功能已经基本稳定，现在它可以帮助我**快速**完成几乎所有的样式书写工作。对！就是**快速！**
 
 ### 为什么选择Less
 
