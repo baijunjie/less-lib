@@ -3,7 +3,7 @@
 
     .getSize(@size) when (length(@size) = 1) {
         @pattern_size: @size;
-        @pattern_thickness: @size * .1;
+        @pattern_thickness: round(@size * .1 / 2) * 2;
     }
     .getSize(@size) when (length(@size) = 2) {
         @pattern_size: extract(@size, 1);
@@ -19,11 +19,11 @@
         content: '';
         display: block;
         width: 40%;
-        height: 70%;
+        height: 80%;
+        margin-top: -10%;
         margin-left: 25%;
         border-right: solid @pattern_thickness @color;
         border-bottom: solid  @pattern_thickness @color;
-        border-bottom-right-radius: @pattern_thickness;
         .rotate(45deg);
     }
 }

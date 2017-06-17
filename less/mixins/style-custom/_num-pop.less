@@ -17,7 +17,7 @@
     font-family: Arial, Verdana, sans-serif;
     &:empty { display: none; }
 }
-.num-pop(@color: @num_pop_default_bg_color, @size: 20px) when (iscolor(@color)) {
+.num-pop(@color: @num_pop_default_background_color, @size: 20px) when (iscolor(@color)) {
     ._num-pop(@color, @num_pop_default_font_color, @size);
 }
 .num-pop(@color, @size: 20px) when (length(@color) > 1) {

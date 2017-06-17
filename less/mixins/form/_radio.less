@@ -4,24 +4,29 @@
 // input[type="checkbox"]
 // 文档结构：
 // <div class="radio"><input type="radio"><i></i></div>
-._radio(@border_color, @checked_color, @background_color, @size, @radius, @elem) {
+._radio(@active_color, @border_color, @background_color, @size, @radius, @elem) {
     @selector: e(@elem);
 
     position: relative;
     .inline-block();
-    width: @size;
-    height: @size;
-    .border-radius(@radius);
-    background: @background_color;
-    border: 1px solid @border_color;
+    .size(@size);
     vertical-align: middle;
-    .box-sizing(border-box);
 
     &.disabled,
     &[disabled] {
         cursor: not-allowed;
         pointer-events: none;
         .opacity(.5);
+    }
+
+    &:active,
+    &:hover {
+        input[type="radio"],
+        input[type="checkbox"] {
+            & + @{selector} {
+                border-color: @active_color;
+            }
+        }
     }
 
     input[type="radio"],
@@ -33,34 +38,51 @@
         left: 0;
         top: 0;
         z-index: 1;
+        cursor: pointer;
         .opacity(0);
 
         & + @{selector} {
+            position: relative;
             display: block;
-            width: 50%;
-            height: 50%;
+            .box-sizing(border-box);
+            .size(100%);
             .border-radius(@radius);
-            background: @checked_color;
-            .center-xy(50%, 50%);
-            .transition(all .3s);
-            .opacity(0);
-            .scale(0);
+            border: 1px solid @border_color;
+            background: @background_color;
+
+            &:before {
+                content: '';
+                display: block;
+                .size(50%);
+                .border-radius(@radius);
+                .center-xy();
+                .transition(all .3s);
+                .opacity(0);
+                .scale(0);
+                background: @background_color;
+            }
         }
 
         &:checked + @{selector} {
-            .opacity(1);
-            .scale(1);
+            border-color: @active_color;
+            background: @active_color;
+
+            &:before {
+                .center-xy();
+                .opacity(1);
+                .scale(1);
+            }
         }
     }
 }
 .radio(@size: 22px, @radius: 100%, @elem: '*') when (isnumber(@size)) {
-    ._radio(@radio_default_color, @radio_default_color, @radio_default_bg_color, @size, @radius, @elem);
+    ._radio(@radio_default_active_color, @radio_default_border_color, @radio_default_background_color, @size, @radius, @elem);
 }
-.radio(@color: @blue, @size: 22px, @radius: 100%, @elem: '*') when (length(@color) = 1) and (iscolor(@color)) {
-    ._radio(@color, @color, @radio_default_bg_color, @size, @radius, @elem);
+.radio(@color, @size: 22px, @radius: 100%, @elem: '*') when (length(@color) = 1) and (iscolor(@color)) {
+    ._radio(@color, @radio_default_border_color, @radio_default_background_color, @size, @radius, @elem);
 }
 .radio(@color, @size: 22px, @radius: 100%, @elem: '*') when (length(@color) = 2) {
-    ._radio(extract(@color, 1), extract(@color, 2), @radio_default_bg_color, @size, @radius, @elem);
+    ._radio(extract(@color, 1), extract(@color, 2), @radio_default_background_color, @size, @radius, @elem);
 }
 .radio(@color, @size: 22px, @radius: 100%, @elem: '*') when (length(@color) = 3) {
     ._radio(extract(@color, 1), extract(@color, 2), extract(@color, 3), @size, @radius, @elem);

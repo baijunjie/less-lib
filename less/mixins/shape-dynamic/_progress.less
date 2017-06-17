@@ -27,7 +27,7 @@
     // 第三个是字体的颜色
     .getColor(@color) when (iscolor(@color)) {
         @bar_color: @color;
-        @bg_color: @progress_defalut_bg_color;
+        @bg_color: @progress_defalut_background_color;
         @font_color: contrast(@bar_color, black, white, 60%); //根据进度条颜色的深浅判断字体颜色为白色还是黑色
     }
     .getColor(@color) when (length(@color) = 2) {
