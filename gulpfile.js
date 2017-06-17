@@ -27,4 +27,4 @@ gulp.task('lessWatch', ['less'], function () {
 	gulp.watch(watchPath, ['less']);
 });
 
-gulp.task('default', ['less']);
+gulp.task('default', ['lessWatch']);

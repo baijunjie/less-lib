@@ -20,6 +20,7 @@
     .inline-block();
     padding: .7em;
     margin: 0;
+    line-height: 1;
     border-width: 1px;
     border-style: solid;
     vertical-align: middle;
@@ -49,13 +50,11 @@
         @size: @font_size;
         @height: @font_size * 2.5;
         height: 2.5em;
-        line-height: 2.5em;
     }
     .getSizeAndHeight() when (length(@font_size) = 2) {
         @size: extract(@font_size, 1);
         @height: extract(@font_size, 2);
         height: @height;
-        line-height: @height;
     }
 
     & when (@border_none = true) {
@@ -105,8 +104,8 @@
 }
 
 .input-border-color(@border_color, @radius: 0) when not (iscolor(extract(@border_color,1))) {
+    .border-radius(0);
     border-color: transparent;
-    .border-radius(@radius);
     background: transparent;
     .box-shadow(none);
     .transition(none);
@@ -137,4 +136,5 @@
     ._input();
     ._input-size(@font_size);
     .input-border-color(@border_color, @radius);
+    line-height: @height; // IOS 中，输入框 placeholder 的 line-height 不会受到 box-sizing 的影响，必须始终与高度相等
 }

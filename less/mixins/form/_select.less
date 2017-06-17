@@ -12,7 +12,9 @@
 ._select-style(@border_color, @font_size, @radius, @select) {
 
     & when (@select = false) {
-        .input(@border_color, @font_size, @radius);
+        ._input();
+        ._input-size(@font_size);
+        line-height: 2.5em; // IOS 中，输入框 placeholder 的 line-height 不会受到 box-sizing 的影响，必须始终与高度相等
         position: relative;
         cursor: pointer;
         padding-right: 1.2em;
@@ -32,7 +34,8 @@
         cursor: pointer;
 
         select {
-            .input(@border_color, @font_size, @radius);
+            ._input();
+            ._input-size(@font_size);
             -webkit-appearance: none; // IOS下的表单元素会有默认的样式，且无法通过CSS重置，因此需要将其的渲染设置为 none
             -moz-appearance: none;
             padding-right: 1.2em;
@@ -72,6 +75,7 @@
 // 正常箭头
 ._select(@border_color, @arrow_color, @font_size, @radius, @select) {
     ._select-style(@border_color, @font_size, @radius, @select);
+    .select-border-color(@border_color, @radius, @select);
     .arrow-bottom(@arrow_color @input_bg_color, .5em, .5em, 50% .5em auto auto, -.25em 0 0 0, after);
     &:after { z-index: 1; }
 }

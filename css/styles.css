@@ -561,6 +561,7 @@ a:hover {
   display: inline-block;
   padding: .7em;
   margin: 0;
+  line-height: 1;
   border-width: 1px;
   border-style: solid;
   vertical-align: middle;
@@ -570,7 +571,6 @@ a:hover {
   box-sizing: border-box;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   border-color: #cccccc;
@@ -583,6 +583,7 @@ a:hover {
   -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  line-height: 35px;
 }
 .input::-moz-placeholder {
   color: #999;
@@ -641,9 +642,9 @@ a:hover {
   background: #eeeeee !important;
 }
 .input.transparent {
-  border-color: transparent;
   -webkit-border-radius: 0;
   border-radius: 0;
+  border-color: transparent;
   background: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -686,6 +687,7 @@ a:hover {
   text-align: center;
   text-decoration: none !important;
   white-space: nowrap;
+  line-height: 1;
   padding: 0 1em;
   margin: 0;
   border: 0;
@@ -702,7 +704,6 @@ a:hover {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: white;
@@ -1129,6 +1130,7 @@ a:hover {
   display: inline-block;
   padding: .7em;
   margin: 0;
+  line-height: 1;
   border-width: 1px;
   border-style: solid;
   vertical-align: middle;
@@ -1138,19 +1140,8 @@ a:hover {
   box-sizing: border-box;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
-  border-color: #cccccc;
-  -webkit-border-radius: 0.25em;
-  border-radius: 0.25em;
-  background: #ffffff;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -webkit-appearance: none;
   -moz-appearance: none;
   padding-right: 1.2em;
@@ -1174,6 +1165,30 @@ a:hover {
 .select select[readonly] {
   cursor: not-allowed !important;
 }
+.select select::-ms-expand {
+  display: none;
+}
+.select.disabled,
+.select[disabled] {
+  cursor: not-allowed !important;
+}
+.select.disabled select,
+.select[disabled] select {
+  pointer-events: none;
+  border-color: #cccccc !important;
+}
+.select select {
+  border-color: #cccccc;
+  -webkit-border-radius: 0.25em;
+  border-radius: 0.25em;
+  background: #ffffff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
 .select select:focus {
   border-color: #20A0FF !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
@@ -1186,18 +1201,6 @@ a:hover {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   background: #eeeeee !important;
-}
-.select select::-ms-expand {
-  display: none;
-}
-.select.disabled,
-.select[disabled] {
-  cursor: not-allowed !important;
-}
-.select.disabled select,
-.select[disabled] select {
-  pointer-events: none;
-  border-color: #cccccc !important;
 }
 .select:after {
   content: '';
@@ -1218,9 +1221,9 @@ a:hover {
   z-index: 1;
 }
 .select.transparent select {
+  -webkit-border-radius: 0;
+  border-radius: 0;
   border-color: transparent;
-  -webkit-border-radius: 0.25em;
-  border-radius: 0.25em;
   background: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1253,6 +1256,7 @@ a:hover {
   display: inline-block;
   padding: .7em;
   margin: 0;
+  line-height: 1;
   border-width: 1px;
   border-style: solid;
   vertical-align: middle;
@@ -1262,19 +1266,8 @@ a:hover {
   box-sizing: border-box;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
-  border-color: #cccccc;
-  -webkit-border-radius: 0.25em;
-  border-radius: 0.25em;
-  background: #ffffff;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -webkit-appearance: none;
   -moz-appearance: none;
   padding-right: 1.2em;
@@ -1297,19 +1290,6 @@ a:hover {
 .select2 select[disabled],
 .select2 select[readonly] {
   cursor: not-allowed !important;
-}
-.select2 select:focus {
-  border-color: #20A0FF !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
-}
-.select2 select.disabled,
-.select2 select[disabled],
-.select2 select[readonly] {
-  border-color: #cccccc !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
-  background: #eeeeee !important;
 }
 .select2 select::-ms-expand {
   display: none;
@@ -1346,9 +1326,9 @@ a:hover {
   transform: rotate(-45deg);
 }
 .select2.transparent select {
+  -webkit-border-radius: 0;
+  border-radius: 0;
   border-color: transparent;
-  -webkit-border-radius: 0.25em;
-  border-radius: 0.25em;
   background: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2124,6 +2104,7 @@ body {
   text-align: center;
   text-decoration: none !important;
   white-space: nowrap;
+  line-height: 1;
   padding: 0 1em;
   margin: 0;
   border: 0;
@@ -2140,7 +2121,6 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: white;
@@ -2366,6 +2346,7 @@ body {
   text-align: center;
   text-decoration: none !important;
   white-space: nowrap;
+  line-height: 1;
   padding: 0 1em;
   margin: 0;
   border: 0;
@@ -2382,7 +2363,6 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: white;
@@ -2692,6 +2672,7 @@ body {
   text-align: center;
   text-decoration: none !important;
   white-space: nowrap;
+  line-height: 1;
   padding: 0 1em;
   margin: 0;
   border: 0;
@@ -2708,7 +2689,6 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 10.5px;
   padding-bottom: 10.5px;
   color: white;
@@ -2919,6 +2899,7 @@ body {
   text-align: center;
   text-decoration: none !important;
   white-space: nowrap;
+  line-height: 1;
   padding: 0 1em;
   margin: 0;
   border: 0;
@@ -2935,7 +2916,6 @@ body {
   -webkit-touch-callout: none;
   font-size: 14px;
   height: 2.5em;
-  line-height: 2.5em;
   padding-top: 9.5px;
   padding-bottom: 9.5px;
   color: #007aff;
