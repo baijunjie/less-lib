@@ -1,8 +1,8 @@
 {
   "name": "less-lib",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Less Library",
-  "main": "gulpfile.js",
+  "main": "less/config/_index.less",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
