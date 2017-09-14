@@ -279,14 +279,14 @@
 .cx(@outer_width, @location: top auto, @position: absolute) when (isnumber(@outer_width)) {
     .center-x(@outer_width, @location, @position);
 }
-.cx(@location: top auto, @position: absolute) when (iskeyword(@location)) {
+.cx(@location: top auto, @position: absolute) when not (isnumber(@location)) {
     .center-x(@location, @position);
 }
 
 .cy(@outer_height, @location: left auto, @position: absolute) when (isnumber(@outer_height)) {
     .center-y(@outer_height, @location, @position);
 }
-.cy(@location: left auto, @position: absolute) when (iskeyword(@location)) {
+.cy(@location: left auto, @position: absolute) when not (isnumber(@location)) {
     .center-y(@location, @position);
 }
 

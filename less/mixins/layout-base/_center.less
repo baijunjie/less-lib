@@ -5,7 +5,7 @@
     .set(extract(@location, 1), extract(@location, 2));
     margin-left: @outer_width / 2 * -1;
 }
-.center-x(@location: top auto, @position: absolute) when (iskeyword(@location)) {
+.center-x(@location: top auto, @position: absolute) when not (isnumber(@location)) {
     .position(auto auto auto 50%, @position);
     .set(extract(@location, 1), extract(@location, 2));
     .translate(-50%, 0);
@@ -27,7 +27,7 @@
 
     .set(extract(@location, 1), extract(@location, 2));
 }
-.center-y(@location: left auto, @position: absolute) when (iskeyword(@location)) {
+.center-y(@location: left auto, @position: absolute) when not (isnumber(@location)) {
     .position(50% auto auto auto, @position);
     .set(extract(@location, 1), extract(@location, 2));
     .translate(0, -50%);
@@ -78,4 +78,3 @@
     margin: auto;
     .position(0, @position);
 }
-
