@@ -47,8 +47,11 @@
 
 
 // 文本描边效果
-.text-stroke(@color: #555) {
-    text-shadow: @color 1px 0 0, @color 0 1px 0, @color -1px 0 0, @color 0 -1px 0;
+.text-stroke(@color: #555, @thickness: 1px) {
+    text-shadow: @color @thickness 0 0,
+                 @color 0 @thickness 0,
+                 @color -@thickness 0 0,
+                 @color 0 -@thickness 0;
 }
 
 
