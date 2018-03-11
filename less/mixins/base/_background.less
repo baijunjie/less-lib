@@ -10,25 +10,22 @@
 }
 
 // 设置背景图
-.background-image(@url, @position: center, @repeat: no-repeat) {
-
-    & when (@url = none) {
-        background-image: none;
-    }
-
-    & when not (@url = none) {
-        @len: length(@url);
-        .loop(@i) {
-            @src: e(extract(@url, @i));
-            background-image+: url(@src);
-            & when (@i < @len) {
-                .loop(@i+1);
-            }
+.background-image(@url, @position: center, @repeat: no-repeat) when (isstring(@url)) {
+    @len: length(@url);
+    .loop(@i) {
+        @src: e(extract(@url, @i));
+        background-image+: url(@src);
+        & when (@i < @len) {
+            .loop(@i+1);
         }
-        .loop(1);
-        background-position+: @position;
-        background-repeat+: @repeat;
     }
+    .loop(1);
+    background-position+: @position;
+    background-repeat+: @repeat;
+}
+.background-image(@position: center, @repeat: no-repeat) when not (isstring(@position)) {
+    background-position: @position;
+    background-repeat: @repeat;
 }
 
 // 采用base64转码背景图

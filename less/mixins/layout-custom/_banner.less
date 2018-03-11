@@ -31,7 +31,10 @@
             }
 
             >img,
-            a>img { .size(100%); }
+            a>img {
+                .size(100%);
+                object-fit: cover;
+            }
         }
     }
 }
@@ -77,6 +80,7 @@
                 left: 0;
                 top: 0;
                 .size(100%);
+                object-fit: cover;
             }
         }
     }
@@ -111,6 +115,7 @@
             >img,
             a>img {
                 .size(100%, auto);
+                object-fit: cover;
             }
         }
     }

@@ -2,7 +2,7 @@ html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
 body, dl, dd, h1, h2, h3, h4, h5, h6, p, form, input { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 i, em { font-style: normal; }
-img { max-width: 100%; }
+img { max-width: 100%; } // 这里不要添加 max-height: 100%，因为在有些手机上，如果图片的父级没有高度，就会导致图片高度变得很小
 
 body {
 	.fix();
@@ -28,7 +28,6 @@ a { .acl(@lkcl); }
 }
 
 .wrap {
-	width: @min_width - 20px;
 	padding: 0 10px;
 	.cxbl();
 }
@@ -43,14 +42,10 @@ a { .acl(@lkcl); }
 
 .opacity-img {
 	.transition(opacity .3s);
-	.active({ .op(.8) !important; });
 }
 
 .shadow-box {
 	.transition(box-shadow .3s);
-	.active({
-		.bxsd(box) !important;
-	});
 }
 
 .directload img,
@@ -60,21 +55,95 @@ a { .acl(@lkcl); }
 	.bgsz(80%);
 }
 
-@media screen and (max-width: @screen_xs_max) { // 小屏幕（手机）
+.apple-blur {
+	.bgcl(fade(#fff, 90%));
+}
+
+@supports (-webkit-backdrop-filter: none) {
+	.apple-blur {
+		background-color: rgba(255,255,255,.5);
+		-webkit-backdrop-filter: saturate(180%) blur(20px);
+	}
+}
+
+@media screen and (min-width: @screen_lg) { // 超大屏幕及以上（桌面）
+	.wrap {
+		width: @screen_lg - 20px;
+	}
+}
+@media screen and (min-width: (@screen_sm + 1)) { // iPad 竖屏以上
+	body {
+		min-width: @screen_md;
+	}
+
+	.wrap {
+		width: @screen_md - 20px;
+	}
+
+	.only-pc {
+		display: block !important;
+	}
+
+	.only-pc-inline {
+		display: inline !important;
+	}
+
+	.only-pc-inline-block {
+		display: inline-block !important;
+	}
+
+	.only-mobile,
+	.only-mobile-inline,
+	.only-mobile-inline-block {
+		display: none !important;
+	}
+
+	.opacity-img {
+		.hover({ .op(.8) !important; });
+	}
+
+	.shadow-box {
+		.hover({ .bxsd(box) !important; });
+	}
+}
+@media screen and (max-width: @screen_sm) { // iPad 竖屏及以下
+	body {
+		min-width: 0;
+	}
+
+	.wrap {
+		width: auto;
+	}
+
+	.only-pc,
+	.only-pc-inline,
+	.only-pc-inline-block {
+		display: none !important;
+	}
+
+	.only-mobile {
+		display: block !important;
+	}
+
+	.only-mobile-inline {
+		display: inline !important;
+	}
+
+	.only-mobile-inline-block {
+		display: inline-block !important;
+	}
+
+	.opacity-img {
+		.active({ .op(.8) !important; });
+	}
+
+	.shadow-box {
+		.active({ .bxsd(box) !important; });
+	}
+}
+@media screen and (max-width: @screen_xs) { // iPhone Plus 及以下
 
 }
-@media screen and (max-width: @screen_ss_max) { // 超小屏幕（手机）
-
-}
-@media screen and (min-width: @screen_sm_min) { // 除小屏幕以外（非手机）
-
-}
-@media screen and (min-width: @screen_sm_min) and (max-width: @screen_sm_max) { // 中小屏幕（平板）
-
-}
-@media screen and (min-width: @screen_md_min) and (max-width: @screen_md_max) { // 中等屏幕（笔记本）
-
-}
-@media screen and (min-width: @screen_lg_min) { // 大屏幕（桌面）
+@media screen and (max-width: (@screen_ss - 1)) { // iPhoneX 以下
 
 }

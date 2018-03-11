@@ -42,7 +42,7 @@
 // @font_size 可以为两个值的数组
 // 第一个值代表字体大小
 // 第二个值代表高度
-._input-size(@font_size, @border_none: false) {
+.input-size(@font_size, @border_none: false) {
     .font-size(extract(@font_size, 1), left);
     .getSizeAndHeight();
 
@@ -134,7 +134,7 @@
 
 .input(@border_color: @input_active_border_color, @font_size: @form_default_font_size, @radius: .25em) {
     ._input();
-    ._input-size(@font_size);
+    .input-size(@font_size);
     .input-border-color(@border_color, @radius);
     line-height: @height; // IOS 中，输入框 placeholder 的 line-height 不会受到 box-sizing 的影响，必须始终与高度相等
 }

@@ -116,8 +116,11 @@
 	.background-color(@color, @active_class);
 }
 // 设置背景图
-.bgimg(@url, @position: center, @repeat: no-repeat) {
+.bgimg(@url, @position: center, @repeat: no-repeat) when (isstring(@url)) {
 	.background-image(@url, @position, @repeat);
+}
+.bgimg(@position: center, @repeat: no-repeat) when not (isstring(@position)) {
+	.background-image(@position, @repeat);
 }
 // 采用base64转码背景图
 .bgimg2(@url, @position: center, @repeat: no-repeat) {
@@ -211,13 +214,13 @@
 .lh(@height) {
 	height: @height;
 
-	& when (ispixel(@height)) {
-		line-height: @height;
-	}
-
 	& when (isem(@height)) {
 		line-height: unit(@height);
 	}
+
+    & when not(isem(@height)) {
+        line-height: @height;
+    }
 }
 
 // 文本阴影

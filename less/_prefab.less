@@ -18,13 +18,21 @@
 }
 
 .button {
-	.button-flat();
-	&.blue   { .button-flat-color(@blue); }
-	&.green  { .button-flat-color(@green); }
-	&.yellow { .button-flat-color(@yellow); }
-	&.red    { .button-flat-color(@red); }
-	&.sky    { .button-flat-color(@sky); }
-	&.gray   { .button-flat-color(@gray); }
+	.button-hollow(16px);
+	&.blue   { .button-hollow-color(@blue); }
+	&.green  { .button-hollow-color(@green); }
+	&.yellow { .button-hollow-color(@yellow); }
+	&.red    { .button-hollow-color(@red); }
+	&.sky    { .button-hollow-color(@sky); }
+	&.gray   { .button-hollow-color(@gray); }
+
+	&.small {
+		.button-hollow-size(12px);
+	}
+
+	&.big {
+		.button-hollow-size(20px);
+	}
 
 	& ~ * {
 		margin-left: 5px;

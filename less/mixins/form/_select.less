@@ -13,7 +13,7 @@
 
     & when (@select = false) {
         ._input();
-        ._input-size(@font_size);
+        .input-size(@font_size);
         line-height: 2.5em; // IOS 中，输入框 placeholder 的 line-height 不会受到 box-sizing 的影响，必须始终与高度相等
         position: relative;
         cursor: pointer;
@@ -35,7 +35,7 @@
 
         select {
             ._input();
-            ._input-size(@font_size);
+            .input-size(@font_size);
             -webkit-appearance: none; // IOS下的表单元素会有默认的样式，且无法通过CSS重置，因此需要将其的渲染设置为 none
             -moz-appearance: none;
             padding-right: 1.2em;

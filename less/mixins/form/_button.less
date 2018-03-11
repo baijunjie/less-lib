@@ -60,6 +60,9 @@
 
 
 // 扁平按钮
+.button-flat-size(@font_size) {
+    ._button-size(@font_size);
+}
 .button-flat-color(@button_color) {
     @new_color: darken(@button_color, max(lightness(@button_color)-95%,0%));
     @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
@@ -105,7 +108,7 @@
 }
 .button-flat(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
     ._button();
-    ._button-size(@font_size);
+    .button-flat-size(@font_size);
     .button-flat-color(@button_flat_defalut_color);
     .transition(all .15s);
     border-width: 1px;
@@ -114,7 +117,7 @@
 }
 .button-flat(@button_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
     ._button();
-    ._button-size(@font_size);
+    .button-flat-size(@font_size);
     .button-flat-color(@button_color);
     .transition(all .15s);
     border-width: 1px;
@@ -124,6 +127,9 @@
 
 
 // 弧面按钮
+.button-arc-size(@font_size) {
+    ._button-size(@font_size);
+}
 .button-arc-color(@button_color) {
     // 控制背景色的亮度值在10%~90%之间
     @new_color: darken(@button_color, max(lightness(@button_color)-90%,0%));
@@ -173,7 +179,7 @@
 }
 .button-arc(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
     ._button();
-    ._button-size(@font_size);
+    .button-arc-size(@font_size);
     .button-arc-color(@button_arc_defalut_color);
     .transition(all .15s);
     border-width: 1px;
@@ -182,7 +188,7 @@
 }
 .button-arc(@button_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
     ._button();
-    ._button-size(@font_size);
+    .button-arc-size(@font_size);
     .button-arc-color(@button_color);
     .transition(all .15s);
     border-width: 1px;
@@ -192,6 +198,9 @@
 
 
 // 立体按钮
+.button-cube-size(@font_size) {
+    ._button-size(@font_size, true);
+}
 .button-cube-color(@button_color) {
     @new_color: darken(@button_color, max(lightness(@button_color)-95%,0%));
     @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
@@ -242,10 +251,9 @@
 }
 .button-cube(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
     ._button();
-    ._button-size(@font_size, true);
+    .button-cube-size(@font_size);
     .button-cube-color(@button_cube_defalut_color);
     .transition(all .15s);
-    font-weight: bold;
     .border-radius(@radius);
 
     position: relative;
@@ -259,10 +267,9 @@
 }
 .button-cube(@button_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
     ._button();
-    ._button-size(@font_size, true);
+    .button-cube-size(@font_size);
     .button-cube-color(@button_color);
     .transition(all .15s);
-    font-weight: bold;
     .border-radius(@radius);
 
     position: relative;
@@ -277,6 +284,9 @@
 
 
 // apple 空心按钮
+.button-hollow-size(@font_size) {
+    ._button-size(@font_size);
+}
 .button-hollow-color(@color) {
     .getColor(@color) when (iscolor(@color)) {
         @button_color: @color;
@@ -311,7 +321,7 @@
 }
 .button-hollow(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
     ._button();
-    ._button-size(@font_size);
+    .button-hollow-size(@font_size);
     .button-hollow-color(@button_hollow_defalut_color #ffffff);
     .transition(all .15s);
     border-width: 1px;
@@ -320,7 +330,7 @@
 }
 .button-hollow(@button_color, @font_size: @form_default_font_size, @radius: .25em) when (default()) {
     ._button();
-    ._button-size(@font_size);
+    .button-hollow-size(@font_size);
     .button-hollow-color(@button_color);
     .transition(all .15s);
     border-width: 1px;

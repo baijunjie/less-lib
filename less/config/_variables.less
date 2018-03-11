@@ -14,23 +14,11 @@
 @form_default_font_size: 14px;
 
 // 响应式配置
-@screen_lg: 1200px;
-@screen_md: 992px;
+@screen_lg: 1280px;
+@screen_md: 1024px;
 @screen_sm: 768px;
-@screen_xs: 375px;
-// 大屏幕（桌面）
-@screen_lg_min: @screen_lg;
-// 中等屏幕（笔记本）
-@screen_md_min: @screen_md;
-@screen_md_max: (@screen_lg - 1);
-// 中小屏幕（平板）
-@screen_sm_min: @screen_sm;
-@screen_sm_max: (@screen_md - 1);
-// 小屏幕（手机）
-@screen_xs_min: @screen_xs;
-@screen_xs_max: (@screen_sm - 1);
-// 超小屏幕（手机）
-@screen_ss_max: (@screen_xs - 1);
+@screen_xs: 414px;
+@screen_ss: 375px;
 
 @ftdef: Helvetica, Arial, Verdana, sans-serif;  //页面默认备用字体
 @ft: Microsoft YaHei;  //页面默认首选字体（微软雅黑）
@@ -39,7 +27,6 @@
 @ft4: Arial;  //常用字体4
 @ft5: Impact;  //常用字体5
 @ftsz: 14px;  //页面默认字体大小
-@min_width: 1024px; //页面最小宽度
 
 // 页面常用色
 @ftcl: #333;  //常用字体颜色（黑）

@@ -11,7 +11,7 @@
     }
 }
 
-// 左箭头
+// 箭头左
 ._arrow-left(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     @height_half: @height / 2;
@@ -47,7 +47,7 @@
     ._arrow-left(@color, @width, @height, @pseudo_elements);
 }
 
-// 右箭头
+// 箭头右
 ._arrow-right(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     @height_half: @height / 2;
@@ -83,7 +83,7 @@
     ._arrow-right(@color, @width, @height, @pseudo_elements);
 }
 
-// 上箭头
+// 箭头上
 ._arrow-top(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     @width_half: @width / 2;
@@ -119,7 +119,7 @@
     ._arrow-top(@color, @width, @height, @pseudo_elements);
 }
 
-// 下箭头
+// 箭头下
 ._arrow-bottom(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     @width_half: @width / 2;
@@ -155,40 +155,8 @@
     ._arrow-bottom(@color, @width, @height, @pseudo_elements);
 }
 
-// 气泡箭头左下
-._arrow-left-bottom(@color, @width, @height, @pseudo_elements: before) {
-    @selector: e(':@{pseudo_elements}');
-    &@{selector} {
-        .border-left(transparent, @width);
-        .border-top(extract(@color, 1), @height);
-
-        & when (@compat_ie6 = true) {
-            _border-left-color: extract(@color, 2);
-        }
-    }
-}
-.arrow-left-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
-    @selector: e(':@{pseudo_elements}');
-    &@{selector} {
-        border-top-color: extract(@color, 1);
-
-        & when (@compat_ie6 = true) {
-            _border-left-color: extract(@color, 2);
-        }
-    }
-}
-.arrow-left-bottom(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
-    ._arrow(100% auto auto 1em, -1px 0 0 0, @pseudo_elements);
-    ._arrow-left-bottom(@color, @width, @height, @pseudo_elements);
-}
-.arrow-left-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
-    ._arrow(@position, @margin, @pseudo_elements);
-    ._arrow-left-bottom(@color, @width, @height, @pseudo_elements);
-}
-
-// 气泡箭头右下
-._arrow-right-bottom(@color, @width, @height, @pseudo_elements: before) {
+// 箭头左上
+._arrow-left-top(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     &@{selector} {
         .border-right(transparent, @width);
@@ -199,7 +167,7 @@
         }
     }
 }
-.arrow-right-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+.arrow-left-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
     @selector: e(':@{pseudo_elements}');
     &@{selector} {
         border-top-color: extract(@color, 1);
@@ -209,41 +177,9 @@
         }
     }
 }
-.arrow-right-bottom(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
-    ._arrow(100% 1em auto auto, -1px 0 0 0, @pseudo_elements);
-    ._arrow-right-bottom(@color, @width, @height, @pseudo_elements);
-}
-.arrow-right-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
-    ._arrow(@position, @margin, @pseudo_elements);
-    ._arrow-right-bottom(@color, @width, @height, @pseudo_elements);
-}
-
-// 气泡箭头左上
-._arrow-left-top(@color, @width, @height, @pseudo_elements: before) {
-    @selector: e(':@{pseudo_elements}');
-    &@{selector} {
-        .border-left(transparent, @width);
-        .border-bottom(extract(@color, 1), @height);
-
-        & when (@compat_ie6 = true) {
-            _border-left-color: extract(@color, 2);
-        }
-    }
-}
-.arrow-left-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
-    @selector: e(':@{pseudo_elements}');
-    &@{selector} {
-        border-bottom-color: extract(@color, 1);
-
-        & when (@compat_ie6 = true) {
-            _border-left-color: extract(@color, 2);
-        }
-    }
-}
 .arrow-left-top(@color, @width, @height, @pseudo_elements: before) {
     @width_half: @width / 2;
-    ._arrow(auto auto 100% 1em, 0 0 -1px 0, @pseudo_elements);
+    ._arrow(100% 1em auto auto, -1px 0 0 0, @pseudo_elements);
     ._arrow-left-top(@color, @width, @height, @pseudo_elements);
 }
 .arrow-left-top(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
@@ -251,8 +187,8 @@
     ._arrow-left-top(@color, @width, @height, @pseudo_elements);
 }
 
-// 气泡箭头右上
-._arrow-right-top(@color, @width, @height, @pseudo_elements: before) {
+// 箭头左下
+._arrow-left-bottom(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     &@{selector} {
         .border-right(transparent, @width);
@@ -263,7 +199,7 @@
         }
     }
 }
-.arrow-right-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+.arrow-left-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
     @selector: e(':@{pseudo_elements}');
     &@{selector} {
         border-bottom-color: extract(@color, 1);
@@ -273,12 +209,76 @@
         }
     }
 }
-.arrow-right-top(@color, @width, @height, @pseudo_elements: before) {
+.arrow-left-bottom(@color, @width, @height, @pseudo_elements: before) {
     @width_half: @width / 2;
     ._arrow(auto 1em 100% auto, 0 0 -1px 0, @pseudo_elements);
+    ._arrow-left-bottom(@color, @width, @height, @pseudo_elements);
+}
+.arrow-left-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-left-bottom(@color, @width, @height, @pseudo_elements);
+}
+
+// 箭头右上
+._arrow-right-top(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .border-left(transparent, @width);
+        .border-top(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-top-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-top(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(100% auto auto 1em, -1px 0 0 0, @pseudo_elements);
     ._arrow-right-top(@color, @width, @height, @pseudo_elements);
 }
 .arrow-right-top(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
     ._arrow(@position, @margin, @pseudo_elements);
     ._arrow-right-top(@color, @width, @height, @pseudo_elements);
+}
+
+// 箭头右下
+._arrow-right-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        .border-left(transparent, @width);
+        .border-bottom(extract(@color, 1), @height);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+    @selector: e(':@{pseudo_elements}');
+    &@{selector} {
+        border-bottom-color: extract(@color, 1);
+
+        & when (@compat_ie6 = true) {
+            _border-left-color: extract(@color, 2);
+        }
+    }
+}
+.arrow-right-bottom(@color, @width, @height, @pseudo_elements: before) {
+    @width_half: @width / 2;
+    ._arrow(auto auto 100% 1em, 0 0 -1px 0, @pseudo_elements);
+    ._arrow-right-bottom(@color, @width, @height, @pseudo_elements);
+}
+.arrow-right-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+    ._arrow(@position, @margin, @pseudo_elements);
+    ._arrow-right-bottom(@color, @width, @height, @pseudo_elements);
 }
