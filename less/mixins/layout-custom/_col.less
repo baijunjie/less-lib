@@ -1,7 +1,59 @@
-// 两栏自适应
-// @offset 参数表示左右内边距+边框的值
-// 左栏定宽，右栏自适应（高度100%时，两栏不可以有上下内边距和边框）
-.col2(float, @height: auto, @width, @offset: 0, @left: '>:first-child', @right: '>:nth-child(2)') {
+// 两栏自适应（表格）
+.col2(
+    table,
+    @width,
+    @align: top,
+    @left: '>:first-child',
+    @right: '>:nth-child(2)') {
+
+    @left_selector: e(@left);
+    @right_selector: e(@right);
+
+    display: table;
+
+    @{left_selector} {
+        display: table-cell;
+        vertical-align: @align;
+        .set-width(@width);
+    }
+    @{right_selector} {
+        display: table-cell;
+        vertical-align: @align;
+    }
+}
+
+.col2-r(
+    table,
+    @width,
+    @align: top,
+    @left: '>:first-child',
+    @right: '>:nth-child(2)') {
+
+    @left_selector: e(@left);
+    @right_selector: e(@right);
+
+    display: table;
+
+    @{left_selector} {
+        display: table-cell;
+        vertical-align: @align;
+    }
+    @{right_selector} {
+        display: table-cell;
+        vertical-align: @align;
+        .set-width(@width);
+    }
+}
+
+// 两栏自适应（浮动）
+.col2(
+    float,
+    @height: auto,
+    @width,
+    @offset: 0, // 两栏间隔
+    @left: '>:first-child',
+    @right: '>:nth-child(2)') {
+
     @left_selector: e(@left);
     @right_selector: e(@right);
 
@@ -19,23 +71,15 @@
     }
 }
 
-// 如果某一栏需要设置上下内边距，且必须高度自适应，可以使用绝对定位的方法
-.col2(@width, @offset: 0, @left: '>:first-child', @right: '>:nth-child(2)') when not (@width = float) {
-    @left_selector: e(@left);
-    @right_selector: e(@right);
+// 由于右栏固定并为浮动元素，因此右栏在文档树中必须位于左栏前面
+.col2-r(
+    float,
+    @height: auto,
+    @width,
+    @offset: 0,
+    @left: '>:nth-child(2)',
+    @right: '>:first-child') {
 
-    @{left_selector} {
-        .position(0 auto 0 0);
-        .set-width(@width);
-    }
-    @{right_selector} {
-        .fit(0 0 0 @width + @offset);
-    }
-}
-
-// 右栏定宽，左栏自适应
-// 如果不使用绝对定位的方法，那么由于固定栏为浮动元素，因此右栏在文档树中必须位于左栏前面
-.col2-r(float, @height: auto, @width, @offset: 0, @left: '>:nth-child(2)', @right: '>:first-child') {
     @left_selector: e(@left);
     @right_selector: e(@right);
 
@@ -53,8 +97,34 @@
     }
 }
 
-// 如果某一栏需要设置上下内边距，且必须高度自适应，可以使用绝对定位的方法
-.col2-r(@width, @offset: 0, @left: '>:first-child', @right: '>:nth-child(2)') when not (@width = float) {
+// 两栏自适应（绝对定位）
+// 每一栏的高度为 100%，要求父元素必须有自己的高度
+.col2(
+    position,
+    @width,
+    @offset: 0,
+    @left: '>:first-child',
+    @right: '>:nth-child(2)') when not (@width = float) {
+
+    @left_selector: e(@left);
+    @right_selector: e(@right);
+
+    @{left_selector} {
+        .position(0 auto 0 0);
+        .set-width(@width);
+    }
+    @{right_selector} {
+        .fit(0 0 0 @width + @offset);
+    }
+}
+
+.col2-r(
+    position,
+    @width,
+    @offset: 0,
+    @left: '>:first-child',
+    @right: '>:nth-child(2)') when not (@width = float) {
+
     @left_selector: e(@left);
     @right_selector: e(@right);
 
@@ -67,9 +137,43 @@
     }
 }
 
-// 三栏自适应
-// 如果不使用绝对定位的方法，那么由于固定栏为浮动元素，因此左右两栏在文档树中必须位于中间栏前面
-.col3(float,
+
+// 三栏自适应（表格）
+.col3(
+    table,
+    @left_width,
+    @right_width,
+    @align: top,
+    @left: '>:first-child',
+    @middle: '>:nth-child(3)',
+    @right: '>:nth-child(2)') {
+
+    @left_selector: e(@left);
+    @middle_selector: e(@middle);
+    @right_selector: e(@right);
+
+    display: table;
+
+    @{left_selector} {
+        display: table-cell;
+        vertical-align: @align;
+        .set-width(@left_width);
+    }
+    @{middle_selector} {
+        display: table-cell;
+        vertical-align: @align;
+    }
+    @{right_selector} {
+        display: table-cell;
+        vertical-align: @align;
+        .set-width(@right_width);
+    }
+}
+
+// 三栏自适应（浮动）
+// 由于左右栏固定并为浮动元素，因此左右栏在文档树中必须位于中间栏前面
+.col3(
+    float,
     @height: auto,
     @left_width,
     @right_width,
@@ -103,8 +207,10 @@
     }
 }
 
-// 如果某一栏需要设置上下内边距，且必须高度自适应，可以使用绝对定位的方法
-.col3(@left_width,
+// 三栏自适应（绝对定位）
+.col3(
+    position,
+    @left_width,
     @right_width,
     @left_offset: 0,
     @right_offset: 0,

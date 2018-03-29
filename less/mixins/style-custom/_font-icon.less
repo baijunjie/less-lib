@@ -8,21 +8,16 @@
 }
 
 // 字体图标按钮
-.font-icon-button(@size, @color, @active_class: active) when (iscolor(@color)) {
+.font-icon-button(@size, @color) when (iscolor(@color)) {
     .font-icon(@size, @color);
-    .transition(color .3s);
     cursor: pointer;
-
-    .hover({
-        color: contrast(@color, darken(@color,20%), lighten(@color,20%), 80%);
-    }, @active_class);
 }
-.font-icon-button(@size, @color, @active_class: active) when (length(@color) > 1) {
+.font-icon-button(@size, @color, @active_class: active) when (iscolor(extract(@color, 2))) {
     .font-icon(@size, extract(@color, 1));
     .transition(color .3s);
     cursor: pointer;
 
-    .hover({
+    .hover-or-active({
         color: extract(@color, 2);
     }, @active_class);
 }

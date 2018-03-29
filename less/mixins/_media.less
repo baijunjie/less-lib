@@ -1,0 +1,29 @@
+.screen-pc-big(@block) { // 超大屏幕及以上
+	@media (min-width: @screen_xl) {
+		@block();
+	}
+}
+
+.screen-pc(@block) { // iPad 竖屏以上
+	@media (min-width: (@screen_md + 1)) {
+		@block();
+	}
+}
+
+.screen-mobile(@block) { // iPad 竖屏及以下
+	@media (max-width: @screen_md) {
+		@block();
+	}
+}
+
+.screen-mobile-middle(@block) { // iPhone Plus 及以下
+	@media (max-width: @screen_sm) {
+		@block();
+	}
+}
+
+.screen-mobile-small(@block) { // iPhoneX 以下
+	@media (max-width: (@screen_xs - 1)) {
+		@block();
+	}
+}

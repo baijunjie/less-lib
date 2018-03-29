@@ -6,6 +6,9 @@
 
     @{item_selector} {
         float: left;
-        width: 100% / @column_count;
+
+        & when (@column_count > 0) {
+            width: 100% / @column_count;
+        }
     }
 }

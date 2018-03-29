@@ -5,46 +5,42 @@
 //     <div class="item"></div>
 //   </li>
 // </ul>
-.list(
+.list-float(
     @count,
     @spacing: 0,
     @item_wrap: '>*',
     @item: '@{item_wrap}>*') when not (@count = jy) {
 
-    @item_wrap_selector: e(@item_wrap);
     @item_selector: e(@item);
     @half_spacing: @spacing * .5;
 
-    .fit(@half_spacing 0);
-
-    @{item_wrap_selector} {
-        position: relative;
-        height: 100% / @count;
-    }
+    margin-left: @half_spacing;
+    margin-right: @half_spacing;
+    .mean(@count, @item_wrap);
 
     @{item_selector} {
-        .fit(@half_spacing 0);
+        display: block;
+        margin-left: @half_spacing;
+        margin-right: @half_spacing;
     }
 }
-.list(
+.list-float(
     jy,
     @count,
     @spacing: 0,
     @item_wrap: '>*',
     @item: '@{item_wrap}>*') {
 
-    @item_wrap_selector: e(@item_wrap);
     @item_selector: e(@item);
     @half_spacing: @spacing * .5;
 
-    .fit(-@half_spacing 0);
-
-    @{item_wrap_selector} {
-        position: relative;
-        height: 100% / @count;
-    }
+    margin-left: -@half_spacing;
+    margin-right: -@half_spacing;
+    .mean(@count, @item_wrap);
 
     @{item_selector} {
-        .fit(@half_spacing 0);
+        display: block;
+        margin-left: @half_spacing;
+        margin-right: @half_spacing;
     }
 }

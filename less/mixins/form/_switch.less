@@ -23,8 +23,6 @@
 
     position: relative;
     .inline-block();
-    width: @width;
-    height: @height;
     vertical-align: middle;
 
     &.disabled,
@@ -37,8 +35,8 @@
     input[type="radio"],
     input[type="checkbox"] {
         .appearance-none();
-        width: 100%;
-        height: 100%;
+        width: @width;
+        height: @height;
         position: absolute;
         left: 0;
         top: 0;
@@ -52,12 +50,13 @@
             pointer-events: none;
             .opacity(.5);
 
-            & + @{selector} { .opacity(.5); }
+            & ~ @{selector} { .opacity(.5); }
         }
 
-        & + @{selector} {
+        & ~ @{selector} {
             position: relative;
-            display: block;
+            display: inline-block;
+            vertical-align: middle;
             width: @inner_width;
             height: @inner_height;
             .border-radius(@height / 2);
@@ -89,7 +88,7 @@
             }
         }
 
-        &:checked + @{selector} {
+        &:checked ~ @{selector} {
             background: @checked_color;
             border-color: @checked_color;
             &:before {
@@ -101,9 +100,9 @@
         }
     }
 }
-.switch(@width: 50px, @height: 30px, @elem: '*') when (isnumber(@width)) {
+.switch(@width: 50px, @height: 30px, @elem: 'i') when (isnumber(@width)) {
     ._switch(@switch_default_color, @width, @height, @elem);
 }
-.switch(@color, @width: 50px, @height: 30px, @elem: '*') when (iscolor(extract(@color, 1))) {
+.switch(@color, @width: 50px, @height: 30px, @elem: 'i') when (iscolor(extract(@color, 1))) {
     ._switch(@color, @width, @height, @elem);
 }

@@ -1,5 +1,6 @@
 // 表单元素预设样式
-.input {
+.input,
+.textarea {
 	.input();
 	&.error       { .input-border-color(@red @red); }
 	&.transparent { .input-border-color(none); }
@@ -10,7 +11,6 @@
 }
 
 .textarea {
-	&:extend(.input);
 	resize: vertical;
 	height: auto;
 	line-height: 1.5;
@@ -59,6 +59,29 @@
 
 .switch {
 	.switch();
+}
+
+.checkbox,
+.radio,
+.switch {
+	input[type="radio"],
+	input[type="checkbox"] {
+		& ~ .checked-show,
+		& ~ .checked-hide {
+			margin: 0 10px;
+			vertical-align: middle;
+			.nowrap;
+			color: @ftcl2;
+		}
+
+		& ~ .checked-show { display: none; }
+		& ~ .checked-hide { display: inline-block; }
+
+		&:checked {
+			& ~ .checked-show { display: inline-block; }
+			& ~ .checked-hide { display: none; }
+		}
+	}
 }
 
 .progress {

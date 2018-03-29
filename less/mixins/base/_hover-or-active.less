@@ -9,8 +9,17 @@
 // 添加指向时的代码块
 .hover(@block, @active_class: active) {
     &.@{active_class},
-    &:active,
     &:hover {
         @block();
     }
+}
+
+.hover-or-active(@block, @active_class: active) {
+    .screen-pc({
+        .hover(@block, @active_class);
+    });
+
+    .screen-mobile({
+        .active(@block, @active_class);
+    });
 }

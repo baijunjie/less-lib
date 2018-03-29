@@ -455,6 +455,9 @@ em {
   font-style: normal;
 }
 img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 100%;
 }
 body {
@@ -475,7 +478,6 @@ a {
   text-decoration: none;
 }
 a.active,
-a:active,
 a:hover {
   color: #05a;
   text-decoration: underline;
@@ -492,7 +494,6 @@ a:hover {
   text-decoration: none;
 }
 .noa.active,
-.noa:active,
 .noa:hover {
   color: inherit;
   text-decoration: none;
@@ -501,7 +502,8 @@ a:hover {
   width: 100%;
 }
 .wrap {
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -519,20 +521,47 @@ a:hover {
   -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
+@media (min-width: 769px) {
+  .opacity-img.active,
+  .opacity-img:hover {
+    opacity: 0.8 !important;
+  }
+}
+@media (max-width: 768px) {
+  .opacity-img.active,
+  .opacity-img:active {
+    opacity: 0.8 !important;
+  }
+}
 .shadow-box {
   -webkit-transition: box-shadow 0.3s;
   -moz-transition: box-shadow 0.3s;
   -o-transition: box-shadow 0.3s;
   transition: box-shadow 0.3s;
 }
-.directload img,
-.lazyload img {
-  width: 100%;
-  height: 100%;
-  background-color: #ccc;
-  -webkit-background-size: 80%;
-  -moz-background-size: 80%;
-  background-size: 80%;
+@media (min-width: 769px) {
+  .shadow-box.active,
+  .shadow-box:hover {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+  }
+}
+@media (max-width: 768px) {
+  .shadow-box.active,
+  .shadow-box:active {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+  }
+}
+.directload img[data-src],
+.lazyload img[data-src] {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%20120%20120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.step-rotate%7Btransform-origin%3Acenter%3Banimation-name%3Arotate%3Banimation-duration%3A1s%3Banimation-iteration-count%3Ainfinite%3Banimation-timing-function%3Asteps(12%2Cend)%7D%40keyframes%20rotate%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(360deg)%7D%7D%3C%2Fstyle%3E%3Cdefs%3E%3Cline%20id%3D%22l%22%20x1%3D%2260%22%20x2%3D%2260%22%20y1%3D%227%22%20y2%3D%2227%22%20stroke%3D%22%23999%22%20stroke-width%3D%2211%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fdefs%3E%3Cg%20class%3D%22step-rotate%22%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(30%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(60%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(90%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(120%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(150%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.37%22%20transform%3D%22rotate(180%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.46%22%20transform%3D%22rotate(210%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.56%22%20transform%3D%22rotate(240%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.66%22%20transform%3D%22rotate(270%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.75%22%20transform%3D%22rotate(300%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.85%22%20transform%3D%22rotate(330%2060%2C60)%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+  background-size: 30px 30px;
 }
 .apple-blur {
   background-color: rgba(255, 255, 255, 0.9);
@@ -543,78 +572,32 @@ a:hover {
     -webkit-backdrop-filter: saturate(180%) blur(20px);
   }
 }
-@media screen and (min-width: 1280px) {
+@media (min-width: 1280px) {
   .wrap {
     width: 1260px;
   }
 }
-@media screen and (min-width: 769px) {
+@media (min-width: 769px) {
   body {
     min-width: 1024px;
   }
   .wrap {
     width: 1004px;
   }
-  .only-pc {
-    display: block !important;
-  }
-  .only-pc-inline {
-    display: inline !important;
-  }
-  .only-pc-inline-block {
-    display: inline-block !important;
-  }
-  .only-mobile,
-  .only-mobile-inline,
-  .only-mobile-inline-block {
+  .only-mobile {
     display: none !important;
   }
-  .opacity-img.active,
-  .opacity-img:active,
-  .opacity-img:hover {
-    opacity: 0.8 !important;
-  }
-  .shadow-box.active,
-  .shadow-box:active,
-  .shadow-box:hover {
-    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
-  }
 }
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   body {
     min-width: 0;
   }
   .wrap {
     width: auto;
   }
-  .only-pc,
-  .only-pc-inline,
-  .only-pc-inline-block {
+  .only-pc {
     display: none !important;
   }
-  .only-mobile {
-    display: block !important;
-  }
-  .only-mobile-inline {
-    display: inline !important;
-  }
-  .only-mobile-inline-block {
-    display: inline-block !important;
-  }
-  .opacity-img.active,
-  .opacity-img:active {
-    opacity: 0.8 !important;
-  }
-  .shadow-box.active,
-  .shadow-box:active {
-    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
-  }
-}
-@media screen and (max-width: 414px) {
-}
-@media screen and (max-width: 374px) {
 }
 .input,
 .textarea {
@@ -645,38 +628,50 @@ a:hover {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   line-height: 35px;
 }
-.input::-moz-placeholder {
+.input::-moz-placeholder,
+.textarea::-moz-placeholder {
   color: #999;
   opacity: 1;
 }
-.input:-ms-input-placeholder {
+.input:-ms-input-placeholder,
+.textarea:-ms-input-placeholder {
   color: #999;
 }
-.input::-webkit-input-placeholder {
+.input::-webkit-input-placeholder,
+.textarea::-webkit-input-placeholder {
   color: #999;
 }
-.input:focus {
+.input:focus,
+.textarea:focus {
   outline: 0;
 }
 .input.disabled,
+.textarea.disabled,
 .input[disabled],
-.input[readonly] {
+.textarea[disabled],
+.input[readonly],
+.textarea[readonly] {
   cursor: not-allowed !important;
 }
-.input:focus {
+.input:focus,
+.textarea:focus {
   border-color: #66afe9 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(102, 175, 233, 0.6) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(102, 175, 233, 0.6) !important;
 }
 .input.disabled,
+.textarea.disabled,
 .input[disabled],
-.input[readonly] {
+.textarea[disabled],
+.input[readonly],
+.textarea[readonly] {
   border-color: #cccccc !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   background: #eeeeee !important;
 }
-.input.error {
+.input.error,
+.textarea.error {
   border-color: #FF4949;
   -webkit-border-radius: 0.25em;
   border-radius: 0.25em;
@@ -688,20 +683,25 @@ a:hover {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-.input.error:focus {
+.input.error:focus,
+.textarea.error:focus {
   border-color: #FF4949 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(255, 73, 73, 0.6) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(255, 73, 73, 0.6) !important;
 }
 .input.error.disabled,
+.textarea.error.disabled,
 .input.error[disabled],
-.input.error[readonly] {
+.textarea.error[disabled],
+.input.error[readonly],
+.textarea.error[readonly] {
   border-color: #FF4949 !important;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   background: #eeeeee !important;
 }
-.input.transparent {
+.input.transparent,
+.textarea.transparent {
   -webkit-border-radius: 0;
   border-radius: 0;
   border-color: transparent;
@@ -713,20 +713,25 @@ a:hover {
   -o-transition: none;
   transition: none;
 }
-.input.transparent:focus {
+.input.transparent:focus,
+.textarea.transparent:focus {
   border-color: transparent !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 .input.transparent.disabled,
+.textarea.transparent.disabled,
 .input.transparent[disabled],
-.input.transparent[readonly] {
+.textarea.transparent[disabled],
+.input.transparent[readonly],
+.textarea.transparent[readonly] {
   border-color: transparent !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   background: transparent !important;
 }
-.input ~ * {
+.input ~ *,
+.textarea ~ * {
   margin-left: 5px;
 }
 .textarea {
@@ -1192,8 +1197,6 @@ a:hover {
 .checkbox {
   position: relative;
   display: inline-block;
-  width: 22px;
-  height: 22px;
   vertical-align: middle;
 }
 .checkbox.disabled,
@@ -1216,8 +1219,8 @@ a:hover {
   margin: 0;
   padding: 0;
   border: 0;
-  width: 100%;
-  height: 100%;
+  width: 22px;
+  height: 22px;
   position: absolute;
   left: 0;
   top: 0;
@@ -1241,14 +1244,15 @@ a:hover {
 .checkbox input[type="radio"] + *,
 .checkbox input[type="checkbox"] + * {
   position: relative;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
   border: 1px solid #cccccc;
   background: #ffffff;
   overflow: hidden;
@@ -1293,11 +1297,34 @@ a:hover {
   left: 100%;
   background: #20A0FF;
 }
+.checkbox input[type="radio"] ~ .checked-show,
+.checkbox input[type="checkbox"] ~ .checked-show,
+.checkbox input[type="radio"] ~ .checked-hide,
+.checkbox input[type="checkbox"] ~ .checked-hide {
+  margin: 0 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #666;
+}
+.checkbox input[type="radio"] ~ .checked-show,
+.checkbox input[type="checkbox"] ~ .checked-show {
+  display: none;
+}
+.checkbox input[type="radio"] ~ .checked-hide,
+.checkbox input[type="checkbox"] ~ .checked-hide {
+  display: inline-block;
+}
+.checkbox input[type="radio"]:checked ~ .checked-show,
+.checkbox input[type="checkbox"]:checked ~ .checked-show {
+  display: inline-block;
+}
+.checkbox input[type="radio"]:checked ~ .checked-hide,
+.checkbox input[type="checkbox"]:checked ~ .checked-hide {
+  display: none;
+}
 .radio {
   position: relative;
   display: inline-block;
-  width: 22px;
-  height: 22px;
   vertical-align: middle;
 }
 .radio.disabled,
@@ -1320,8 +1347,8 @@ a:hover {
   margin: 0;
   padding: 0;
   border: 0;
-  width: 100%;
-  height: 100%;
+  width: 22px;
+  height: 22px;
   position: absolute;
   left: 0;
   top: 0;
@@ -1345,14 +1372,15 @@ a:hover {
 .radio input[type="radio"] + *,
 .radio input[type="checkbox"] + * {
   position: relative;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  -webkit-border-radius: 100%;
-  border-radius: 100%;
   border: 1px solid #cccccc;
   background: #ffffff;
 }
@@ -1394,11 +1422,34 @@ a:hover {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
+.radio input[type="radio"] ~ .checked-show,
+.radio input[type="checkbox"] ~ .checked-show,
+.radio input[type="radio"] ~ .checked-hide,
+.radio input[type="checkbox"] ~ .checked-hide {
+  margin: 0 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #666;
+}
+.radio input[type="radio"] ~ .checked-show,
+.radio input[type="checkbox"] ~ .checked-show {
+  display: none;
+}
+.radio input[type="radio"] ~ .checked-hide,
+.radio input[type="checkbox"] ~ .checked-hide {
+  display: inline-block;
+}
+.radio input[type="radio"]:checked ~ .checked-show,
+.radio input[type="checkbox"]:checked ~ .checked-show {
+  display: inline-block;
+}
+.radio input[type="radio"]:checked ~ .checked-hide,
+.radio input[type="checkbox"]:checked ~ .checked-hide {
+  display: none;
+}
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 30px;
   vertical-align: middle;
 }
 .switch.disabled,
@@ -1415,8 +1466,8 @@ a:hover {
   margin: 0;
   padding: 0;
   border: 0;
-  width: 100%;
-  height: 100%;
+  width: 50px;
+  height: 30px;
   position: absolute;
   left: 0;
   top: 0;
@@ -1454,7 +1505,8 @@ a:hover {
 .switch input[type="radio"] + *,
 .switch input[type="checkbox"] + * {
   position: relative;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   width: 46px;
   height: 26px;
   -webkit-border-radius: 15px;
@@ -1523,6 +1575,80 @@ a:hover {
   -ms-transform: translate(20px, 0);
   -o-transform: translate(20px, 0);
   transform: translate(20px, 0);
+}
+.switch input[type="radio"] ~ .checked-show,
+.switch input[type="checkbox"] ~ .checked-show,
+.switch input[type="radio"] ~ .checked-hide,
+.switch input[type="checkbox"] ~ .checked-hide {
+  margin: 0 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #666;
+}
+.switch input[type="radio"] ~ .checked-show,
+.switch input[type="checkbox"] ~ .checked-show {
+  display: none;
+}
+.switch input[type="radio"] ~ .checked-hide,
+.switch input[type="checkbox"] ~ .checked-hide {
+  display: inline-block;
+}
+.switch input[type="radio"]:checked ~ .checked-show,
+.switch input[type="checkbox"]:checked ~ .checked-show {
+  display: inline-block;
+}
+.switch input[type="radio"]:checked ~ .checked-hide,
+.switch input[type="checkbox"]:checked ~ .checked-hide {
+  display: none;
+}
+.checkbox input[type="radio"] ~ .checked-show,
+.radio input[type="radio"] ~ .checked-show,
+.switch input[type="radio"] ~ .checked-show,
+.checkbox input[type="checkbox"] ~ .checked-show,
+.radio input[type="checkbox"] ~ .checked-show,
+.switch input[type="checkbox"] ~ .checked-show,
+.checkbox input[type="radio"] ~ .checked-hide,
+.radio input[type="radio"] ~ .checked-hide,
+.switch input[type="radio"] ~ .checked-hide,
+.checkbox input[type="checkbox"] ~ .checked-hide,
+.radio input[type="checkbox"] ~ .checked-hide,
+.switch input[type="checkbox"] ~ .checked-hide {
+  margin: 0 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #666;
+}
+.checkbox input[type="radio"] ~ .checked-show,
+.radio input[type="radio"] ~ .checked-show,
+.switch input[type="radio"] ~ .checked-show,
+.checkbox input[type="checkbox"] ~ .checked-show,
+.radio input[type="checkbox"] ~ .checked-show,
+.switch input[type="checkbox"] ~ .checked-show {
+  display: none;
+}
+.checkbox input[type="radio"] ~ .checked-hide,
+.radio input[type="radio"] ~ .checked-hide,
+.switch input[type="radio"] ~ .checked-hide,
+.checkbox input[type="checkbox"] ~ .checked-hide,
+.radio input[type="checkbox"] ~ .checked-hide,
+.switch input[type="checkbox"] ~ .checked-hide {
+  display: inline-block;
+}
+.checkbox input[type="radio"]:checked ~ .checked-show,
+.radio input[type="radio"]:checked ~ .checked-show,
+.switch input[type="radio"]:checked ~ .checked-show,
+.checkbox input[type="checkbox"]:checked ~ .checked-show,
+.radio input[type="checkbox"]:checked ~ .checked-show,
+.switch input[type="checkbox"]:checked ~ .checked-show {
+  display: inline-block;
+}
+.checkbox input[type="radio"]:checked ~ .checked-hide,
+.radio input[type="radio"]:checked ~ .checked-hide,
+.switch input[type="radio"]:checked ~ .checked-hide,
+.checkbox input[type="checkbox"]:checked ~ .checked-hide,
+.radio input[type="checkbox"]:checked ~ .checked-hide,
+.switch input[type="checkbox"]:checked ~ .checked-hide {
+  display: none;
 }
 .progress {
   -webkit-transition: all 0.3s linear, all 0.3s linear;
@@ -2899,45 +3025,12 @@ body {
 .loading2 {
   width: 30px;
   height: 30px;
-}
-.loading2:before {
-  content: '';
-  display: block;
-  width: 30px;
-  height: 30px;
-  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%20120%20120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cline%20id%3D%22l%22%20x1%3D%2260%22%20x2%3D%2260%22%20y1%3D%227%22%20y2%3D%2227%22%20stroke%3D%22%2320A0FF%22%20stroke-width%3D%2211%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(30%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(60%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(90%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(120%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(150%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.37%22%20transform%3D%22rotate(180%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.46%22%20transform%3D%22rotate(210%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.56%22%20transform%3D%22rotate(240%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.66%22%20transform%3D%22rotate(270%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.75%22%20transform%3D%22rotate(300%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.85%22%20transform%3D%22rotate(330%2060%2C60)%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%20120%20120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.step-rotate%7Btransform-origin%3Acenter%3Banimation-name%3Arotate%3Banimation-duration%3A1s%3Banimation-iteration-count%3Ainfinite%3Banimation-timing-function%3Asteps(12%2Cend)%7D%40keyframes%20rotate%7Bfrom%7Btransform%3Arotate(0deg)%7Dto%7Btransform%3Arotate(360deg)%7D%7D%3C%2Fstyle%3E%3Cdefs%3E%3Cline%20id%3D%22l%22%20x1%3D%2260%22%20x2%3D%2260%22%20y1%3D%227%22%20y2%3D%2227%22%20stroke%3D%22%2320A0FF%22%20stroke-width%3D%2211%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fdefs%3E%3Cg%20class%3D%22step-rotate%22%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(30%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(60%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(90%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(120%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.27%22%20transform%3D%22rotate(150%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.37%22%20transform%3D%22rotate(180%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.46%22%20transform%3D%22rotate(210%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.56%22%20transform%3D%22rotate(240%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.66%22%20transform%3D%22rotate(270%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.75%22%20transform%3D%22rotate(300%2060%2C60)%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23l%22%20opacity%3D%22.85%22%20transform%3D%22rotate(330%2060%2C60)%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
   background-position: center;
   background-repeat: no-repeat;
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   background-size: 100%;
-  -webkit-animation: animation-loading2 1s steps(12, end) 0s infinite normal;
-  -o-animation: animation-loading2 1s steps(12, end) 0s infinite normal;
-  animation: animation-loading2 1s steps(12, end) 0s infinite normal;
-}
-@-webkit-keyframes animation-loading2 {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-moz-keyframes animation-loading2 {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-@keyframes animation-loading2 {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 .loading3 {
   width: 30px;

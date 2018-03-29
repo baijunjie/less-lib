@@ -3,7 +3,7 @@
     background-color: extract(@color, 1);
 
     & when (length(@color) = 2) {
-        .hover({
+        .hover-or-active({
             background-color: extract(@color, 2);
         }, @active_class);
     }
