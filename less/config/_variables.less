@@ -4,8 +4,8 @@
 
 // 是否兼容
 @compat_ie6: false;
-@compat_ie7: `false || @{compat_ie6}`;
-@compat_ie8: `false || @{compat_ie7}`;
+@compat_ie7: `false || eval(@{compat_ie6})`;
+@compat_ie8: `false || eval(@{compat_ie7})`;
 
 // 是否添加浏览器兼容前缀
 @prefix: true;
