@@ -1,99 +1,55 @@
-// 表单元素预设样式
-.input,
-.textarea {
-	.input();
-	&.error       { .input-border-color(@red @red); }
-	&.transparent { .input-border-color(none); }
+// 常用类
+.hide { visibility: hidden !important; }
+.none, [v-cloak] { display: none !important; }
 
-	& ~ * {
-		margin-left: 5px;
+.noa {
+	.acl(none);
+}
+
+.full {
+	width: 100% !important;
+}
+
+.wrap {
+	padding-left: 10px;
+	padding-right: 10px;
+	.cxbl();
+}
+
+.share-img {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.opacity-img {
+	.transition(opacity .3s);
+	.hover-or-active({ .op(.8) !important; });
+}
+
+.shadow-box {
+	.transition(box-shadow .3s);
+	.hover-or-active({ .bxsd(box) !important; });
+}
+
+.directload img[data-src],
+.lazyload img[data-src] {
+	.loading2(#999, auto);
+	background-size: 30px 30px;
+}
+
+.apple-blur {
+	.bgcl(fade(#fff, 90%));
+}
+
+@supports (-webkit-backdrop-filter: none) {
+	.apple-blur {
+		background-color: rgba(255,255,255,.5);
+		-webkit-backdrop-filter: saturate(180%) blur(20px);
 	}
 }
-
-.textarea {
-	resize: vertical;
-	height: auto;
-	line-height: 1.5;
-	padding: .5em;
-}
-
-.button {
-	.button-hollow(16px);
-	&.blue   { .button-hollow-color(@blue); }
-	&.green  { .button-hollow-color(@green); }
-	&.yellow { .button-hollow-color(@yellow); }
-	&.red    { .button-hollow-color(@red); }
-	&.sky    { .button-hollow-color(@sky); }
-	&.gray   { .button-hollow-color(@gray); }
-
-	&.small {
-		.button-hollow-size(12px);
-	}
-
-	&.big {
-		.button-hollow-size(20px);
-	}
-
-	& ~ * {
-		margin-left: 5px;
-	}
-}
-
-.select {
-	.select();
-	&.transparent { .select-border-color(none); }
-}
-
-.select2 {
-	.select2();
-	&.transparent { .select-border-color(none); }
-}
-
-.checkbox {
-	.checkbox();
-}
-
-.radio {
-	.radio();
-}
-
-.switch {
-	.switch();
-}
-
-.checkbox,
-.radio,
-.switch {
-	input[type="radio"],
-	input[type="checkbox"] {
-		& ~ .checked-show,
-		& ~ .checked-hide {
-			margin: 0 10px;
-			vertical-align: middle;
-			.nowrap;
-			color: @ftcl2;
-		}
-
-		& ~ .checked-show { display: none; }
-		& ~ .checked-hide { display: inline-block; }
-
-		&:checked {
-			& ~ .checked-show { display: inline-block; }
-			& ~ .checked-hide { display: none; }
-		}
-	}
-}
-
-.progress {
-	.progress-striped-animation();
-}
-
-.loading {
-	.loading(@blue);
-}
-
-.fgx { .form-group-x(); }
-.fgy { .form-group-y(); }
 
 // 两栏自适应预设样式
 .col2 {
@@ -116,4 +72,39 @@
 	}
 	.loop(1);
 }
+
+
+.screen-pc-big({
+	.wrap {
+		width: @screen_xl - 20px;
+	}
+});
+
+.screen-pc({
+	.wrap {
+		width: @screen_lg - 20px;
+	}
+
+	.only-mobile {
+		display: none !important;
+	}
+});
+
+.screen-mobile({
+	.wrap {
+		width: auto;
+	}
+
+	.only-pc {
+		display: none !important;
+	}
+});
+
+.screen-mobile-middle({
+
+});
+
+.screen-mobile-small({
+
+});
 
