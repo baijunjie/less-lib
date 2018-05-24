@@ -417,21 +417,6 @@ a:hover {
   color: #05a;
   text-decoration: underline;
 }
-@media (min-width: 1280px) {
-  .wrap {
-    width: 1260px;
-  }
-}
-@media (min-width: 769px) {
-  body {
-    min-width: 1024px;
-  }
-}
-@media (max-width: 768px) {
-  body {
-    min-width: 0;
-  }
-}
 .hide {
   visibility: hidden !important;
 }
@@ -673,6 +658,9 @@ a:hover {
   }
 }
 @media (min-width: 769px) {
+  body {
+    min-width: 1024px;
+  }
   .wrap {
     width: 1004px;
   }
@@ -681,6 +669,9 @@ a:hover {
   }
 }
 @media (max-width: 768px) {
+  body {
+    min-width: 0;
+  }
   .wrap {
     width: auto;
   }
@@ -1956,6 +1947,31 @@ a:hover {
 .fgy > :not(:last-child) a {
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+}
+blockquote {
+  position: relative;
+  margin: 10px auto;
+  padding: 20px 60px;
+  color: #666;
+  background-color: #eee;
+}
+blockquote:before,
+blockquote:after {
+  position: absolute;
+  height: 50px;
+  font-size: 100px;
+  line-height: 1;
+  color: #fff;
+}
+blockquote:before {
+  content: "“";
+  top: 5px;
+  left: 5px;
+}
+blockquote:after {
+  content: "”";
+  bottom: 5px;
+  right: 5px;
 }
 body {
   text-align: center;
