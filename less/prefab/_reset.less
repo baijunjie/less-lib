@@ -1,19 +1,14 @@
-html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
 body, dl, dd, h1, h2, h3, h4, h5, h6, p, form, input { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 i, em { font-style: normal; }
 
 html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 	font-family: @ft_def;
 	font-size: @ftsz_def;
-}
-
-body {
-	.fix();
-	position: relative;
-	background-color: @bgcl;
 	color: @ftcl;
-	.wbw();
+	.word-break-word();
 }
 
 // 这里不要添加 max-height: 100%，因为在有些手机上，如果图片的父级没有高度，就会导致图片高度变得很小
@@ -25,7 +20,7 @@ img {
 	height: auto;
 }
 
-a { .acl(@lkcl); }
+a { .link-color(@lkcl); }
 
 
 .screen-pc-big({
@@ -33,13 +28,13 @@ a { .acl(@lkcl); }
 });
 
 .screen-pc({
-	body {
+	html {
 		min-width: @screen_lg;
 	}
 });
 
 .screen-mobile({
-	body {
+	html {
 		min-width: 0;
 	}
 });
