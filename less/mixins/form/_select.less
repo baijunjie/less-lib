@@ -1,20 +1,19 @@
 // 下拉选择框
 // select
 //
-// @select 为非false时的文档结构：
+// @select 为 false 时的文档结构：
 // <div class="select">
 //  <select name="" id="">
 //      <option value="">请选择</option>
 //  </select>
 // </div>
 //
-// @select 为false时只需要一个单标签即可
+// @select 为 true 时只需要一个单标签即可
 ._select-style(@border_color, @font_size, @select) {
 
-    & when (@select = false) {
+    & when (@select = true) {
         ._input();
         .input-size(@font_size);
-        line-height: 2.5em; // IOS 中，输入框 placeholder 的 line-height 不会受到 box-sizing 的影响，必须始终与高度相等
         position: relative;
         cursor: pointer;
         padding-right: 1.2em;
@@ -26,9 +25,8 @@
         }
     }
 
-    & when not (@select = false) {
+    & when not (@select = true) {
         .inline-block();
-        font-size: @font_size;
         line-height: 0;
         position: relative;
         cursor: pointer;
@@ -60,13 +58,30 @@
         }
     }
 }
+
+// @font_size 可以为两个值的数组
+// 第一个值代表字体大小
+// 第二个值代表高度
+.select-size(@font_size, @border_none: false, @select: false) {
+    & when (@select = true) {
+        .input-size(@font_size, @border_none);
+    }
+
+    & when not (@select = true) {
+        select {
+            .input-size(@font_size, @border_none);
+        }
+    }
+}
+
 // 修改select边框色
-.select-border-color(@border_color, @radius: .25em, @select: true) {
-    & when (@select = false) {
+.select-border-color(@border_color, @radius: .25em, @select: false) {
+    & when (@select = true) {
         .input-border-color(@border_color, @radius);
     }
 
-    & when not (@select = false) {
+    & when not (@select = true) {
+        font-size: extract(@font_size, 1);
         select {
             .input-border-color(@border_color, @radius);
         }
@@ -79,19 +94,19 @@
     .arrow-bottom(@arrow_color @input_default_background_color, .5em, .5em, 50% .5em auto auto, -.25em 0 0 0, after);
     &:after { z-index: 1; }
 }
-.select(@font_size: @form_default_font_size, @radius: .25em, @select: true) when (isnumber(@font_size)) {
+.select(@font_size: @form_default_font_size, @radius: .25em, @select: false) when (isnumber(@font_size)) {
     ._select(@blue, @select_arrow_default_color, @font_size, @radius, @select);
 }
-.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 1) and not (iscolor(@color)) and not (isnumber(@color)) {
+.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 1) and not (iscolor(@color)) and not (isnumber(@color)) {
     ._select(none, @select_arrow_default_color, @font_size, @radius, @select);
 }
-.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 1) and (iscolor(@color)) {
+.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 1) and (iscolor(@color)) {
     ._select(@color, @color, @font_size, @radius, @select);
 }
-.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 2) {
+.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 2) {
     ._select(extract(@color, 1), extract(@color, 2), @font_size, @radius, @select);
 }
-.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 3) {
+.select(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 3) {
     ._select(extract(@color, 1) extract(@color, 2), extract(@color, 3), @font_size, @radius, @select);
 }
 
@@ -99,24 +114,24 @@
 ._select2(@border_color, @arrow_color, @font_size, @radius, @select) {
     ._select-style(@border_color, @font_size, @select);
     .select-border-color(@border_color, @radius, @select);
-    .arrow-bottom(@arrow_color @input_default_background_color, 1em, .5em, auto 0 .2em auto, 0, after);
+    .arrow-bottom(@arrow_color @input_default_background_color, 1em, .5em, auto 0 .25em auto, 0, after);
     &:after {
         z-index: 1;
         .rotate(-45deg);
     }
 }
-.select2(@font_size: @form_default_font_size, @radius: .25em, @select: true) when (isnumber(@font_size)) {
+.select2(@font_size: @form_default_font_size, @radius: .25em, @select: false) when (isnumber(@font_size)) {
     ._select2(@blue, @select_arrow_default_color, @font_size, @radius, @select);
 }
-.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 1) and not (iscolor(@color)) and not (isnumber(@color)) {
+.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 1) and not (iscolor(@color)) and not (isnumber(@color)) {
     ._select2(none, @select_arrow_default_color, @font_size, @radius, @select);
 }
-.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 1) and (iscolor(@color)) {
+.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 1) and (iscolor(@color)) {
     ._select2(@color, @color, @font_size, @radius, @select);
 }
-.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 2) {
+.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 2) {
     ._select2(extract(@color, 1), extract(@color, 2), @font_size, @radius, @select);
 }
-.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: true) when (length(@color) = 3) {
+.select2(@color, @font_size: @form_default_font_size, @radius: .25em, @select: false) when (length(@color) = 3) {
     ._select2(extract(@color, 1) extract(@color, 2), extract(@color, 3), @font_size, @radius, @select);
 }

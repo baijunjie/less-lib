@@ -2,15 +2,17 @@
 .hide { visibility: hidden !important; }
 .none, [v-cloak] { display: none !important; }
 
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+
+.full { width: 100% !important; }
+
 .noa {
 	.acl(none);
 }
 
-.full {
-	width: 100% !important;
-}
-
-.wrap {
+.body-wrap {
 	padding-left: 10px;
 	padding-right: 10px;
 	.cxbl();
@@ -75,13 +77,13 @@
 
 
 .screen-pc-big({
-	.wrap {
+	.body-wrap {
 		width: @screen_xl - 20px;
 	}
 });
 
 .screen-pc({
-	.wrap {
+	.body-wrap {
 		width: @screen_lg - 20px;
 	}
 
@@ -91,7 +93,7 @@
 });
 
 .screen-mobile({
-	.wrap {
+	.body-wrap {
 		width: auto;
 	}
 

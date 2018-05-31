@@ -1,18 +1,28 @@
 // 边框
 .border(@color: @default_border_color, @width: 1px, @style: solid) {
-    border: @width @style @color;
+    border-color: @color;
+    border-width: @width;
+    border-style: @style;
 }
 .border-left(@color: @default_border_color, @width: 1px, @style: solid) {
-    border-left: @width @style @color;
+    border-left-color: @color;
+    border-left-width: @width;
+    border-left-style: @style;
 }
 .border-right(@color: @default_border_color, @width: 1px, @style: solid) {
-    border-right: @width @style @color;
+    border-right-color: @color;
+    border-right-width: @width;
+    border-right-style: @style;
 }
 .border-top(@color: @default_border_color, @width: 1px, @style: solid) {
-    border-top: @width @style @color;
+    border-top-color: @color;
+    border-top-width: @width;
+    border-top-style: @style;
 }
 .border-bottom(@color: @default_border_color, @width: 1px, @style: solid) {
-    border-bottom: @width @style @color;
+    border-bottom-color: @color;
+    border-bottom-width: @width;
+    border-bottom-style: @style;
 }
 
 // 清除边框

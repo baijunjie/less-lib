@@ -136,5 +136,7 @@
     ._input();
     .input-size(@font_size);
     .input-border-color(@border_color, @radius);
-    line-height: @height; // IOS 中，输入框 placeholder 的 line-height 不会受到 box-sizing 的影响，必须始终与高度相等
+    // IOS 中，输入框 placeholder 的 line-height 不会受到 box-sizing 的影响，必须始终与高度相等
+    // 这里的 @height 值源于 .input-size() 中的计算结果
+    line-height: @height;
 }
