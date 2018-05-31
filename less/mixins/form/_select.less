@@ -68,6 +68,7 @@
     }
 
     & when not (@select = true) {
+        font-size: extract(@font_size, 1);
         select {
             .input-size(@font_size, @border_none);
         }
@@ -81,7 +82,6 @@
     }
 
     & when not (@select = true) {
-        font-size: extract(@font_size, 1);
         select {
             .input-border-color(@border_color, @radius);
         }
