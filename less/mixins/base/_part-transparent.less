@@ -1,4 +1,24 @@
 // 部分透明
-.part-transparent(@thickness: 40px, @position: top) {
-    -webkit-mask-image: -webkit-linear-gradient(@position, transparent 0, #000 @thickness, #000 100%);
+.part-transparent(top, @thickness: 40px) {
+    -webkit-mask-image: -webkit-linear-gradient(top, transparent 0, #000 @thickness, #000 100%);
+}
+
+.part-transparent(bottom, @thickness: 40px) {
+    -webkit-mask-image: -webkit-linear-gradient(bottom, transparent 0, #000 @thickness, #000 100%);
+}
+
+.part-transparent(left, @thickness: 40px) {
+    -webkit-mask-image: -webkit-linear-gradient(left, transparent 0, #000 @thickness, #000 100%);
+}
+
+.part-transparent(right, @thickness: 40px) {
+    -webkit-mask-image: -webkit-linear-gradient(right, transparent 0, #000 @thickness, #000 100%);
+}
+
+.part-transparent(x, @thickness: 10px) {
+    -webkit-mask-image: -webkit-linear-gradient(left, transparent 0, #000 @thickness, #000 calc(~'100% - @{thickness}'), transparent 100%);
+}
+
+.part-transparent(y, @thickness: 10px) {
+    -webkit-mask-image: -webkit-linear-gradient(top, transparent 0, #000 @thickness, #000 calc(~'100% - @{thickness}'), transparent 100%);
 }
