@@ -399,13 +399,19 @@ img {
   height: auto;
 }
 a {
-  color: #05a;
+  color: #36f;
   text-decoration: none;
 }
 a.active,
 a:hover {
-  color: #05a;
+  color: #36f;
   text-decoration: underline;
+}
+q:before {
+  content: '“';
+}
+q:after {
+  content: '”';
 }
 @media (min-width: 769px) {
   html {
@@ -432,6 +438,10 @@ a:hover {
 }
 .text-center {
   text-align: center !important;
+}
+.inbl {
+  display: inline-block !important;
+  vertical-align: middle;
 }
 .full {
   width: 100% !important;
@@ -1292,6 +1302,7 @@ a:hover {
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  font-size: 0;
 }
 .checkbox.disabled,
 .checkbox[disabled] {
@@ -1420,6 +1431,7 @@ a:hover {
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  font-size: 0;
 }
 .radio.disabled,
 .radio[disabled] {
@@ -1545,6 +1557,7 @@ a:hover {
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  font-size: 0;
 }
 .switch.disabled,
 .switch[disabled] {
@@ -2246,6 +2259,18 @@ body {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   background: #bbbbbb;
 }
+.button-flat.small {
+  font-size: 12px;
+  height: 2.5em;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.button-flat.big {
+  font-size: 20px;
+  height: 2.5em;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
 .button-flat ~ * {
   margin-left: 5px;
 }
@@ -2573,6 +2598,18 @@ body {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+.button-arc.small {
+  font-size: 12px;
+  height: 2.5em;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.button-arc.big {
+  font-size: 20px;
+  height: 2.5em;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
 .button-arc ~ * {
   margin-left: 5px;
 }
@@ -2800,6 +2837,18 @@ body {
   -webkit-box-shadow: 0 0.1em 0 #a2a2a2, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #a2a2a2, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
+.button-cube.small {
+  font-size: 12px;
+  height: 2.5em;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+.button-cube.big {
+  font-size: 20px;
+  height: 2.5em;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 .button-cube ~ * {
   margin-left: 5px;
 }
@@ -2986,6 +3035,18 @@ body {
 .button-hollow.gray.active {
   color: white;
   background: #bbbbbb;
+}
+.button-hollow.small {
+  font-size: 12px;
+  height: 2.5em;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.button-hollow.big {
+  font-size: 20px;
+  height: 2.5em;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 .button-hollow ~ * {
   margin-left: 5px;

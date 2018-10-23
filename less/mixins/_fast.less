@@ -227,7 +227,7 @@
 .ttsd(none) {
     .text-shadow(none);
 }
-.ttsd(@size: 0 1px 0, @color: @text_shadow_default_color) when not(iskeyword(@size)) and not(iscolor(@size)) {
+.ttsd(@size, @color: @text_shadow_default_color) when not(iskeyword(@size)) and not(iscolor(@size)) {
     .text-shadow(@size @color);
 }
 .ttsd(@color: @text_shadow_default_color) when (iscolor(@color)) {

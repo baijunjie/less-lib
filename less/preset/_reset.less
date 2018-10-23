@@ -20,7 +20,19 @@ img {
 	height: auto;
 }
 
-a { .link-color(@lkcl); }
+a {
+	.link-color(@lkcl);
+}
+
+q {
+	&:before {
+		content: '“';
+	}
+
+	&:after {
+		content: '”';
+	}
+}
 
 
 .screen-pc-big({
