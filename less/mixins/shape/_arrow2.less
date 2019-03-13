@@ -31,14 +31,14 @@
         .rotate(135deg);
     }
 }
-.arrow2-top(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
+.arrow2-up(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
     ._arrow2(@color, @size, @thickness, @position, @margin, @pseudo_elements);
     @selector: e(':@{pseudo_elements}');
     &@{selector} {
         .rotate(45deg);
     }
 }
-.arrow2-bottom(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
+.arrow2-down(@color, @size, @thickness: 2px, @position: auto, @margin: 0, @pseudo_elements: before) {
     ._arrow2(@color, @size, @thickness, @position, @margin, @pseudo_elements);
     @selector: e(':@{pseudo_elements}');
     &@{selector} {

@@ -413,12 +413,12 @@ q:before {
 q:after {
   content: '”';
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   html {
     min-width: 1024px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   html {
     min-width: 0;
   }
@@ -455,7 +455,7 @@ q:after {
   color: inherit;
   text-decoration: none;
 }
-.body-wrap {
+.inner {
   padding-left: 10px;
   padding-right: 10px;
   display: block;
@@ -475,13 +475,13 @@ q:after {
   -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .opacity-img.active,
   .opacity-img:hover {
     opacity: 0.8 !important;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .opacity-img.active,
   .opacity-img:active {
     opacity: 0.8 !important;
@@ -493,14 +493,14 @@ q:after {
   -o-transition: box-shadow 0.3s;
   transition: box-shadow 0.3s;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .shadow-box.active,
   .shadow-box:hover {
     -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .shadow-box.active,
   .shadow-box:active {
     -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
@@ -671,21 +671,21 @@ q:after {
   float: right;
   width: 200px;
 }
-@media (min-width: 1280px) {
-  .body-wrap {
-    width: 1260px;
-  }
-}
-@media (min-width: 769px) {
-  .body-wrap {
+@media (min-width: 768px) {
+  .inner {
     width: 1004px;
   }
   .only-mobile {
     display: none !important;
   }
 }
-@media (max-width: 768px) {
-  .body-wrap {
+@media (min-width: 1280px) {
+  .inner {
+    width: 1260px;
+  }
+}
+@media (max-width: 767px) {
+  .inner {
     width: auto;
   }
   .only-pc {
@@ -713,8 +713,6 @@ q:after {
   -webkit-border-radius: 0.25em;
   border-radius: 0.25em;
   background: #ffffff;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -749,8 +747,8 @@ q:after {
 .input:focus,
 .textarea:focus {
   border-color: #66afe9 !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(102, 175, 233, 0.6) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(102, 175, 233, 0.6) !important;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.5);
 }
 .input.disabled,
 .textarea.disabled,
@@ -759,8 +757,6 @@ q:after {
 .input[readonly],
 .textarea[readonly] {
   border-color: #cccccc !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   background: #eeeeee !important;
 }
 .input.error,
@@ -769,8 +765,6 @@ q:after {
   -webkit-border-radius: 0.25em;
   border-radius: 0.25em;
   background: #ffffff;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -779,8 +773,8 @@ q:after {
 .input.error:focus,
 .textarea.error:focus {
   border-color: #FF4949 !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(255, 73, 73, 0.6) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(255, 73, 73, 0.6) !important;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 73, 73, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 73, 73, 0.5);
 }
 .input.error.disabled,
 .textarea.error.disabled,
@@ -789,8 +783,6 @@ q:after {
 .input.error[readonly],
 .textarea.error[readonly] {
   border-color: #FF4949 !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   background: #eeeeee !important;
 }
 .input.transparent,
@@ -882,12 +874,6 @@ q:after {
   padding: 0;
   border: 0;
 }
-.button.disabled,
-.button[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
-}
 .button:hover {
   color: #007aff;
   background: rgba(0, 122, 255, 0.1);
@@ -897,16 +883,16 @@ q:after {
   color: #ffffff;
   background: #007aff;
 }
+.button.disabled,
+.button[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button.blue {
   color: #20A0FF;
   border-color: #20A0FF;
   background: transparent;
-}
-.button.blue.disabled,
-.button.blue[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button.blue:hover {
   color: #20A0FF;
@@ -917,16 +903,16 @@ q:after {
   color: white;
   background: #20A0FF;
 }
+.button.blue.disabled,
+.button.blue[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button.green {
   color: #13CE66;
   border-color: #13CE66;
   background: transparent;
-}
-.button.green.disabled,
-.button.green[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button.green:hover {
   color: #13CE66;
@@ -937,16 +923,16 @@ q:after {
   color: white;
   background: #13CE66;
 }
+.button.green.disabled,
+.button.green[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button.yellow {
   color: #F7BA2A;
   border-color: #F7BA2A;
   background: transparent;
-}
-.button.yellow.disabled,
-.button.yellow[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button.yellow:hover {
   color: #F7BA2A;
@@ -957,16 +943,16 @@ q:after {
   color: white;
   background: #F7BA2A;
 }
+.button.yellow.disabled,
+.button.yellow[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button.red {
   color: #FF4949;
   border-color: #FF4949;
   background: transparent;
-}
-.button.red.disabled,
-.button.red[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button.red:hover {
   color: #FF4949;
@@ -977,45 +963,51 @@ q:after {
   color: white;
   background: #FF4949;
 }
-.button.sky {
-  color: #5bc0de;
-  border-color: #5bc0de;
-  background: transparent;
-}
-.button.sky.disabled,
-.button.sky[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
+.button.red.disabled,
+.button.red[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
   background: transparent !important;
 }
+.button.sky {
+  color: #5BC0DE;
+  border-color: #5BC0DE;
+  background: transparent;
+}
 .button.sky:hover {
-  color: #5bc0de;
+  color: #5BC0DE;
   background: rgba(91, 192, 222, 0.1);
 }
 .button.sky:active,
 .button.sky.active {
   color: white;
-  background: #5bc0de;
+  background: #5BC0DE;
 }
-.button.gray {
-  color: #bbbbbb;
-  border-color: #bbbbbb;
-  background: transparent;
-}
-.button.gray.disabled,
-.button.gray[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
+.button.sky.disabled,
+.button.sky[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
   background: transparent !important;
 }
+.button.gray {
+  color: #BBBBBB;
+  border-color: #BBBBBB;
+  background: transparent;
+}
 .button.gray:hover {
-  color: #bbbbbb;
+  color: #BBBBBB;
   background: rgba(187, 187, 187, 0.1);
 }
 .button.gray:active,
 .button.gray.active {
   color: white;
-  background: #bbbbbb;
+  background: #BBBBBB;
+}
+.button.gray.disabled,
+.button.gray[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
 }
 .button.small {
   font-size: 12px;
@@ -1094,8 +1086,6 @@ q:after {
   -webkit-border-radius: 0.25em;
   border-radius: 0.25em;
   background: #ffffff;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -1103,15 +1093,13 @@ q:after {
 }
 .select select:focus {
   border-color: #20A0FF !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(32, 160, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(32, 160, 255, 0.5);
 }
 .select select.disabled,
 .select select[disabled],
 .select select[readonly] {
   border-color: #cccccc !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   background: #eeeeee !important;
 }
 .select:after {
@@ -1225,8 +1213,6 @@ q:after {
   -webkit-border-radius: 0.25em;
   border-radius: 0.25em;
   background: #ffffff;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -1234,15 +1220,13 @@ q:after {
 }
 .select2 select:focus {
   border-color: #20A0FF !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(32, 160, 255, 0.6) !important;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(32, 160, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(32, 160, 255, 0.5);
 }
 .select2 select.disabled,
 .select2 select[disabled],
 .select2 select[readonly] {
   border-color: #cccccc !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1) !important;
   background: #eeeeee !important;
 }
 .select2:after {
@@ -2069,14 +2053,10 @@ body {
   padding: 0;
   border: 0;
 }
-.button-flat.disabled,
-.button-flat[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background: #bbbbbb !important;
+.button-flat:focus,
+.button-flat.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
 }
 .button-flat:hover {
   color: white;
@@ -2085,11 +2065,18 @@ body {
 }
 .button-flat:active,
 .button-flat.active {
-  color: #006ab9;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #369de9;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
+  background: #0695ff;
+}
+.button-flat.disabled,
+.button-flat[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: #BBBBBB !important;
 }
 .button-flat.blue {
   color: white;
@@ -2097,14 +2084,10 @@ body {
   border-color: #0695ff;
   background: #20a0ff;
 }
-.button-flat.blue.disabled,
-.button-flat.blue[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background: #bbbbbb !important;
+.button-flat.blue:focus,
+.button-flat.blue.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
 }
 .button-flat.blue:hover {
   color: white;
@@ -2113,11 +2096,18 @@ body {
 }
 .button-flat.blue:active,
 .button-flat.blue.active {
-  color: #006ab9;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #369de9;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(6, 149, 255, 0.5);
+  background: #0695ff;
+}
+.button-flat.blue.disabled,
+.button-flat.blue[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: #BBBBBB !important;
 }
 .button-flat.green {
   color: white;
@@ -2125,14 +2115,10 @@ body {
   border-color: #11b75a;
   background: #13ce66;
 }
-.button-flat.green.disabled,
-.button-flat.green[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background: #bbbbbb !important;
+.button-flat.green:focus,
+.button-flat.green.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(17, 183, 90, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(17, 183, 90, 0.5);
 }
 .button-flat.green:hover {
   color: white;
@@ -2141,11 +2127,18 @@ body {
 }
 .button-flat.green:active,
 .button-flat.green.active {
-  color: #0a7138;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #29b869;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(17, 183, 90, 0.5);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(17, 183, 90, 0.5);
+  background: #11b75a;
+}
+.button-flat.green.disabled,
+.button-flat.green[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: #BBBBBB !important;
 }
 .button-flat.yellow {
   color: white;
@@ -2153,14 +2146,10 @@ body {
   border-color: #f6b211;
   background: #f7ba2a;
 }
-.button-flat.yellow.disabled,
-.button-flat.yellow[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background: #bbbbbb !important;
+.button-flat.yellow:focus,
+.button-flat.yellow.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(246, 178, 17, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(246, 178, 17, 0.5);
 }
 .button-flat.yellow:hover {
   color: white;
@@ -2169,11 +2158,18 @@ body {
 }
 .button-flat.yellow:active,
 .button-flat.yellow.active {
-  color: #b48107;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #e1b140;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(246, 178, 17, 0.5);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(246, 178, 17, 0.5);
+  background: #f6b211;
+}
+.button-flat.yellow.disabled,
+.button-flat.yellow[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: #BBBBBB !important;
 }
 .button-flat.red {
   color: white;
@@ -2181,14 +2177,10 @@ body {
   border-color: #ff2f2f;
   background: #ff4949;
 }
-.button-flat.red.disabled,
-.button-flat.red[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background: #bbbbbb !important;
+.button-flat.red:focus,
+.button-flat.red.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 47, 47, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 47, 47, 0.5);
 }
 .button-flat.red:hover {
   color: white;
@@ -2197,11 +2189,18 @@ body {
 }
 .button-flat.red:active,
 .button-flat.red.active {
-  color: #e20000;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #ed5b5b;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(255, 47, 47, 0.5);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(255, 47, 47, 0.5);
+  background: #ff2f2f;
+}
+.button-flat.red.disabled,
+.button-flat.red[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: #BBBBBB !important;
 }
 .button-flat.sky {
   color: white;
@@ -2209,14 +2208,10 @@ body {
   border-color: #46b8da;
   background: #5bc0de;
 }
-.button-flat.sky.disabled,
-.button-flat.sky[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background: #bbbbbb !important;
+.button-flat.sky:focus,
+.button-flat.sky.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(70, 184, 218, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(70, 184, 218, 0.5);
 }
 .button-flat.sky:hover {
   color: white;
@@ -2225,11 +2220,18 @@ body {
 }
 .button-flat.sky:active,
 .button-flat.sky.active {
-  color: #2390b0;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #6fb5ca;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(70, 184, 218, 0.5);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(70, 184, 218, 0.5);
+  background: #46b8da;
+}
+.button-flat.sky.disabled,
+.button-flat.sky[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: #BBBBBB !important;
 }
 .button-flat.gray {
   color: white;
@@ -2237,14 +2239,10 @@ body {
   border-color: #aeaeae;
   background: #bbbbbb;
 }
-.button-flat.gray.disabled,
-.button-flat.gray[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background: #bbbbbb !important;
+.button-flat.gray:focus,
+.button-flat.gray.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(174, 174, 174, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(174, 174, 174, 0.5);
 }
 .button-flat.gray:hover {
   color: white;
@@ -2253,11 +2251,18 @@ body {
 }
 .button-flat.gray:active,
 .button-flat.gray.active {
-  color: #888888;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-  background: #bbbbbb;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(174, 174, 174, 0.5);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(174, 174, 174, 0.5);
+  background: #aeaeae;
+}
+.button-flat.gray.disabled,
+.button-flat.gray[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: #BBBBBB !important;
 }
 .button-flat.small {
   font-size: 12px;
@@ -2303,7 +2308,7 @@ body {
   padding-top: 11px;
   padding-bottom: 11px;
   color: white;
-  background-color: #369de9;
+  background-color: #20a0ff;
   text-shadow: 0 -1px 0 rgba(0, 106, 185, 0.4);
   border-color: #0087ec;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2330,18 +2335,6 @@ body {
   padding: 0;
   border: 0;
 }
-.button-arc.disabled,
-.button-arc[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-repeat: repeat-x !important;
-}
 .button-arc:hover {
   color: white;
   background-image: -webkit-linear-gradient(top, #0087ec 0%, #53b6ff 100%);
@@ -2358,9 +2351,21 @@ body {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+.button-arc.disabled,
+.button-arc[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-repeat: repeat-x !important;
+}
 .button-arc.blue {
   color: white;
-  background-color: #369de9;
+  background-color: #20a0ff;
   text-shadow: 0 -1px 0 rgba(0, 106, 185, 0.4);
   border-color: #0087ec;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2369,18 +2374,6 @@ body {
   background-image: -o-linear-gradient(top, #53b6ff 0%, #0087ec 100%);
   background-image: linear-gradient(to bottom, #53b6ff 0%, #0087ec 100%);
   background-repeat: repeat-x;
-}
-.button-arc.blue.disabled,
-.button-arc.blue[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-repeat: repeat-x !important;
 }
 .button-arc.blue:hover {
   color: white;
@@ -2398,9 +2391,21 @@ body {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+.button-arc.blue.disabled,
+.button-arc.blue[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-repeat: repeat-x !important;
+}
 .button-arc.green {
   color: white;
-  background-color: #29b869;
+  background-color: #13ce66;
   text-shadow: 0 -1px 0 rgba(10, 113, 56, 0.4);
   border-color: #0f9f4f;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2409,18 +2414,6 @@ body {
   background-image: -o-linear-gradient(top, #29eb7f 0%, #0f9f4f 100%);
   background-image: linear-gradient(to bottom, #29eb7f 0%, #0f9f4f 100%);
   background-repeat: repeat-x;
-}
-.button-arc.green.disabled,
-.button-arc.green[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-repeat: repeat-x !important;
 }
 .button-arc.green:hover {
   color: white;
@@ -2438,9 +2431,21 @@ body {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+.button-arc.green.disabled,
+.button-arc.green[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-repeat: repeat-x !important;
+}
 .button-arc.yellow {
   color: white;
-  background-color: #e1b140;
+  background-color: #f7ba2a;
   text-shadow: 0 -1px 0 rgba(180, 129, 7, 0.4);
   border-color: #e5a409;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2449,18 +2454,6 @@ body {
   background-image: -o-linear-gradient(top, #f9ca5b 0%, #e5a409 100%);
   background-image: linear-gradient(to bottom, #f9ca5b 0%, #e5a409 100%);
   background-repeat: repeat-x;
-}
-.button-arc.yellow.disabled,
-.button-arc.yellow[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-repeat: repeat-x !important;
 }
 .button-arc.yellow:hover {
   color: white;
@@ -2478,9 +2471,21 @@ body {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+.button-arc.yellow.disabled,
+.button-arc.yellow[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-repeat: repeat-x !important;
+}
 .button-arc.red {
   color: white;
-  background-color: #ed5b5b;
+  background-color: #ff4949;
   text-shadow: 0 -1px 0 rgba(226, 0, 0, 0.4);
   border-color: #ff1616;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2489,18 +2494,6 @@ body {
   background-image: -o-linear-gradient(top, #ff7c7c 0%, #ff1616 100%);
   background-image: linear-gradient(to bottom, #ff7c7c 0%, #ff1616 100%);
   background-repeat: repeat-x;
-}
-.button-arc.red.disabled,
-.button-arc.red[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-repeat: repeat-x !important;
 }
 .button-arc.red:hover {
   color: white;
@@ -2518,9 +2511,21 @@ body {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+.button-arc.red.disabled,
+.button-arc.red[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-repeat: repeat-x !important;
+}
 .button-arc.sky {
   color: white;
-  background-color: #6fb5ca;
+  background-color: #5bc0de;
   text-shadow: 0 -1px 0 rgba(35, 144, 176, 0.4);
   border-color: #31b0d5;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -2529,18 +2534,6 @@ body {
   background-image: -o-linear-gradient(top, #85d0e7 0%, #31b0d5 100%);
   background-image: linear-gradient(to bottom, #85d0e7 0%, #31b0d5 100%);
   background-repeat: repeat-x;
-}
-.button-arc.sky.disabled,
-.button-arc.sky[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-repeat: repeat-x !important;
 }
 .button-arc.sky:hover {
   color: white;
@@ -2558,6 +2551,18 @@ body {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+.button-arc.sky.disabled,
+.button-arc.sky[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-repeat: repeat-x !important;
+}
 .button-arc.gray {
   color: white;
   background-color: #bbbbbb;
@@ -2569,18 +2574,6 @@ body {
   background-image: -o-linear-gradient(top, #d4d4d4 0%, #a2a2a2 100%);
   background-image: linear-gradient(to bottom, #d4d4d4 0%, #a2a2a2 100%);
   background-repeat: repeat-x;
-}
-.button-arc.gray.disabled,
-.button-arc.gray[disabled] {
-  color: white !important;
-  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
-  border-color: #bbbbbb !important;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
-  background-repeat: repeat-x !important;
 }
 .button-arc.gray:hover {
   color: white;
@@ -2597,6 +2590,18 @@ body {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.4);
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.button-arc.gray.disabled,
+.button-arc.gray[disabled] {
+  color: white !important;
+  text-shadow: 0 -1px 0 rgba(110, 110, 110, 0.4) !important;
+  border-color: #BBBBBB !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  background-image: -webkit-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: -o-linear-gradient(top, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-image: linear-gradient(to bottom, #c8c8c8 0%, #aeaeae 100%) !important;
+  background-repeat: repeat-x !important;
 }
 .button-arc.small {
   font-size: 12px;
@@ -2665,14 +2670,6 @@ body {
   padding: 0;
   border: 0;
 }
-.button-cube.disabled,
-.button-cube[disabled] {
-  color: white !important;
-  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
-  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  background: #bbbbbb !important;
-}
 .button-cube:hover {
   color: white;
   background: #3aabff;
@@ -2682,6 +2679,14 @@ body {
   color: white;
   -webkit-box-shadow: 0 0.1em 0 #0087ec, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #0087ec, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+.button-cube.disabled,
+.button-cube[disabled] {
+  color: white !important;
+  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
+  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: #BBBBBB !important;
 }
 .button-cube:active,
 .button-cube.active {
@@ -2694,14 +2699,6 @@ body {
   -webkit-box-shadow: 0 0.25em 0 #0087ec, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.25em 0 #0087ec, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
-.button-cube.blue.disabled,
-.button-cube.blue[disabled] {
-  color: white !important;
-  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
-  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  background: #bbbbbb !important;
-}
 .button-cube.blue:hover {
   color: white;
   background: #3aabff;
@@ -2712,20 +2709,20 @@ body {
   -webkit-box-shadow: 0 0.1em 0 #0087ec, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #0087ec, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
+.button-cube.blue.disabled,
+.button-cube.blue[disabled] {
+  color: white !important;
+  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
+  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: #BBBBBB !important;
+}
 .button-cube.green {
   color: white;
   background: #13ce66;
   text-shadow: 0 1px 0 rgba(10, 113, 56, 0.4);
   -webkit-box-shadow: 0 0.25em 0 #0f9f4f, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.25em 0 #0f9f4f, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-}
-.button-cube.green.disabled,
-.button-cube.green[disabled] {
-  color: white !important;
-  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
-  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  background: #bbbbbb !important;
 }
 .button-cube.green:hover {
   color: white;
@@ -2737,20 +2734,20 @@ body {
   -webkit-box-shadow: 0 0.1em 0 #0f9f4f, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #0f9f4f, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
+.button-cube.green.disabled,
+.button-cube.green[disabled] {
+  color: white !important;
+  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
+  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: #BBBBBB !important;
+}
 .button-cube.yellow {
   color: white;
   background: #f7ba2a;
   text-shadow: 0 1px 0 rgba(180, 129, 7, 0.4);
   -webkit-box-shadow: 0 0.25em 0 #e5a409, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.25em 0 #e5a409, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-}
-.button-cube.yellow.disabled,
-.button-cube.yellow[disabled] {
-  color: white !important;
-  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
-  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  background: #bbbbbb !important;
 }
 .button-cube.yellow:hover {
   color: white;
@@ -2762,20 +2759,20 @@ body {
   -webkit-box-shadow: 0 0.1em 0 #e5a409, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #e5a409, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
+.button-cube.yellow.disabled,
+.button-cube.yellow[disabled] {
+  color: white !important;
+  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
+  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: #BBBBBB !important;
+}
 .button-cube.red {
   color: white;
   background: #ff4949;
   text-shadow: 0 1px 0 rgba(226, 0, 0, 0.4);
   -webkit-box-shadow: 0 0.25em 0 #ff1616, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.25em 0 #ff1616, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-}
-.button-cube.red.disabled,
-.button-cube.red[disabled] {
-  color: white !important;
-  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
-  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  background: #bbbbbb !important;
 }
 .button-cube.red:hover {
   color: white;
@@ -2787,20 +2784,20 @@ body {
   -webkit-box-shadow: 0 0.1em 0 #ff1616, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #ff1616, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
+.button-cube.red.disabled,
+.button-cube.red[disabled] {
+  color: white !important;
+  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
+  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: #BBBBBB !important;
+}
 .button-cube.sky {
   color: white;
   background: #5bc0de;
   text-shadow: 0 1px 0 rgba(35, 144, 176, 0.4);
   -webkit-box-shadow: 0 0.25em 0 #31b0d5, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.25em 0 #31b0d5, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-}
-.button-cube.sky.disabled,
-.button-cube.sky[disabled] {
-  color: white !important;
-  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
-  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  background: #bbbbbb !important;
 }
 .button-cube.sky:hover {
   color: white;
@@ -2812,20 +2809,20 @@ body {
   -webkit-box-shadow: 0 0.1em 0 #31b0d5, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #31b0d5, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
+.button-cube.sky.disabled,
+.button-cube.sky[disabled] {
+  color: white !important;
+  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
+  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: #BBBBBB !important;
+}
 .button-cube.gray {
   color: white;
   background: #bbbbbb;
   text-shadow: 0 1px 0 rgba(136, 136, 136, 0.4);
   -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-}
-.button-cube.gray.disabled,
-.button-cube.gray[disabled] {
-  color: white !important;
-  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
-  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
-  background: #bbbbbb !important;
 }
 .button-cube.gray:hover {
   color: white;
@@ -2836,6 +2833,14 @@ body {
   color: white;
   -webkit-box-shadow: 0 0.1em 0 #a2a2a2, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.1em 0 #a2a2a2, 0 0.2em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+.button-cube.gray.disabled,
+.button-cube.gray[disabled] {
+  color: white !important;
+  text-shadow: 0 1px 0 rgba(110, 110, 110, 0.4) !important;
+  -webkit-box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0.25em 0 #a2a2a2, 0 0.5em 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  background: #BBBBBB !important;
 }
 .button-cube.small {
   font-size: 12px;
@@ -2901,12 +2906,6 @@ body {
   padding: 0;
   border: 0;
 }
-.button-hollow.disabled,
-.button-hollow[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
-}
 .button-hollow:hover {
   color: #007aff;
   background: rgba(0, 122, 255, 0.1);
@@ -2916,16 +2915,16 @@ body {
   color: #ffffff;
   background: #007aff;
 }
+.button-hollow.disabled,
+.button-hollow[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button-hollow.blue {
   color: #20A0FF;
   border-color: #20A0FF;
   background: transparent;
-}
-.button-hollow.blue.disabled,
-.button-hollow.blue[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button-hollow.blue:hover {
   color: #20A0FF;
@@ -2936,16 +2935,16 @@ body {
   color: white;
   background: #20A0FF;
 }
+.button-hollow.blue.disabled,
+.button-hollow.blue[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button-hollow.green {
   color: #13CE66;
   border-color: #13CE66;
   background: transparent;
-}
-.button-hollow.green.disabled,
-.button-hollow.green[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button-hollow.green:hover {
   color: #13CE66;
@@ -2956,16 +2955,16 @@ body {
   color: white;
   background: #13CE66;
 }
+.button-hollow.green.disabled,
+.button-hollow.green[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button-hollow.yellow {
   color: #F7BA2A;
   border-color: #F7BA2A;
   background: transparent;
-}
-.button-hollow.yellow.disabled,
-.button-hollow.yellow[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button-hollow.yellow:hover {
   color: #F7BA2A;
@@ -2976,16 +2975,16 @@ body {
   color: white;
   background: #F7BA2A;
 }
+.button-hollow.yellow.disabled,
+.button-hollow.yellow[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
+}
 .button-hollow.red {
   color: #FF4949;
   border-color: #FF4949;
   background: transparent;
-}
-.button-hollow.red.disabled,
-.button-hollow.red[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
-  background: transparent !important;
 }
 .button-hollow.red:hover {
   color: #FF4949;
@@ -2996,45 +2995,51 @@ body {
   color: white;
   background: #FF4949;
 }
-.button-hollow.sky {
-  color: #5bc0de;
-  border-color: #5bc0de;
-  background: transparent;
-}
-.button-hollow.sky.disabled,
-.button-hollow.sky[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
+.button-hollow.red.disabled,
+.button-hollow.red[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
   background: transparent !important;
 }
+.button-hollow.sky {
+  color: #5BC0DE;
+  border-color: #5BC0DE;
+  background: transparent;
+}
 .button-hollow.sky:hover {
-  color: #5bc0de;
+  color: #5BC0DE;
   background: rgba(91, 192, 222, 0.1);
 }
 .button-hollow.sky:active,
 .button-hollow.sky.active {
   color: white;
-  background: #5bc0de;
+  background: #5BC0DE;
 }
-.button-hollow.gray {
-  color: #bbbbbb;
-  border-color: #bbbbbb;
-  background: transparent;
-}
-.button-hollow.gray.disabled,
-.button-hollow.gray[disabled] {
-  color: #bbbbbb !important;
-  border-color: #bbbbbb !important;
+.button-hollow.sky.disabled,
+.button-hollow.sky[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
   background: transparent !important;
 }
+.button-hollow.gray {
+  color: #BBBBBB;
+  border-color: #BBBBBB;
+  background: transparent;
+}
 .button-hollow.gray:hover {
-  color: #bbbbbb;
+  color: #BBBBBB;
   background: rgba(187, 187, 187, 0.1);
 }
 .button-hollow.gray:active,
 .button-hollow.gray.active {
   color: white;
-  background: #bbbbbb;
+  background: #BBBBBB;
+}
+.button-hollow.gray.disabled,
+.button-hollow.gray[disabled] {
+  color: #BBBBBB !important;
+  border-color: #BBBBBB !important;
+  background: transparent !important;
 }
 .button-hollow.small {
   font-size: 12px;
@@ -3761,20 +3766,20 @@ body {
   transform-origin: center;
 }
 .navbar-toggle:before {
-  top: 0;
-  margin-top: 8px;
-  -webkit-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -moz-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -moz-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -o-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -o-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.navbar-toggle:after {
   bottom: 0;
   margin-bottom: 8px;
   -webkit-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -moz-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -moz-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -o-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -o-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.navbar-toggle:after {
+  top: 0;
+  margin-top: 8px;
+  -webkit-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -moz-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -o-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), margin 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .navbar-toggle.active {
   height: 0;
@@ -3784,19 +3789,19 @@ body {
 }
 .navbar-toggle.active:before {
   background: black;
-  top: 50%;
-  margin-top: -2px;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.navbar-toggle.active:after {
-  background: black;
   bottom: 50%;
   margin-bottom: -2px;
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
+}
+.navbar-toggle.active:after {
+  background: black;
+  top: 50%;
+  margin-top: -2px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

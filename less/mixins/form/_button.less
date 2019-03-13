@@ -65,17 +65,15 @@
     ._button-size(@font_size);
 }
 .button-flat-color(@button_color) {
-    @new_color: darken(@button_color, max(lightness(@button_color)-95%,0%));
-    @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
-    @bg_color2: desaturate(@bg_color, 20%);
+    @new_color: darken(@button_color, max(lightness(@button_color)-95%, 0%));
+    @bg_color: lighten(@new_color, max(20%-lightness(@new_color), 0%));
     @bg_color_lighten: lighten(@bg_color, 5%);
     @bg_color_darken: darken(@bg_color, 5%);
     @bg_color_darken2: darken(@bg_color, 20%);
     @ft_color: contrast(@bg_color, black, white, 65%); //根据背景色的深浅判断字体颜色为白色还是黑色
-    @bd_color: darken(@bg_color_darken,max(lightness(@bg_color_darken)-70%,0%)); //边框色的亮度值不超过70%
+    @bd_color: darken(@bg_color_darken, max(lightness(@bg_color_darken)-70%, 0%)); //边框色的亮度值不超过70%
     @bd_color_lighten: lighten(@bd_color, 5%);
     @ttsd_color: contrast(@ft_color, fade(@bg_color_darken2, 40%), white, 40%); //根据字体色的深浅判断字体阴影颜色为白色还是暗色
-    @ttsd_color2: rgba(255, 255, 255, .4);
 
     @disabled_color: @gray;
     @disabled_color_darken: darken(@disabled_color, 30%);
@@ -85,13 +83,9 @@
     border-color: @bd_color;
     background: @bg_color;
 
-    &.disabled,
-    &[disabled] {
-        color: white !important;
-        text-shadow: 0 -1px 0 fade(@disabled_color_darken, 40%) !important;
-        border-color: @disabled_color !important;
-        .box-shadow(none) !important;
-        background: @disabled_color !important;
+    &:focus,
+    &.focus {
+        .box-shadow(0 0 0 .2rem fade(@bd_color, 50%));
     }
 
     &:hover {
@@ -99,12 +93,21 @@
         border-color: @bd_color_lighten;
         background: @bg_color_lighten;
     }
+
     &:active,
     &.active {
-        color: @bg_color_darken2;
-        text-shadow: 0 1px 0 @ttsd_color2;
-        .box-shadow(inset 0 1px 3px rgba(0, 0, 0, .3));
-        background: @bg_color2;
+        .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
+        .box-shadow(0 0 0 .2rem fade(@bd_color, 50%));
+        background: @bg_color_darken;
+    }
+
+    &.disabled,
+    &[disabled] {
+        color: white !important;
+        text-shadow: 0 -1px 0 fade(@disabled_color_darken, 40%) !important;
+        border-color: @disabled_color !important;
+        .box-shadow(none) !important;
+        background: @disabled_color !important;
     }
 }
 .button-flat(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
@@ -133,14 +136,13 @@
 }
 .button-arc-color(@button_color) {
     // 控制背景色的亮度值在10%~90%之间
-    @new_color: darken(@button_color, max(lightness(@button_color)-90%,0%));
-    @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
-    @bg_color2: desaturate(@bg_color, 20%);
+    @new_color: darken(@button_color, max(lightness(@button_color)-90%, 0%));
+    @bg_color: lighten(@new_color, max(20%-lightness(@new_color), 0%));
     @bg_color_lighten: lighten(@bg_color, 10%);
     @bg_color_darken: darken(@bg_color, 10%);
     @bg_color_darken2: darken(@bg_color, 20%);
     @ft_color: contrast(@bg_color, black, white, 65%); //根据背景色的深浅判断字体颜色为白色还是黑色
-    @bd_color: darken(@bg_color_darken,max(lightness(@bg_color_darken)-70%,0%)); //边框色的亮度值不超过70%
+    @bd_color: darken(@bg_color_darken, max(lightness(@bg_color_darken)-70%, 0%)); //边框色的亮度值不超过70%
     @ttsd_color: contrast(@ft_color, fade(@bg_color_darken2, 40%), white, 40%); //根据字体色的深浅判断字体阴影颜色为白色还是暗色
     @ttsd_color2: rgba(255, 255, 255, .4);
 
@@ -150,11 +152,25 @@
     @disabled_color_darken2: darken(@disabled_color, 30%);
 
     color: @ft_color;
-    background-color: @bg_color2;
+    background-color: @bg_color;
     text-shadow: 0 -1px 0 @ttsd_color;
     border-color: @bd_color;
     .box-shadow(inset 0 1px 0 rgba(255, 255, 255, .4), 0 1px 2px rgba(0, 0, 0, .3););
     .gradient-y(@bg_color_lighten, @bg_color_darken);
+
+    &:hover {
+        color: @ft_color;
+        .gradient-y(@bg_color_darken, @bg_color_lighten);
+    }
+
+    &:active,
+    &.active {
+        color: @bg_color_darken2;
+        text-shadow: 0 1px 0 @ttsd_color2;
+        .box-shadow(inset 0 1px 3px rgba(0, 0, 0, .3), 0 1px 0 rgba(255, 255, 255, .4););
+        background-image: none;
+        .reset-filter;
+    }
 
     &.disabled,
     &[disabled] {
@@ -163,19 +179,6 @@
         border-color: @disabled_color !important;
         .box-shadow(inset 0 1px 0 rgba(255, 255, 255, .4), 0 1px 2px rgba(0, 0, 0, .3);) !important;
         .gradient-y(@disabled_color_lighten, @disabled_color_darken) !important;
-    }
-
-    &:hover {
-        color: @ft_color;
-        .gradient-y(@bg_color_darken, @bg_color_lighten);
-    }
-    &:active,
-    &.active {
-        color: @bg_color_darken2;
-        text-shadow: 0 1px 0 @ttsd_color2;
-        .box-shadow(inset 0 1px 3px rgba(0, 0, 0, .3), 0 1px 0 rgba(255, 255, 255, .4););
-        background-image: none;
-        .reset-filter;
     }
 }
 .button-arc(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
@@ -203,8 +206,8 @@
     ._button-size(@font_size, true);
 }
 .button-cube-color(@button_color) {
-    @new_color: darken(@button_color, max(lightness(@button_color)-95%,0%));
-    @bg_color: lighten(@new_color, max(20%-lightness(@new_color),0%));
+    @new_color: darken(@button_color, max(lightness(@button_color)-95%, 0%));
+    @bg_color: lighten(@new_color, max(20%-lightness(@new_color), 0%));
     @bg_color_lighten: lighten(@bg_color, 5%);
     @bg_color_darken: darken(@bg_color, 10%);
     @bg_color_darken2: darken(@bg_color, 20%);
@@ -226,6 +229,20 @@
     .box-shadow(inset 0 1px 0 @bxsd_color2);
     .box-shadow(inset 0 -1px 0 @bxsd_color3);
 
+    &:hover {
+        color: @ft_color;
+        background: @bg_color_lighten;
+    }
+
+    &:active,
+    &.active {
+        color: @ft_color;
+        .box-shadow(0 .1em 0 @bg_color_darken);
+        .box-shadow(0 .2em 0 @bxsd_color);
+        .box-shadow(inset 0 1px 0 @bxsd_color2);
+        .box-shadow(inset 0 -1px 0 @bxsd_color3);
+    }
+
     &.disabled,
     &[disabled] {
         color: white !important;
@@ -235,19 +252,6 @@
         .box-shadow(inset 0 1px 0 @bxsd_color2) !important;
         .box-shadow(inset 0 -1px 0 @bxsd_color3) !important;
         background: @disabled_color !important;
-    }
-
-    &:hover {
-        color: @ft_color;
-        background: @bg_color_lighten;
-    }
-    &:active,
-    &.active {
-        color: @ft_color;
-        .box-shadow(0 .1em 0 @bg_color_darken);
-        .box-shadow(0 .2em 0 @bxsd_color);
-        .box-shadow(inset 0 1px 0 @bxsd_color2);
-        .box-shadow(inset 0 -1px 0 @bxsd_color3);
     }
 }
 .button-cube(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {
@@ -303,21 +307,22 @@
     border-color: @button_color;
     background: transparent;
 
+    &:hover {
+        color: @button_color;
+        background: fade(@button_color, 10%);
+    }
+
+    &:active,
+    &.active {
+        color: @bg_color;
+        background: @button_color;
+    }
+
     &.disabled,
     &[disabled] {
         color: @gray !important;
         border-color: @gray !important;
         background: transparent !important;
-    }
-
-    &:hover {
-        color: @button_color;
-        background: fade(@button_color, 10%);
-    }
-    &:active,
-    &.active {
-        color: @bg_color;
-        background: @button_color;
     }
 }
 .button-hollow(@font_size: @form_default_font_size, @radius: .25em) when (isnumber(@font_size)) {

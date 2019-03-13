@@ -80,13 +80,12 @@
 
     .border-radius(@radius);
     background: @input_default_background_color;
-    .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .1));
     .transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s;);
 
     @focus_border_color: extract(@border_color,1);
     &:focus {
         border-color: @focus_border_color !important;
-        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .1), 0 0 8px fade(@focus_border_color,60%);) !important;
+        .box-shadow(0 0 0 .2rem fade(@focus_border_color, 50%));
     }
 
     &.disabled,
@@ -98,7 +97,6 @@
         & when (length(@border_color) = 2) {
             border-color: extract(@border_color,2) !important;
         }
-        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .1)) !important;
         background: @input_disable_background_color !important;
     }
 }

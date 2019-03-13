@@ -17,7 +17,7 @@
 	.acl(none);
 }
 
-.body-wrap {
+.inner {
 	padding-left: 10px;
 	padding-right: 10px;
 	.cxbl();
@@ -81,14 +81,8 @@
 }
 
 
-.screen-pc-big({
-	.body-wrap {
-		width: @screen_xl - 20px;
-	}
-});
-
 .screen-pc({
-	.body-wrap {
+	.inner {
 		width: @screen_lg - 20px;
 	}
 
@@ -97,8 +91,14 @@
 	}
 });
 
+.screen-pc-big({
+	.inner {
+		width: @screen_xl - 20px;
+	}
+});
+
 .screen-mobile({
-	.body-wrap {
+	.inner {
 		width: auto;
 	}
 

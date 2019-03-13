@@ -61,7 +61,7 @@
         -@angle 0
     );
 }
-.arrow3-top(@color, @width, @height, @thickness: @height - @width / 2) {
+.arrow3-up(@color, @width, @height, @thickness: @height - @width / 2) {
     @half_width: @width / 2;
     @difference: @height - @thickness;
     @angle: atan(@difference / @half_width);
@@ -82,7 +82,7 @@
         .inline-block();
     }
 }
-.arrow3-bottom(@color, @width, @height, @thickness: @height - @width / 2) {
+.arrow3-down(@color, @width, @height, @thickness: @height - @width / 2) {
     @half_width: @width / 2;
     @difference: @height - @thickness;
     @angle: atan(@difference / @half_width);

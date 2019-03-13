@@ -91,7 +91,7 @@
 ._select(@border_color, @arrow_color, @font_size, @radius, @select) {
     ._select-style(@border_color, @font_size, @select);
     .select-border-color(@border_color, @radius, @select);
-    .arrow-bottom(@arrow_color @input_default_background_color, .5em, .5em, 50% .5em auto auto, -.25em 0 0 0, after);
+    .arrow-down(@arrow_color @input_default_background_color, .5em, .5em, 50% .5em auto auto, -.25em 0 0 0, after);
     &:after { z-index: 1; }
 }
 .select(@font_size: @form_default_font_size, @radius: .25em, @select: false) when (isnumber(@font_size)) {
@@ -114,7 +114,7 @@
 ._select2(@border_color, @arrow_color, @font_size, @radius, @select) {
     ._select-style(@border_color, @font_size, @select);
     .select-border-color(@border_color, @radius, @select);
-    .arrow-bottom(@arrow_color @input_default_background_color, 1em, .5em, auto 0 .25em auto, 0, after);
+    .arrow-down(@arrow_color @input_default_background_color, 1em, .5em, auto 0 .25em auto, 0, after);
     &:after {
         z-index: 1;
         .rotate(-45deg);

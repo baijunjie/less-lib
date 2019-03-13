@@ -84,7 +84,7 @@
 }
 
 // 箭头上
-._arrow-top(@color, @width, @height, @pseudo_elements: before) {
+._arrow-up(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     @width_half: @width / 2;
     &@{selector} {
@@ -98,7 +98,7 @@
         }
     }
 }
-.arrow-top(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+.arrow-up(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
     @selector: e(':@{pseudo_elements}');
     &@{selector} {
         border-bottom-color: extract(@color, 1);
@@ -109,18 +109,18 @@
         }
     }
 }
-.arrow-top(@color, @width, @height, @pseudo_elements: before) {
+.arrow-up(@color, @width, @height, @pseudo_elements: before) {
     @width_half: @width / 2;
     ._arrow(auto auto 100% 50%, 0 0 -1px -@width_half, @pseudo_elements);
-    ._arrow-top(@color, @width, @height, @pseudo_elements);
+    ._arrow-up(@color, @width, @height, @pseudo_elements);
 }
-.arrow-top(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+.arrow-up(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
     ._arrow(@position, @margin, @pseudo_elements);
-    ._arrow-top(@color, @width, @height, @pseudo_elements);
+    ._arrow-up(@color, @width, @height, @pseudo_elements);
 }
 
 // 箭头下
-._arrow-bottom(@color, @width, @height, @pseudo_elements: before) {
+._arrow-down(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
     @width_half: @width / 2;
     &@{selector} {
@@ -134,7 +134,7 @@
         }
     }
 }
-.arrow-bottom(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
+.arrow-down(@color, @pseudo_elements: before) { //仅用于改变箭头颜色
     @selector: e(':@{pseudo_elements}');
     &@{selector} {
         border-top-color: extract(@color, 1);
@@ -145,14 +145,14 @@
         }
     }
 }
-.arrow-bottom(@color, @width, @height, @pseudo_elements: before) {
+.arrow-down(@color, @width, @height, @pseudo_elements: before) {
     @width_half: @width / 2;
     ._arrow(100% auto auto 50%, -1px 0 0 -@width_half, @pseudo_elements);
-    ._arrow-bottom(@color, @width, @height, @pseudo_elements);
+    ._arrow-down(@color, @width, @height, @pseudo_elements);
 }
-.arrow-bottom(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
+.arrow-down(@color, @width, @height, @position, @margin: 0, @pseudo_elements: before) when not(@position = before) and  not(@position = after) {
     ._arrow(@position, @margin, @pseudo_elements);
-    ._arrow-bottom(@color, @width, @height, @pseudo_elements);
+    ._arrow-down(@color, @width, @height, @pseudo_elements);
 }
 
 // 箭头左上
