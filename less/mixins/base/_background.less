@@ -45,7 +45,8 @@
 
 // 设置svg背景
 .background-svg(@svg, @position: center, @repeat: no-repeat) {
-    background-image+: url('data:image/svg+xml;charset=utf-8,`encodeURIComponent(@{svg})`');
+    @svgCode: `encodeURIComponent(@{svg})`;
+    background-image+: url('data:image/svg+xml;charset=utf-8,@{svgCode}');
     background-position+: @position;
     background-repeat+: @repeat;
 }

@@ -72,6 +72,24 @@
     }
 }
 
+// 表格元素水平居中
+.center-x-table(@width: auto, @margin: auto) {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    .set(width, @width);
+
+    & when (length(@margin) = 1) {
+        .set(margin-top, @margin);
+        .set(margin-bottom, @margin);
+    }
+
+    & when (length(@margin) = 2) {
+        .set(margin-top, extract(@margin, 1));
+        .set(margin-bottom, extract(@margin, 2));
+    }
+}
+
 // img 专用中央居中（IE6-7不支持）
 .center-xy-img(@position: absolute) {
     display: block;
