@@ -85,7 +85,7 @@
     @focus_border_color: extract(@border_color,1);
     &:focus {
         border-color: @focus_border_color !important;
-        .box-shadow(0 0 0 .2rem fade(@focus_border_color, 50%));
+        .box-shadow(0 0 0 .2em fade(@focus_border_color, 50%));
     }
 
     &.disabled,

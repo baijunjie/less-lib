@@ -5,6 +5,13 @@
         color: @color;
         opacity: 1; // Override Firefox's unusual default opacity; see https://githubcom/twbs/bootstrap/pull/11526
     }
-    &:-ms-input-placeholder { color: @color; } // Internet Explorer 10+
-    &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+    &:-ms-input-placeholder { // Internet Explorer 10+
+        color: @color;
+    }
+    &::-webkit-input-placeholder { // Safari and Chrome
+        color: @color;
+    }
+    &::placeholder {
+        color: @color;
+    }
 }
