@@ -1,0 +1,124 @@
+// 渐变遮罩
+._gradient-mask() {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.gradient-mask(left, @color, @thickness: 40px) {
+    &:before {
+        ._gradient-mask();
+        width: @thickness;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(
+            to right,
+            @color,
+            transparent
+        );
+    }
+}
+
+.gradient-mask(right, @color, @thickness: 40px) {
+    &:after {
+        ._gradient-mask();
+        width: @thickness;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-image: linear-gradient(
+            to left,
+            @color,
+            transparent
+        );
+    }
+}
+
+.gradient-mask(top, @color, @thickness: 40px) {
+    &:before {
+        ._gradient-mask();
+        height: @thickness;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-image: linear-gradient(
+            to bottom,
+            @color,
+            transparent
+        );
+    }
+}
+
+.gradient-mask(bottom, @color, @thickness: 40px) {
+    &:after {
+        ._gradient-mask();
+        height: @thickness;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: linear-gradient(
+            to top,
+            @color,
+            transparent
+        );
+    }
+}
+
+.gradient-mask(x, @color, @thickness: 20px) {
+    &:before,
+    &:after {
+        ._gradient-mask();
+        width: @thickness;
+        top: 0;
+        bottom: 0;
+    }
+
+    &:before {
+        left: 0;
+        background-image: linear-gradient(
+            to right,
+            @color,
+            transparent
+        );
+    }
+
+    &:after {
+        right: 0;
+        background-image: linear-gradient(
+            to left,
+            @color,
+            transparent
+        );
+    }
+}
+
+.gradient-mask(y, @color, @thickness: 20px) {
+    &:before,
+    &:after {
+        ._gradient-mask();
+        height: @thickness;
+        left: 0;
+        right: 0;
+    }
+
+    &:before {
+        top: 0;
+        background-image: linear-gradient(
+            to bottom,
+            @color,
+            transparent
+        );
+    }
+
+    &:after {
+        bottom: 0;
+        background-image: linear-gradient(
+            to top,
+            @color,
+            transparent
+        );
+    }
+}
