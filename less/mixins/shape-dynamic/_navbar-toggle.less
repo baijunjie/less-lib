@@ -12,10 +12,10 @@
     .getColor(@color);
 
     @width: extract(@size, 1);
-    @height: round(@width * .8 / 2) * 2;
+    @height: round((@width * .8 / 2)) * 2;
 
     .getSize(@size) when (length(@size) = 1) {
-        @thickness: round(@size * .15 / 2) * 2;
+        @thickness: round((@size * .15 / 2)) * 2;
     }
     .getSize(@size) when (length(@size) = 2) {
         @thickness: extract(@size, 2);

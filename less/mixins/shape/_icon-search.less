@@ -3,13 +3,13 @@
 
     .getSize(@size) when (length(@size) = 1) {
         @pattern_size: @size;
-        @pattern_thickness: round(@size * .1 / 2) * 2;
-        @diameter: round(@pattern_size * .9 / 2) * 2 - @pattern_thickness * 2;
+        @pattern_thickness: round((@size * .1 / 2)) * 2;
+        @diameter: round((@pattern_size * .9 / 2)) * 2 - @pattern_thickness * 2;
     }
     .getSize(@size) when (length(@size) = 2) {
         @pattern_size: extract(@size, 1);
         @pattern_thickness: extract(@size, 2);
-        @diameter: round(@pattern_size * .9 / 2) * 2 - @pattern_thickness * 2;
+        @diameter: round((@pattern_size * .9 / 2)) * 2 - @pattern_thickness * 2;
     }
     .getSize(@size) when (length(@size) = 3) {
         @pattern_size: extract(@size, 1);
@@ -37,11 +37,11 @@
         content: '';
         display: block;
         position: absolute;
-        top: sin(45deg) * (@radius + @pattern_thickness / 2) + @radius + @pattern_thickness;
-        left: sin(45deg) * (@radius + @pattern_thickness / 2) + @radius + @pattern_thickness;
-        width: (@pattern_size - @radius - @pattern_thickness - sin(45deg) * (@radius + @pattern_thickness / 2)) / sin(45deg);
+        top: sin(45deg) * (@radius + (@pattern_thickness / 2)) + @radius + @pattern_thickness;
+        left: sin(45deg) * (@radius + (@pattern_thickness / 2)) + @radius + @pattern_thickness;
+        width: ((@pattern_size - @radius - @pattern_thickness - sin(45deg) * (@radius + (@pattern_thickness / 2))) / sin(45deg));
         height: @pattern_thickness;
-        margin-top: -@pattern_thickness / 2;
+        margin-top: (-@pattern_thickness / 2);
         .background-color(@color);
         .transform-origin(left center);
         .rotate(45deg);

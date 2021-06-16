@@ -17,7 +17,7 @@
     img { position: absolute; } // 如果采用高度随宽度自适应的布局方式，那么Android下<img>如果需要用百分比来设置高度，则必须为绝对定位
 }
 // 九宫格布局
-.grid9(@width: 100% / 3, @height: @width, @position: relative, @value: auto, @item: '>*') {
+.grid9(@width: (100% / 3), @height: @width, @position: relative, @value: auto, @item: '>*') {
     @item_selector: e(@item);
 
     .position(@value, @position);
@@ -47,7 +47,7 @@
         position: relative;
         float: left;
         text-align: center;
-        .size(1, 1, 100% / @col_count);
+        .size(1, 1, (100% / @col_count));
         .border-left();
         .border-bottom();
 

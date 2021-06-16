@@ -1,6 +1,6 @@
 {
   "name": "less-lib",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Less Library",
   "main": "less/_.less",
   "scripts": {

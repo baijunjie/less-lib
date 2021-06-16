@@ -5,7 +5,7 @@
     & when (ispixel(@size)) and (@size < 12px) and (@size > 0) {
         text-align: extract(@position, 1);
         -webkit-transform-origin: @position;
-        -webkit-transform: scale(unit(@size / 12px)); //由于 webkit 浏览器的字体不能小于 12px，因此需要单独设置缩放比例。
+        -webkit-transform: scale(unit((@size / 12px))); //由于 webkit 浏览器的字体不能小于 12px，因此需要单独设置缩放比例。
              -o-transform: scale(1); //由于 Opera 浏览器能够识别 webkit 前缀，因此需要重置比例为 1。
         //由于inline元素对变换属性无效，因此只能针对 webkit 浏览器设置元素为行内块元素
         @media screen and (-webkit-min-device-pixel-ratio:0) {

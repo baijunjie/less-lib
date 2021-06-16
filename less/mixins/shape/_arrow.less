@@ -14,7 +14,7 @@
 // 箭头左
 ._arrow-left(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
-    @height_half: @height / 2;
+    @height_half: (@height / 2);
     &@{selector} {
         .border-top(transparent, @height_half);
         .border-bottom(transparent, @height_half);
@@ -38,7 +38,7 @@
     }
 }
 .arrow-left(@color, @width, @height, @pseudo_elements: before) {
-    @height_half: @height / 2;
+    @height_half: (@height / 2);
     ._arrow(50% 100% auto auto, -@height_half -1px 0 0, @pseudo_elements);
     ._arrow-left(@color, @width, @height, @pseudo_elements);
 }
@@ -50,7 +50,7 @@
 // 箭头右
 ._arrow-right(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
-    @height_half: @height / 2;
+    @height_half: (@height / 2);
     &@{selector} {
         .border-top(transparent, @height_half);
         .border-bottom(transparent, @height_half);
@@ -74,7 +74,7 @@
     }
 }
 .arrow-right(@color, @width, @height, @pseudo_elements: before) {
-    @height_half: @height / 2;
+    @height_half: (@height / 2);
     ._arrow(50% auto auto 100%, -@height_half 0 0 -1px, @pseudo_elements);
     ._arrow-right(@color, @width, @height, @pseudo_elements);
 }
@@ -86,7 +86,7 @@
 // 箭头上
 ._arrow-up(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     &@{selector} {
         .border-left(transparent, @width_half);
         .border-right(transparent, @width_half);
@@ -110,7 +110,7 @@
     }
 }
 .arrow-up(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     ._arrow(auto auto 100% 50%, 0 0 -1px -@width_half, @pseudo_elements);
     ._arrow-up(@color, @width, @height, @pseudo_elements);
 }
@@ -122,7 +122,7 @@
 // 箭头下
 ._arrow-down(@color, @width, @height, @pseudo_elements: before) {
     @selector: e(':@{pseudo_elements}');
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     &@{selector} {
         .border-left(transparent, @width_half);
         .border-right(transparent, @width_half);
@@ -146,7 +146,7 @@
     }
 }
 .arrow-down(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     ._arrow(100% auto auto 50%, -1px 0 0 -@width_half, @pseudo_elements);
     ._arrow-down(@color, @width, @height, @pseudo_elements);
 }
@@ -178,7 +178,7 @@
     }
 }
 .arrow-left-top(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     ._arrow(100% 1em auto auto, -1px 0 0 0, @pseudo_elements);
     ._arrow-left-top(@color, @width, @height, @pseudo_elements);
 }
@@ -210,7 +210,7 @@
     }
 }
 .arrow-left-bottom(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     ._arrow(auto 1em 100% auto, 0 0 -1px 0, @pseudo_elements);
     ._arrow-left-bottom(@color, @width, @height, @pseudo_elements);
 }
@@ -242,7 +242,7 @@
     }
 }
 .arrow-right-top(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     ._arrow(100% auto auto 1em, -1px 0 0 0, @pseudo_elements);
     ._arrow-right-top(@color, @width, @height, @pseudo_elements);
 }
@@ -274,7 +274,7 @@
     }
 }
 .arrow-right-bottom(@color, @width, @height, @pseudo_elements: before) {
-    @width_half: @width / 2;
+    @width_half: (@width / 2);
     ._arrow(auto auto 100% 1em, 0 0 -1px 0, @pseudo_elements);
     ._arrow-right-bottom(@color, @width, @height, @pseudo_elements);
 }

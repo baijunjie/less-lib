@@ -3,7 +3,7 @@
 
     .getSize(@size) when (length(@size) = 1) {
         @pattern_size: @size;
-        @pattern_thickness: round(@size * .1 / 2) * 2;
+        @pattern_thickness: round((@size * .1 / 2)) * 2;
     }
     .getSize(@size) when (length(@size) = 2) {
         @pattern_size: extract(@size, 1);

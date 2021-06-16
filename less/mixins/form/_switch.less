@@ -55,12 +55,13 @@
         }
 
         & ~ @{selector} {
+            box-sizing: content-box;
             position: relative;
             display: inline-block;
             vertical-align: middle;
             width: @inner_width;
             height: @inner_height;
-            .border-radius(@height / 2);
+            .border-radius((@height / 2));
             border: 2px solid @border_color;
             background: @border_color;
             .transition(background-color .3s, border-color .3s;);
@@ -71,7 +72,7 @@
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                .border-radius(@height / 2);
+                .border-radius((@height / 2));
                 background: @bg_color;
                 .transform-origin(70% center);
                 .transition-transform(.3s cubic-bezier(0, .5, .5, 1));

@@ -3,7 +3,7 @@
 .center-x(@outer_width, @location: top auto, @position: absolute) when (isnumber(@outer_width)) {
     .position(auto auto auto 50%, @position);
     .set(extract(@location, 1), extract(@location, 2));
-    margin-left: @outer_width / 2 * -1;
+    margin-left: (@outer_width / 2 * -1);
 }
 .center-x(@location: top auto, @position: absolute) when not (isnumber(@location)) {
     .position(auto auto auto 50%, @position);
@@ -22,7 +22,7 @@
 
     & when not (ispercentage(@outer_height)) {
         .position(50% auto auto auto, @position);
-        margin-top: @outer_height / 2 * -1;
+        margin-top: (@outer_height / 2 * -1);
     }
 
     .set(extract(@location, 1), extract(@location, 2));
@@ -38,15 +38,15 @@
     & when (ispercentage(@outer_height)) {
         // 高度为百分比时专用（但IE6-7不支持）
         .position(0 auto 0 50%, @position);
-        margin-left: @outer_width / 2 * -1;
+        margin-left: (@outer_width / 2 * -1);
         margin-top: auto;
         margin-bottom: auto;
     }
 
     & when not (ispercentage(@outer_height)) {
         .position(50% auto auto 50%, @position);
-        margin-left: @outer_width / 2 * -1;
-        margin-top: @outer_height / 2 * -1;
+        margin-left: (@outer_width / 2 * -1);
+        margin-top: (@outer_height / 2 * -1);
     }
 }
 .center-xy(@position: absolute) when (iskeyword(@position)) {

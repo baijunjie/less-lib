@@ -81,7 +81,7 @@
         width: @pattern_size - @pattern_thickness * 2;
         height: @pattern_size - @pattern_thickness * 2;
         border-radius: 50%;
-        clip: rect(0px, @pattern_size / 2, @pattern_size, 0);
+        clip: rect(0px, (@pattern_size / 2), @pattern_size, 0);
         border: @pattern_thickness solid @color;
         -webkit-mask: -webkit-gradient(linear,0 0,0 100%, from(rgba(255,255,255,1)), to(rgba(255,255,255,0)));
         .animate-rotate(@animation_name, 1s);

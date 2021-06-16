@@ -12,13 +12,13 @@
     // 如果第3个参数为百分比，则使用padding-top作为百分比的高度
     & when (ispercentage(@real_width)) {
         height: 0;
-        padding-top: @real_width * @height / @width;
+        padding-top: (@real_width * @height / @width);
     }
 
     // 如果第3个参数为绝对值，则计算出的高度也为绝对值
     & when not (ispercentage(@real_width)) {
         width: @real_width;
-        height: @real_width * @height / @width;
+        height: (@real_width * @height / @width);
     }
 }
 
@@ -30,13 +30,13 @@
     // 如果第3个参数为百分比，则计算出高度的百分比
     & when (ispercentage(@real_width)) {
         width: @real_width;
-        height: @real_width * @container_width * @height / @width / @container_height;
+        height: (@real_width * @container_width * @height / @width / @container_height);
     }
 
     // 如果第3个参数为绝对值，则按容器的宽高分别计算出元素宽高的百分比
     & when not (ispercentage(@real_width)) {
-        width: 100% * @real_width / @container_width;
-        height: 100% * @real_width * @height / @width / @container_height;
+        width: (100% * @real_width / @container_width);
+        height: (100% * @real_width * @height / @width / @container_height);
     }
 }
 
@@ -45,9 +45,9 @@
 // @base_width 表示基础宽度（一般为设计图的像素宽）
 // 宽高会按基础宽度换算为等比例的百分比（这里的高度使用的是padding-top）
 .size-rel(@width, @height, @base_width) {
-    width: 100% * @width / @base_width;
+    width: (100% * @width / @base_width);
     & when not (@height = auto) {
         height: 0;
-        padding-top: 100% * @height / @base_width;
+        padding-top: (100% * @height / @base_width);
     }
 }

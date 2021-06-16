@@ -19,7 +19,7 @@
     .getColor(@color);
 
     .getSize(@size) when (length(@size) = 1) {
-        @pattern_thickness: round(@size * .1 / 2) * 2;
+        @pattern_thickness: round((@size * .1 / 2)) * 2;
         @pattern_length: @size - @pattern_thickness * 4;
         @inner_size: @size - @pattern_thickness * 2;
     }

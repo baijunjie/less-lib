@@ -29,50 +29,50 @@
         background-color: @color;
     }
 }
-.arrow3-left(@color, @width, @height, @thickness: @height - @width / 2) {
-    @half_height: @height / 2;
+.arrow3-left(@color, @width, @height, @thickness: @height - (@width / 2)) {
+    @half_height: (@height / 2);
     @difference: @width - @thickness;
-    @angle: atan(@difference / @half_height);
+    @angle: atan((@difference / @half_height));
 
     ._arrow3(
         @color,
-        @difference / 2 + @thickness,
+        (@difference / 2) + @thickness,
         @height,
         @thickness,
         @half_height,
-        0 0 0 @difference / 2,
+        0 0 0 (@difference / 2),
         -@angle 0,
         @angle 0
     );
 }
-.arrow3-right(@color, @width, @height, @thickness: @height - @width / 2) {
-    @half_height: @height / 2;
+.arrow3-right(@color, @width, @height, @thickness: @height - (@width / 2)) {
+    @half_height: (@height / 2);
     @difference: @width - @thickness;
-    @angle: atan(@difference / @half_height);
+    @angle: atan((@difference / @half_height));
 
     ._arrow3(
         @color,
-        @difference / 2 + @thickness,
+        (@difference / 2) + @thickness,
         @height,
         @thickness,
         @half_height,
-        0 0 0 @difference / 2,
+        0 0 0 (@difference / 2),
         @angle 0,
         -@angle 0
     );
 }
-.arrow3-up(@color, @width, @height, @thickness: @height - @width / 2) {
-    @half_width: @width / 2;
+.arrow3-up(@color, @width, @height, @thickness: @height - (@width / 2)) {
+    @half_width: (@width / 2);
     @difference: @height - @thickness;
-    @angle: atan(@difference / @half_width);
+    @angle: atan((@difference / @half_width));
 
     ._arrow3(
         @color,
         @width,
-        @difference / 2 + @thickness,
+        (@difference / 2) + @thickness,
         @half_width,
         @thickness,
-        @difference / 2 0 0 0,
+        (@difference / 2) 0 0 0,
         0 -@angle,
         0 @angle
     );
@@ -82,18 +82,18 @@
         .inline-block();
     }
 }
-.arrow3-down(@color, @width, @height, @thickness: @height - @width / 2) {
-    @half_width: @width / 2;
+.arrow3-down(@color, @width, @height, @thickness: @height - (@width / 2)) {
+    @half_width: (@width / 2);
     @difference: @height - @thickness;
-    @angle: atan(@difference / @half_width);
+    @angle: atan((@difference / @half_width));
 
     ._arrow3(
         @color,
         @width,
-        @difference / 2 + @thickness,
+        (@difference / 2) + @thickness,
         @half_width,
         @thickness,
-        @difference / 2 0 0 0,
+        (@difference / 2) 0 0 0,
         0 @angle,
         0 -@angle
     );
