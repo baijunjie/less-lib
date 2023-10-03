@@ -1,0 +1,20 @@
+// 部分透明遮罩
+.part-transparent-mask(left, @color) {
+    background-color: @color;
+    -webkit-mask-image: -webkit-linear-gradient(left, transparent 0, #000 100%);
+}
+
+.part-transparent-mask(right, @color) {
+    background-color: @color;
+    -webkit-mask-image: -webkit-linear-gradient(right, transparent 0, #000 100%);
+}
+
+.part-transparent-mask(top, @color) {
+    background-color: @color;
+    -webkit-mask-image: -webkit-linear-gradient(top, transparent 0, #000 100%);
+}
+
+.part-transparent-mask(bottom, @color) {
+    background-color: @color;
+    -webkit-mask-image: -webkit-linear-gradient(bottom, transparent 0, #000 100%);
+}
